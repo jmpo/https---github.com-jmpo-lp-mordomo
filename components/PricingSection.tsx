@@ -9,7 +9,8 @@ const PricingSection: React.FC = () => {
       period: '/ mes',
       features: ['Acceso total a la IA', 'Control de ingresos y egresos', 'Reportes mensuales automáticos', 'Soporte estándar'],
       cta: 'Elegir Mensual',
-      popular: false
+      popular: false,
+      href: 'https://pay.hotmart.com/E103337720H?off=datt7ri2&checkoutMode=6'
     },
     {
       name: 'Semestral',
@@ -17,7 +18,8 @@ const PricingSection: React.FC = () => {
       period: '/ 6 meses',
       features: ['Ahorro del 27% vs mensual', 'Todos los beneficios IA', 'Gestión de flotas y vehículos', 'Soporte prioritario 24/7'],
       cta: 'Elegir Semestral',
-      popular: false
+      popular: false,
+      href: 'https://pay.hotmart.com/E103337720H?off=2kzn4n3n&checkoutMode=6'
     },
     {
       name: 'Anual',
@@ -25,7 +27,8 @@ const PricingSection: React.FC = () => {
       period: '/ año',
       features: ['Ahorro máximo del 37%', 'Asesoría financiera IA proactiva', 'Multiusuario para equipos', 'Garantía de satisfacción total'],
       cta: 'Elegir Anual',
-      popular: true
+      popular: true,
+      href: 'https://pay.hotmart.com/E103337720H?off=9011oxf5&checkoutMode=6'
     }
   ];
 
@@ -69,7 +72,7 @@ const PricingSection: React.FC = () => {
               </ul>
 
               <a 
-                href="https://controla.site/demo"
+                href={p.href}
                 className={`block w-full py-5 rounded-2xl font-black text-lg transition-all active:scale-95 text-center shadow-xl ${
                   p.popular 
                     ? 'bg-secondary text-white hover:bg-black shadow-secondary/20' 
