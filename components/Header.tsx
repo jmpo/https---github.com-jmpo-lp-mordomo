@@ -19,9 +19,9 @@ const Header: React.FC = () => {
         </nav>
 
         <div className="flex items-center gap-4">
-          <a href="https://controla.site/demo" className="hidden sm:block text-sm font-bold hover:text-primary transition-colors">Iniciar sesión</a>
+          <a href="https://app.controla.site/" className="hidden sm:block text-sm font-bold hover:text-primary transition-colors">Iniciar sesión</a>
           <a 
-            href="#pricing"
+            href="https://demo.controla.site/"
             className="bg-primary hover:bg-primary-dark text-white px-5 py-2.5 rounded-xl text-sm font-bold transition-all shadow-lg shadow-primary/20 active:scale-95 text-center"
           >
             Comenzar prueba

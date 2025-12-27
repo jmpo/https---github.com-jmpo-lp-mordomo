@@ -24,7 +24,7 @@ const FinalCTA: React.FC = () => {
               Comenzar ahora mismo
             </a>
             <a 
-              href="https://controla.site/demo"
+              href="https://demo.controla.site/"
               className="bg-white/20 text-white border border-white/30 backdrop-blur-md px-10 py-5 rounded-2xl font-bold text-xl hover:bg-white/30 transition-all active:scale-95 text-center"
             >
               Ver Demo Live

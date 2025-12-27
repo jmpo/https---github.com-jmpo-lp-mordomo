@@ -31,7 +31,7 @@ const Footer: React.FC = () => {
             <h5 className="font-black text-xs mb-6 uppercase tracking-[0.2em] text-gray-400">Empresa</h5>
             <ul className="space-y-4 text-sm font-bold text-gray-500">
               <li><a href="#" className="hover:text-primary transition-colors">Sobre nosotros</a></li>
-              <li><a href="https://controla.site/demo" className="hover:text-primary transition-colors">Demo</a></li>
+              <li><a href="https://demo.controla.site/" className="hover:text-primary transition-colors">Demo</a></li>
               <li><a href="mailto:soporte@controla.site" className="hover:text-primary transition-colors">Contacto</a></li>
             </ul>
           </div>

@@ -47,7 +47,7 @@ const Hero: React.FC = () => {
               Comenzar Ahora
             </a>
             <a 
-              href="https://controla.site/demo"
+              href="https://demo.controla.site/"
               className="flex items-center justify-center gap-2 bg-white border border-gray-200 px-8 py-4 rounded-xl font-bold text-lg hover:bg-gray-50 transition-all active:scale-95 shadow-sm"
             >
               Ver Demo
