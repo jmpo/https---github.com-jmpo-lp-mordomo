@@ -11,7 +11,7 @@ const Hero: React.FC = () => {
         <div className="space-y-8 animate-in fade-in slide-in-from-left duration-700">
           <div className="inline-flex items-center gap-2 bg-primary/10 border border-primary/20 px-3 py-1 rounded-full">
             <span className="material-symbols-outlined text-primary text-sm">auto_awesome</span>
-            <span className="text-xs font-bold text-primary tracking-wider uppercase">Nuevo: Asistente IA v2.0</span>
+            <span className="text-xs font-bold text-primary tracking-wider uppercase">+2,300 usuarios activos hoy</span>
           </div>
           
           <h1 className="text-5xl lg:text-7xl font-extrabold leading-[1.1] tracking-tight text-secondary">
@@ -58,7 +58,19 @@ const Hero: React.FC = () => {
             </a>
           </div>
           
-          <div className="flex items-center gap-4 pt-6">
+          <div className="flex items-center gap-4 pt-2 text-sm font-semibold text-gray-600">
+            <span className="inline-flex items-center gap-1 text-secondary">
+              <span className="material-symbols-outlined text-base">shield</span>
+              Garantía 7 días. Pago con tarjeta.
+            </span>
+            <span className="hidden sm:inline text-gray-400">|</span>
+            <span className="inline-flex items-center gap-1">
+              <span className="material-symbols-outlined text-base text-primary">schedule</span>
+              Onboarding rápido en 15 min.
+            </span>
+          </div>
+
+          <div className="flex items-center gap-4 pt-4">
             <div className="flex -space-x-2">
               {[1, 2, 3].map(i => (
                 <img 
