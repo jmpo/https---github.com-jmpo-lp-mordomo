@@ -83,7 +83,11 @@ const PricingSection: React.FC = () => {
             return (
               <div 
                 key={i} 
-                className={`relative bg-white p-12 rounded-[3rem] border ${p.popular ? 'border-primary ring-[12px] ring-primary/5 scale-110 z-10 shadow-2xl' : 'border-gray-100'} shadow-xl transition-all duration-500 hover:translate-y-[-10px] group flex flex-col ${
+                className={`relative bg-white p-12 rounded-[3rem] border ${
+                  p.popular 
+                    ? 'border-primary ring-[12px] ring-primary/5 scale-100 md:scale-110 md:z-10 md:shadow-2xl' 
+                    : 'border-gray-100 scale-100'
+                } shadow-xl transition-all duration-500 md:hover:translate-y-[-10px] group flex flex-col ${
                   isBestValue ? 'bg-gradient-to-b from-emerald-50 to-white' : ''
                 }`}
               >
