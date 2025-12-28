@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { trackMetaEvent } from '../metaPixel';
 
 const FinalCTA: React.FC = () => {
   return (
@@ -19,12 +20,14 @@ const FinalCTA: React.FC = () => {
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <a 
               href="#pricing"
+              onClick={() => trackMetaEvent('Lead', { content_name: 'finalcta_comenzar_ahora' })}
               className="bg-secondary text-white px-10 py-5 rounded-2xl font-black text-xl hover:bg-black transition-all shadow-2xl active:scale-95 text-center"
             >
               Comenzar ahora mismo
             </a>
             <a 
               href="https://demo.controla.site/"
+              onClick={() => trackMetaEvent('Lead', { content_name: 'finalcta_ver_demo' })}
               className="bg-white/20 text-white border border-white/30 backdrop-blur-md px-10 py-5 rounded-2xl font-bold text-xl hover:bg-white/30 transition-all active:scale-95 text-center"
             >
               Ver Demo Live

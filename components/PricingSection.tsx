@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { trackMetaEvent } from '../metaPixel';
 
 const PricingSection: React.FC = () => {
   const plans = [
@@ -73,6 +74,7 @@ const PricingSection: React.FC = () => {
 
               <a 
                 href={p.href}
+                onClick={() => trackMetaEvent('InitiateCheckout', { content_name: p.name, value: Number(p.price), currency: 'USD' })}
                 className={`block w-full py-5 rounded-2xl font-black text-lg transition-all active:scale-95 text-center shadow-xl ${
                   p.popular 
                     ? 'bg-secondary text-white hover:bg-black shadow-secondary/20' 

@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { trackMetaEvent } from '../metaPixel';
 
 const Header: React.FC = () => {
   return (
@@ -22,6 +23,7 @@ const Header: React.FC = () => {
           <a href="https://app.controla.site/" className="hidden sm:block text-sm font-bold hover:text-primary transition-colors">Iniciar sesión</a>
           <a 
             href="https://demo.controla.site/"
+            onClick={() => trackMetaEvent('Lead', { content_name: 'header_demo' })}
             className="bg-primary hover:bg-primary-dark text-white px-5 py-2.5 rounded-xl text-sm font-bold transition-all shadow-lg shadow-primary/20 active:scale-95 text-center"
           >
             Comenzar prueba

@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { trackMetaEvent } from '../metaPixel';
 
 const Hero: React.FC = () => {
   return (
@@ -42,12 +43,14 @@ const Hero: React.FC = () => {
           <div className="flex flex-col sm:flex-row gap-4 pt-4">
             <a 
               href="#pricing"
+              onClick={() => trackMetaEvent('Lead', { content_name: 'hero_comenzar_ahora' })}
               className="bg-primary hover:bg-primary-dark text-white px-8 py-4 rounded-xl font-bold text-lg transition-all shadow-xl shadow-primary/30 active:scale-95 text-center"
             >
               Comenzar Ahora
             </a>
             <a 
               href="https://demo.controla.site/"
+              onClick={() => trackMetaEvent('Lead', { content_name: 'hero_ver_demo' })}
               className="flex items-center justify-center gap-2 bg-white border border-gray-200 px-8 py-4 rounded-xl font-bold text-lg hover:bg-gray-50 transition-all active:scale-95 shadow-sm"
             >
               Ver Demo
