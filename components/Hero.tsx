@@ -14,29 +14,27 @@ const Hero: React.FC = () => {
             <span className="text-xs font-bold text-primary tracking-wider uppercase">+2,300 usuarios activos hoy</span>
           </div>
           
-          <h1 className="text-5xl lg:text-7xl font-extrabold leading-[1.1] tracking-tight text-secondary">
-            Ordená tu plata y <span className="relative">
-              <span className="relative z-10 text-primary">llegá tranquilo</span>
-              <span className="absolute left-0 bottom-2 w-full h-4 bg-primary/10 -rotate-1"></span>
-            </span> a fin de mes.
+          <h1 className="text-5xl lg:text-7xl font-extrabold leading-[1.05] tracking-tight text-secondary space-y-2">
+            <span className="block">No tener control de tu dinero no es normal.</span>
+            <span className="block">Es peligroso… y vos lo sabés.</span>
           </h1>
           
-          <p className="text-lg text-gray-600 max-w-lg leading-relaxed">
-            Controla IA te muestra a dónde se va tu dinero, te avisa antes de que te quedes corto y arma un plan simple para tus metas.
+          <p className="text-lg text-gray-600 max-w-xl leading-relaxed">
+            Cada mes que no mirás tus números, perdés plata, tranquilidad y futuro — aunque sigas trabajando duro.
           </p>
           
           <div className="flex flex-wrap items-center gap-4 text-sm font-bold text-gray-500">
             <div className="flex items-center gap-1.5">
               <span className="material-symbols-outlined text-primary text-lg">check_circle</span>
-              Sin planillas raras.
+              Ves adónde se va tu plata.
             </div>
             <div className="flex items-center gap-1.5">
               <span className="material-symbols-outlined text-primary text-lg">check_circle</span>
-              Alertas antes de que falte.
+              Eliminás fugas invisibles.
             </div>
             <div className="flex items-center gap-1.5">
               <span className="material-symbols-outlined text-primary text-lg">check_circle</span>
-              Plan de ahorro automático.
+              Decidís con números reales.
             </div>
           </div>
           
@@ -46,7 +44,7 @@ const Hero: React.FC = () => {
               onClick={() => trackMetaEvent('Lead', { content_name: 'hero_comenzar_ahora' })}
               className="bg-primary hover:bg-primary-dark text-white px-8 py-4 rounded-xl font-bold text-lg transition-all shadow-xl shadow-primary/30 active:scale-95 text-center"
             >
-              Empezar ahora
+              Quiero dejar de vivir en el desorden financiero
             </a>
             <a 
               href="https://demo.controla.site/"

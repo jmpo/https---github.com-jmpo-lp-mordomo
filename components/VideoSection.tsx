@@ -1,72 +1,27 @@
 import React from 'react';
 import { trackMetaEvent } from '../metaPixel';
 
-const highlights = [
-  {
-    icon: 'bolt',
-    title: 'Cobros y gastos en automático',
-    desc: 'Recordatorios y avisos claros para no quedarte sin efectivo.',
-  },
-  {
-    icon: 'notifications_active',
-    title: 'Alertas que te dicen qué hacer',
-    desc: 'La app te marca hoy qué pago o gasto atender para no atrasarte.',
-  },
-  {
-    icon: 'insights',
-    title: 'Reportes simples',
-    desc: 'Sabés cuánto podés gastar y cuánto ahorrar sin planillas.',
-  },
-];
-
 const VideoSection: React.FC = () => {
   return (
     <section className="py-20 bg-white border-y border-gray-100">
-      <div className="max-w-7xl mx-auto px-4 grid lg:grid-cols-[1.05fr_1.2fr] gap-12 items-center">
-        <div className="space-y-6">
+      <div className="max-w-6xl mx-auto px-4 space-y-10">
+        <div className="max-w-3xl mx-auto text-center space-y-4">
+          <p className="text-base text-gray-700 font-semibold">
+            Si hoy no podés responder con seguridad: <span className="font-black text-secondary">“¿Cuánto puedo gastar sin preocuparme?”</span>
+          </p>
+          <p className="text-base text-gray-600 font-semibold">
+            Entonces no estás manejando tu dinero. Estás reaccionando a él.
+          </p>
           <div className="inline-flex items-center gap-2 bg-primary/10 border border-primary/20 px-4 py-1.5 rounded-full uppercase text-[10px] font-black tracking-[0.2em] text-primary">
             <span className="material-symbols-outlined text-xs">play_circle</span>
-            Verlo en acción
+            Mirá esto antes de seguir
           </div>
-
-          <h2 className="text-4xl lg:text-5xl font-black text-secondary leading-tight">
-            Mirá cómo <span className="text-primary">Controla IA</span> te ayuda a dejar de perder plata.
+          <h2 className="text-3xl lg:text-4xl font-black text-secondary leading-tight">
+            Mirá este video y entendé en 2 minutos por qué el problema no es cuánto ganás, sino que no tenés visibilidad.
           </h2>
-
-          <p className="text-lg text-gray-600 leading-relaxed">
-            Grabación real del tablero que usan personas para ordenar gastos, ahorrar y llegar a fin de mes sin sobresaltos.
-          </p>
-
-          <div className="grid sm:grid-cols-2 gap-4">
-            {highlights.map((item) => (
-              <div key={item.title} className="flex items-start gap-3 p-3 rounded-2xl bg-[#f8f7f5] border border-gray-100">
-                <div className="w-10 h-10 rounded-xl bg-white border border-gray-200 flex items-center justify-center text-primary">
-                  <span className="material-symbols-outlined text-lg">{item.icon}</span>
-                </div>
-                <div className="space-y-1">
-                  <p className="text-sm font-extrabold text-secondary">{item.title}</p>
-                  <p className="text-sm text-gray-500 leading-relaxed">{item.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <div className="flex flex-wrap items-center gap-4 pt-2">
-            <a
-              href="#pricing"
-              onClick={() => trackMetaEvent('Lead', { content_name: 'video_ver_planes' })}
-              className="bg-primary hover:bg-primary-dark text-white px-8 py-4 rounded-xl font-bold text-lg transition-all shadow-xl shadow-primary/30 active:scale-95"
-            >
-              Quiero ordenar mi dinero
-            </a>
-            <p className="text-sm font-semibold text-gray-500 flex items-center gap-2">
-              <span className="material-symbols-outlined text-primary text-base">volume_up</span>
-              Recomendado verlo con audio.
-            </p>
-          </div>
         </div>
 
-        <div className="relative lg:-mr-6">
+        <div className="relative">
           <div className="absolute -inset-6 bg-primary/10 blur-3xl rounded-3xl opacity-60"></div>
           <div className="relative rounded-3xl overflow-hidden border border-gray-200 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.25)] bg-[#0f0d0c]">
             <div className="absolute top-4 left-4 z-10 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/80 text-xs font-bold text-secondary shadow-sm backdrop-blur">
@@ -84,6 +39,35 @@ const VideoSection: React.FC = () => {
               ></iframe>
             </div>
           </div>
+        </div>
+
+        <div className="max-w-3xl mx-auto text-center space-y-4">
+          <p className="text-lg text-gray-700 font-semibold">
+            Si esto te resonó, no es casualidad.
+          </p>
+          <div className="space-y-2 text-gray-600">
+            <p>Sabés que algo no está del todo bien.</p>
+            <p>Sentís que trabajás pero no avanzás.</p>
+            <p>Y necesitás claridad, no más consejos.</p>
+          </div>
+          <p className="text-base text-gray-700 font-semibold">
+            No esperes a “ganar más” para ordenar. El orden viene antes.
+          </p>
+          <div className="flex flex-col items-center gap-3 pt-2">
+            <a
+              href="#pricing"
+              onClick={() => trackMetaEvent('Lead', { content_name: 'video_empezar_control' })}
+              className="bg-primary hover:bg-primary-dark text-white px-8 py-4 rounded-xl font-bold text-lg transition-all shadow-xl shadow-primary/30 active:scale-95"
+            >
+              Quiero ver cómo funciona
+            </a>
+            <p className="text-sm font-semibold text-gray-500">
+              Toma menos de 2 minutos. No necesitás tarjeta.
+            </p>
+          </div>
+          <p className="text-sm text-gray-400 font-semibold">
+            El Hero despierta incomodidad. El Video la valida. El CTA ofrece alivio inmediato.
+          </p>
         </div>
       </div>
     </section>

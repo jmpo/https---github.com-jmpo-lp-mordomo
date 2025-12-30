@@ -107,18 +107,19 @@ const SolutionSection: React.FC = () => {
           
           <div className="space-y-8">
             <h2 className="text-4xl lg:text-6xl font-black text-secondary leading-[1.1]">
-              Una app que te avisa, te ordena y te deja respirar.
+              Controla es el sistema que te muestra, con claridad total, qué está pasando con tu dinero.
             </h2>
             <p className="text-lg text-gray-600 leading-relaxed font-medium">
-              Controla IA organiza tus ingresos y gastos, te advierte con tiempo y arma un plan de ahorro que sí podés cumplir.
+              Todo tu dinero. Un solo lugar. Cero estrés mental.
             </p>
             
             <div className="space-y-6 pt-4">
               {[
-                { t: 'Calendario de pagos', d: 'Recordatorios y montos exactos para no atrasarte con alquiler, luz o tarjetas.', i: 'event' },
-                { t: 'Proyección del mes', d: 'Sabes cuánto queda disponible antes de gastar y evitás el rojo.', i: 'timeline' },
-                { t: 'Sugerencias de recorte', d: 'Detecta gastos hormiga y te dice qué ajustar sin dejar de vivir.', i: 'content_cut' },
-                { t: 'Metas con fecha', d: 'Definí cuánto ahorrar y la app separa el monto por vos.', i: 'flag' }
+                { t: 'Dejar de vivir mes a mes a ciegas', d: 'Ves todo en un solo lugar, sin planillas.', i: 'visibility' },
+                { t: 'Saber cuánto podés gastar sin culpa', d: 'Proyección clara del mes y alerta antes del rojo.', i: 'pace' },
+                { t: 'Anticiparte a problemas financieros', d: 'Detectás fugas y recibís recordatorios clave.', i: 'bug_report' },
+                { t: 'Tomar decisiones con tranquilidad', d: 'Números reales, no suposiciones ni miedo.', i: 'verified_user' },
+                { t: 'Empezar a avanzar hacia tus metas', d: 'Metas con montos sugeridos y seguimiento simple.', i: 'flag' }
               ].map((item, idx) => (
                 <div key={idx} className="flex gap-5 group">
                   <div className="flex-shrink-0 w-14 h-14 bg-gray-50 rounded-2xl flex items-center justify-center text-gray-400 group-hover:bg-primary/10 group-hover:text-primary transition-all duration-500">
@@ -132,12 +133,26 @@ const SolutionSection: React.FC = () => {
               ))}
             </div>
 
+            <div className="bg-gray-50 border border-gray-100 rounded-2xl p-5 text-sm font-semibold text-gray-700 space-y-2">
+              <p className="text-secondary font-black text-base">No es solo control financiero. Es paz mental.</p>
+              <p>No tener control financiero no solo te cuesta dinero: te cuesta tranquilidad, foco y futuro.</p>
+              <p className="text-primary font-bold">El precio de no hacer nada siempre es más alto.</p>
+              <div className="space-y-1 text-gray-600">
+                <p>Cada mes sin control:</p>
+                <ul className="list-disc list-inside text-sm pl-2 space-y-1">
+                  <li>Perdés oportunidades</li>
+                  <li>Repetís errores</li>
+                  <li>Reforzás el desorden</li>
+                </ul>
+              </div>
+            </div>
+
             <div className="pt-8">
               <a 
                 href="#pricing"
                 className="inline-flex items-center gap-4 bg-primary hover:bg-primary-dark text-white px-10 py-5 rounded-2xl font-black text-lg transition-all shadow-[0_20px_50px_rgba(244,140,37,0.3)] active:scale-95 group"
               >
-                Ver planes simples
+                Quiero empezar a ordenar mi dinero
                 <span className="material-symbols-outlined transition-transform group-hover:translate-x-2">arrow_forward</span>
               </a>
             </div>

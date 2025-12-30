@@ -113,6 +113,10 @@ const PricingSection: React.FC = () => {
           <p className="text-xl text-gray-500 max-w-2xl mx-auto font-medium">Precio claro, sin letra chica. Probalo y sentí alivio en tu próximo cierre de mes.</p>
         </div>
         
+        <div className="max-w-3xl mx-auto mb-6 text-center text-sm font-semibold text-gray-600">
+          Lo que hoy pagás no es el plan. Es el precio de dejar de perder dinero sin darte cuenta.
+        </div>
+        
         <div className="max-w-3xl mx-auto mb-12 md:mb-14">
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3 bg-white border border-primary/20 shadow-lg shadow-primary/10 px-6 py-4 rounded-3xl">
             <span className="text-xs font-black uppercase tracking-[0.16em] text-primary">Oferta de lanzamiento</span>

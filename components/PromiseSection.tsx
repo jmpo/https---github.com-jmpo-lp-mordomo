@@ -4,43 +4,43 @@ import React from 'react';
 const PromiseSection: React.FC = () => {
   const values = [
     {
-      title: 'Todo en un solo lugar',
-      desc: 'Tus cuentas, tarjetas y gastos fijos juntos. Sin saltar entre apps.',
-      icon: 'hub',
-      bgColor: 'bg-orange-50',
-      iconColor: 'text-orange-500'
-    },
-    {
-      title: 'Alerta antes del rojo',
-      desc: 'Te avisa si este mes te vas a quedar corto y qué pago mover.',
-      icon: 'warning',
-      bgColor: 'bg-red-50',
-      iconColor: 'text-red-500'
-    },
-    {
-      title: 'Plan de ahorro simple',
-      desc: 'Metas claras y transferencias programadas para que no se derrita la plata.',
-      icon: 'savings',
-      bgColor: 'bg-green-50',
-      iconColor: 'text-green-600'
-    },
-    {
-      title: 'Gastos hormiga a la vista',
-      desc: 'Detecta antojos y suscripciones que te comen el sueldo.',
+      title: 'Ver exactamente a dónde se va tu plata',
+      desc: 'Todo categorizado en un solo lugar. Sin planillas.',
       icon: 'visibility',
       bgColor: 'bg-blue-50',
       iconColor: 'text-blue-600'
     },
     {
-      title: 'Historial claro',
-      desc: 'Ves cada movimiento sin revisar el banco ni descargar planillas.',
-      icon: 'receipt_long',
+      title: 'Detectar fugas invisibles que te frenan',
+      desc: 'Suscripciones y gastos chicos marcados en segundos.',
+      icon: 'bug_report',
       bgColor: 'bg-amber-50',
       iconColor: 'text-amber-600'
     },
     {
-      title: 'Pensado para personas reales',
-      desc: 'Sin jerga financiera: pasos simples para llegar a fin de mes con aire.',
+      title: 'Organizar tus cuentas sin planillas complicadas',
+      desc: 'Bancos, tarjetas y efectivo juntos y claros.',
+      icon: 'account_balance',
+      bgColor: 'bg-orange-50',
+      iconColor: 'text-orange-500'
+    },
+    {
+      title: 'Planificar con números reales, no suposiciones',
+      desc: 'Metas alcanzables con montos sugeridos y seguimiento simple.',
+      icon: 'flag',
+      bgColor: 'bg-green-50',
+      iconColor: 'text-green-600'
+    },
+    {
+      title: 'Todo simple y visual',
+      desc: 'Diseñado para personas reales, no expertos en finanzas.',
+      icon: 'palette',
+      bgColor: 'bg-gray-50',
+      iconColor: 'text-gray-600'
+    },
+    {
+      title: 'Sin estrés ni juicios',
+      desc: 'Claridad para decidir sin culpa ni improvisación.',
       icon: 'favorite',
       bgColor: 'bg-purple-50',
       iconColor: 'text-purple-500'
@@ -53,19 +53,19 @@ const PromiseSection: React.FC = () => {
         {/* Header Label */}
         <div className="flex justify-center mb-6">
           <div className="inline-flex items-center gap-2 bg-primary/10 border border-primary/20 px-4 py-1.5 rounded-full">
-            <span className="material-symbols-outlined text-primary text-xs" style={{ fontVariationSettings: "'FILL' 1" }}>verified</span>
-            <span className="text-[10px] font-black text-primary tracking-widest uppercase">LA PROMESA</span>
+            <span className="material-symbols-outlined text-primary text-xs" style={{ fontVariationSettings: "'FILL' 1" }}>verified_user</span>
+            <span className="text-[10px] font-black text-primary tracking-widest uppercase">LA SOLUCIÓN</span>
           </div>
         </div>
 
         {/* Main Heading */}
         <div className="max-w-4xl mx-auto text-center mb-16 space-y-6">
           <h2 className="text-4xl lg:text-6xl font-black text-secondary leading-tight">
-            No necesitás ganar más; <br />
-            <span className="text-primary">necesitás saber a dónde va tu dinero.</span>
+            Las personas financieramente tranquilas no ganan más. <br />
+            <span className="text-primary">Ven mejor.</span>
           </h2>
           <p className="text-lg text-gray-500 leading-relaxed max-w-2xl mx-auto">
-            Controla IA te da claridad diaria: cuánto entra, cuánto sale y qué recortar sin vivir apretado.
+            No adivinan. No improvisan. No viven apagando incendios. Tienen claridad. Y la claridad cambia todo. Controla existe para darte esa vista completa sin juicios.
           </p>
         </div>
 
@@ -90,7 +90,7 @@ const PromiseSection: React.FC = () => {
             href="#pricing"
             className="flex items-center gap-3 bg-[#181411] hover:bg-black text-white px-10 py-5 rounded-2xl font-bold text-lg transition-all shadow-2xl active:scale-95 group"
           >
-            Empezar a ordenar mi plata
+            Quiero tomar control de mi dinero hoy
             <span className="material-symbols-outlined transition-transform group-hover:translate-x-1">arrow_forward</span>
           </a>
         </div>

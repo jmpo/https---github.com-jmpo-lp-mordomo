@@ -6,19 +6,19 @@ const TestimonialsSection: React.FC = () => {
     {
       name: "Andrés Gutiérrez",
       role: "Empleado administrativo",
-      content: "Siempre llegaba raspando al 25. Ahora sé qué día pagar cada cosa y cuánto puedo gastar sin miedo. Es la primera vez que cierro un mes con plata a favor.",
+      content: "“Pensé que ganaba poco, pero el problema era el desorden.”",
       image: "https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg?auto=compress&cs=tinysrgb&w=150"
     },
     {
       name: "Laura Martínez",
       role: "Freelance",
-      content: "Odiaba sumar recibos los domingos. Conecté mis cuentas y la app me avisa antes de quedar corta. Armé un fondo de emergencia en 2 meses.",
+      content: "“Ahora sé cuánto puedo gastar sin culpa.”",
       image: "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=150"
     },
     {
       name: "Ricardo Sosa",
       role: "Papá de 2",
-      content: "Tenía suscripciones y gastos chicos que se comían el sueldo. Controla IA los marcó y ahora ahorro fijo para la escuela de mis hijos.",
+      content: "“Por primera vez siento control.”",
       image: "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=150"
     }
   ];
@@ -31,7 +31,7 @@ const TestimonialsSection: React.FC = () => {
             Historias reales de <span className="text-primary">personas comunes</span>
           </h2>
           <p className="text-lg text-gray-500 max-w-2xl mx-auto">
-            Personas como vos que dejaron de perder plata y ahora llegan al mes con aire.
+            Personas reales. Problemas reales. Resultados reales.
           </p>
         </div>
 
