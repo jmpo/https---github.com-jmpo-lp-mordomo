@@ -65,9 +65,6 @@ const VideoSection: React.FC = () => {
               Toma menos de 2 minutos. No necesitás tarjeta.
             </p>
           </div>
-          <p className="text-sm text-gray-400 font-semibold">
-            El Hero despierta incomodidad. El Video la valida. El CTA ofrece alivio inmediato.
-          </p>
         </div>
       </div>
     </section>

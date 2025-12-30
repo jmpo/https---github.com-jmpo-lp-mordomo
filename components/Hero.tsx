@@ -4,26 +4,26 @@ import { trackMetaEvent } from '../metaPixel';
 
 const Hero: React.FC = () => {
   return (
-    <section className="relative pt-12 pb-24 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 grid lg:grid-cols-2 gap-12 items-center">
+    <section className="relative pt-12 pb-16 overflow-hidden">
+      <div className="max-w-6xl mx-auto px-4 grid lg:grid-cols-[1.05fr_0.95fr] gap-10 items-start">
         
         {/* Left Side: Content */}
-        <div className="space-y-8 animate-in fade-in slide-in-from-left duration-700">
+        <div className="space-y-6 animate-in fade-in slide-in-from-left duration-700">
           <div className="inline-flex items-center gap-2 bg-primary/10 border border-primary/20 px-3 py-1 rounded-full">
             <span className="material-symbols-outlined text-primary text-sm">auto_awesome</span>
             <span className="text-xs font-bold text-primary tracking-wider uppercase">+2,300 usuarios activos hoy</span>
           </div>
           
-          <h1 className="text-5xl lg:text-7xl font-extrabold leading-[1.05] tracking-tight text-secondary space-y-2">
+          <h1 className="text-4xl lg:text-6xl font-extrabold leading-[1.05] tracking-tight text-secondary space-y-2">
             <span className="block">No tener control de tu dinero no es normal.</span>
             <span className="block">Es peligroso… y vos lo sabés.</span>
           </h1>
           
-          <p className="text-lg text-gray-600 max-w-xl leading-relaxed">
+          <p className="text-base lg:text-lg text-gray-600 max-w-xl leading-relaxed">
             Cada mes que no mirás tus números, perdés plata, tranquilidad y futuro — aunque sigas trabajando duro.
           </p>
           
-          <div className="flex flex-wrap items-center gap-4 text-sm font-bold text-gray-500">
+          <div className="flex flex-wrap items-center gap-3 text-sm font-bold text-gray-500">
             <div className="flex items-center gap-1.5">
               <span className="material-symbols-outlined text-primary text-lg">check_circle</span>
               Ves adónde se va tu plata.
@@ -56,7 +56,7 @@ const Hero: React.FC = () => {
             </a>
           </div>
           
-          <div className="flex items-center gap-4 pt-2 text-sm font-semibold text-gray-600">
+          <div className="flex items-center gap-4 pt-1 text-sm font-semibold text-gray-600">
             <span className="inline-flex items-center gap-1 text-secondary">
               <span className="material-symbols-outlined text-base">shield</span>
               Garantía 7 días. Pago con tarjeta.
@@ -120,7 +120,7 @@ const Hero: React.FC = () => {
             </div>
 
             {/* Main Content Mockup with Real Data */}
-            <div className="flex-1 p-6 space-y-6 overflow-y-auto">
+        <div className="flex-1 p-6 space-y-6 overflow-y-auto max-h-[640px]">
               <div className="flex justify-between items-center">
                 <div>
                   <h3 className="text-xl font-black text-secondary">Relatórios</h3>

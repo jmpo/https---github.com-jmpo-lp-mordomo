@@ -53,9 +53,6 @@ const ComparisonSection: React.FC = () => {
             </ul>
           </div>
         </div>
-        <p className="text-center text-sm font-bold text-gray-200 mt-10">
-          El tiempo va a pasar igual. La diferencia es si lo usás a tu favor.
-        </p>
       </div>
     </section>
   );

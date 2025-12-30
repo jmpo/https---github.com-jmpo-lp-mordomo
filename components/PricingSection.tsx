@@ -21,6 +21,8 @@ type Plan = {
 const PricingSection: React.FC = () => {
   const [countdown, setCountdown] = React.useState('12:00:00');
   const [toastIndex, setToastIndex] = React.useState(0);
+  const [showProof, setShowProof] = React.useState(false);
+  const sectionRef = React.useRef<HTMLDivElement | null>(null);
 
   const sharedFeatures = [
     'Calendario de pagos y recordatorios',
@@ -99,14 +101,33 @@ const PricingSection: React.FC = () => {
   }, []);
 
   React.useEffect(() => {
+    if (!showProof) return;
     const id = setInterval(() => {
       setToastIndex((prev) => (prev + 1) % proofMessages.length);
     }, 7000);
     return () => clearInterval(id);
-  }, [proofMessages.length]);
+  }, [proofMessages.length, showProof]);
+
+  React.useEffect(() => {
+    const node = sectionRef.current;
+    if (!node) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setShowProof(true);
+            observer.disconnect();
+          }
+        });
+      },
+      { threshold: 0.25 }
+    );
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, []);
 
   return (
-    <section className="py-24 bg-[#f8f7f5]" id="pricing">
+    <section className="py-24 bg-[#f8f7f5]" id="pricing" ref={sectionRef}>
       <div className="max-w-7xl mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl lg:text-6xl font-black text-secondary mb-6">Planes simples para ordenar tu dinero</h2>
@@ -219,18 +240,20 @@ const PricingSection: React.FC = () => {
         </p>
       </div>
 
-      <div className="fixed bottom-6 right-4 sm:right-8 z-40">
-        <div className="bg-white border border-gray-200 shadow-2xl shadow-primary/10 px-4 py-3 rounded-2xl flex items-start gap-3 max-w-xs animate-in fade-in">
-          <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary font-black text-sm">
-            <span className="material-symbols-outlined text-base">verified</span>
-          </div>
-          <div className="space-y-1">
-            <p className="text-sm font-bold text-secondary">{proofMessages[toastIndex].name}</p>
-            <p className="text-xs font-semibold text-gray-600">{proofMessages[toastIndex].action}</p>
-            <p className="text-[11px] font-bold text-green-600">{proofMessages[toastIndex].time}</p>
+      {showProof && (
+        <div className="fixed bottom-6 right-4 sm:right-8 z-40">
+          <div className="bg-white border border-gray-200 shadow-2xl shadow-primary/10 px-4 py-3 rounded-2xl flex items-start gap-3 max-w-xs animate-in fade-in">
+            <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary font-black text-sm">
+              <span className="material-symbols-outlined text-base">verified</span>
+            </div>
+            <div className="space-y-1">
+              <p className="text-sm font-bold text-secondary">{proofMessages[toastIndex].name}</p>
+              <p className="text-xs font-semibold text-gray-600">{proofMessages[toastIndex].action}</p>
+              <p className="text-[11px] font-bold text-green-600">{proofMessages[toastIndex].time}</p>
+            </div>
           </div>
         </div>
-      </div>
+      )}
     </section>
   );
 };
