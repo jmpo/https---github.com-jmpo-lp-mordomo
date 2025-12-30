@@ -2,7 +2,7 @@
 import React, { useEffect } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
-import TrustLogos from './components/TrustLogos';
+import VideoSection from './components/VideoSection';
 import PromiseSection from './components/PromiseSection';
 import ProblemSection from './components/ProblemSection';
 import SolutionSection from './components/SolutionSection';
@@ -23,7 +23,7 @@ const App: React.FC = () => {
       <Header />
       <main>
         <Hero />
-        <TrustLogos />
+        <VideoSection />
         <PromiseSection />
         <ProblemSection />
         <SolutionSection />

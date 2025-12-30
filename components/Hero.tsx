@@ -15,28 +15,28 @@ const Hero: React.FC = () => {
           </div>
           
           <h1 className="text-5xl lg:text-7xl font-extrabold leading-[1.1] tracking-tight text-secondary">
-            Control total de tus <span className="relative">
-              <span className="relative z-10 text-primary">finanzas</span>
+            Ordená tu plata y <span className="relative">
+              <span className="relative z-10 text-primary">llegá tranquilo</span>
               <span className="absolute left-0 bottom-2 w-full h-4 bg-primary/10 -rotate-1"></span>
-            </span> en un solo lugar.
+            </span> a fin de mes.
           </h1>
           
           <p className="text-lg text-gray-600 max-w-lg leading-relaxed">
-            Gestiona ingresos, vehículos, clientes e inversiones con el poder de la Inteligencia Artificial. Tu negocio, simplificado y optimizado automáticamente.
+            Controla IA te muestra a dónde se va tu dinero, te avisa antes de que te quedes corto y arma un plan simple para tus metas.
           </p>
           
           <div className="flex flex-wrap items-center gap-4 text-sm font-bold text-gray-500">
             <div className="flex items-center gap-1.5">
               <span className="material-symbols-outlined text-primary text-lg">check_circle</span>
-              Sin hojas de cálculo.
+              Sin planillas raras.
             </div>
             <div className="flex items-center gap-1.5">
               <span className="material-symbols-outlined text-primary text-lg">check_circle</span>
-              Reportes instantáneos.
+              Alertas antes de que falte.
             </div>
             <div className="flex items-center gap-1.5">
               <span className="material-symbols-outlined text-primary text-lg">check_circle</span>
-              100% Automatizado.
+              Plan de ahorro automático.
             </div>
           </div>
           
@@ -46,14 +46,14 @@ const Hero: React.FC = () => {
               onClick={() => trackMetaEvent('Lead', { content_name: 'hero_comenzar_ahora' })}
               className="bg-primary hover:bg-primary-dark text-white px-8 py-4 rounded-xl font-bold text-lg transition-all shadow-xl shadow-primary/30 active:scale-95 text-center"
             >
-              Comenzar Ahora
+              Empezar ahora
             </a>
             <a 
               href="https://demo.controla.site/"
               onClick={() => trackMetaEvent('Lead', { content_name: 'hero_ver_demo' })}
               className="flex items-center justify-center gap-2 bg-white border border-gray-200 px-8 py-4 rounded-xl font-bold text-lg hover:bg-gray-50 transition-all active:scale-95 shadow-sm"
             >
-              Ver Demo
+              Ver cómo funciona
               <span className="material-symbols-outlined">play_circle</span>
             </a>
           </div>
@@ -66,7 +66,7 @@ const Hero: React.FC = () => {
             <span className="hidden sm:inline text-gray-400">|</span>
             <span className="inline-flex items-center gap-1">
               <span className="material-symbols-outlined text-base text-primary">schedule</span>
-              Onboarding rápido en 15 min.
+              Configuración guiada en 15 min.
             </span>
           </div>
 
@@ -85,7 +85,7 @@ const Hero: React.FC = () => {
               </div>
             </div>
             <p className="text-sm font-semibold text-gray-500">
-              Profesionales confían en Controla IA
+              Personas reales usan Controla IA para llegar al mes con aire
             </p>
           </div>
         </div>

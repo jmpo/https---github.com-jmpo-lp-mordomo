@@ -4,25 +4,25 @@ import React from 'react';
 const ProblemSection: React.FC = () => {
   const problems = [
     {
-      title: 'Información Fragmentada',
-      desc: 'Hojas de cálculo, extractos bancarios y notas físicas. No sabes cuánto tienes realmente hasta que haces la suma manual.',
-      icon: 'schema',
+      title: 'Llegás al 20 y ya no alcanza',
+      desc: 'Pagos fijos desordenados: alquiler, luz, tarjetas. No sabes qué día pagar cada cosa y el sueldo se va.',
+      icon: 'event_busy',
+      bgColor: 'bg-red-50',
+      iconColor: 'text-red-500'
+    },
+    {
+      title: 'Gastos hormiga que se comen todo',
+      desc: 'Suscripciones, antojos y “compras chiquitas” que derriten tu plata sin que lo notes.',
+      icon: 'bug_report',
+      bgColor: 'bg-amber-50',
+      iconColor: 'text-amber-600'
+    },
+    {
+      title: 'Sin plan para imprevistos',
+      desc: 'Un arreglo del auto o una urgencia médica te desacomodan el mes porque no tenés un colchón listo.',
+      icon: 'report_problem',
       bgColor: 'bg-blue-50',
       iconColor: 'text-blue-500'
-    },
-    {
-      title: 'Olvidos Costosos',
-      desc: 'Pagos de impuestos o cuotas que se vencen. Las multas por retrasos están drenando tu capital silenciosamente.',
-      icon: 'event_busy',
-      bgColor: 'bg-rose-50',
-      iconColor: 'text-rose-500'
-    },
-    {
-      title: 'Decisiones a Ciegas',
-      desc: '¿Puedes permitirte esa nueva inversión? Sin proyecciones claras, cada movimiento es una apuesta arriesgada.',
-      icon: 'query_stats',
-      bgColor: 'bg-amber-50',
-      iconColor: 'text-amber-500'
     }
   ];
 
@@ -35,11 +35,10 @@ const ProblemSection: React.FC = () => {
             <span className="text-[10px] font-black text-red-600 tracking-widest uppercase">EL PROBLEMA</span>
           </div>
           <h2 className="text-3xl lg:text-5xl font-extrabold text-secondary mb-6">
-            Gestionar tus finanzas no debería ser un <span className="text-primary">segundo trabajo.</span>
+            Si no ves a dónde va tu plata, siempre falta.
           </h2>
           <p className="text-lg text-gray-600 leading-relaxed">
-            La mayoría de las personas pierde hasta 10 horas al mes conciliando datos. 
-            Controla IA automatiza lo aburrido para que te enfoques en crecer.
+            Controla IA te muestra tus gastos reales y te avisa antes de que falte. Menos estrés, más control.
           </p>
         </div>
         

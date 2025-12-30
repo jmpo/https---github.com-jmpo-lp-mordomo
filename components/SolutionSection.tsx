@@ -31,7 +31,7 @@ const SolutionSection: React.FC = () => {
               {/* Header with Counter */}
               <div className="flex justify-between items-start">
                 <div>
-                  <p className="text-[10px] font-black text-primary tracking-widest uppercase mb-1">Crecimiento Mensual</p>
+                  <p className="text-[10px] font-black text-primary tracking-widest uppercase mb-1">Saldo proyectado del mes</p>
                   <h4 className="text-3xl font-black text-secondary tabular-nums">
                     {formatGs(counter)}
                   </h4>
@@ -95,7 +95,7 @@ const SolutionSection: React.FC = () => {
                   <span className="text-[9px] font-black tracking-widest text-primary uppercase">Optimización IA</span>
                 </div>
                 <p className="text-[11px] leading-relaxed text-gray-300">
-                  Detectamos un <span className="text-white font-bold">flujo inactivo</span> de capital. Sugerimos reinvertir para maximizar rentabilidad.
+                  Detectamos <span className="text-white font-bold">gasto hormiga</span> en delivery. Recorta Gs. 320.000 al mes moviéndolo a tu ahorro.
                 </p>
               </div>
             </div>
@@ -107,17 +107,18 @@ const SolutionSection: React.FC = () => {
           
           <div className="space-y-8">
             <h2 className="text-4xl lg:text-6xl font-black text-secondary leading-[1.1]">
-              Una plataforma que <span className="text-primary">piensa por vos.</span>
+              Una app que te avisa, te ordena y te deja respirar.
             </h2>
             <p className="text-lg text-gray-600 leading-relaxed font-medium">
-              Controla IA no es solo un registro; es un motor de crecimiento. Analiza cada movimiento para ofrecerte proyecciones claras y oportunidades de ahorro que antes eran invisibles.
+              Controla IA organiza tus ingresos y gastos, te advierte con tiempo y arma un plan de ahorro que sí podés cumplir.
             </p>
             
             <div className="space-y-6 pt-4">
               {[
-                { t: 'Flujo de Caja Dinámico', d: 'Visualiza el movimiento de tu dinero con la intensidad de la matriz anual, anticipando excedentes y faltantes.', i: 'show_chart' },
-                { t: 'Inteligencia en Cada Peso', d: 'La IA identifica gastos innecesarios y sugiere mejores formas de administrar tu capital automáticamente.', i: 'psychology' },
-                { t: 'Control de Activos Total', d: 'Desde vehículos hasta inversiones, todo sincronizado en reportes profesionales listos para actuar.', i: 'account_balance' }
+                { t: 'Calendario de pagos', d: 'Recordatorios y montos exactos para no atrasarte con alquiler, luz o tarjetas.', i: 'event' },
+                { t: 'Proyección del mes', d: 'Sabes cuánto queda disponible antes de gastar y evitás el rojo.', i: 'timeline' },
+                { t: 'Sugerencias de recorte', d: 'Detecta gastos hormiga y te dice qué ajustar sin dejar de vivir.', i: 'content_cut' },
+                { t: 'Metas con fecha', d: 'Definí cuánto ahorrar y la app separa el monto por vos.', i: 'flag' }
               ].map((item, idx) => (
                 <div key={idx} className="flex gap-5 group">
                   <div className="flex-shrink-0 w-14 h-14 bg-gray-50 rounded-2xl flex items-center justify-center text-gray-400 group-hover:bg-primary/10 group-hover:text-primary transition-all duration-500">
@@ -136,7 +137,7 @@ const SolutionSection: React.FC = () => {
                 href="#pricing"
                 className="inline-flex items-center gap-4 bg-primary hover:bg-primary-dark text-white px-10 py-5 rounded-2xl font-black text-lg transition-all shadow-[0_20px_50px_rgba(244,140,37,0.3)] active:scale-95 group"
               >
-                Ver planes de ahorro
+                Ver planes simples
                 <span className="material-symbols-outlined transition-transform group-hover:translate-x-2">arrow_forward</span>
               </a>
             </div>

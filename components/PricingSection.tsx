@@ -23,12 +23,12 @@ const PricingSection: React.FC = () => {
   const [toastIndex, setToastIndex] = React.useState(0);
 
   const sharedFeatures = [
-    'Sistema para carga y control de inversiones',
-    'Creación y seguimiento de metas',
-    'Mantenimiento y control de vehículos',
+    'Calendario de pagos y recordatorios',
+    'Alertas antes de que falte dinero',
+    'Metas de ahorro con monto sugerido',
+    'Detección de gastos hormiga y suscripciones',
     'Lista inteligente de supermercado',
-    'Dashboard personalizado con IA',
-    'Soporte prioritario'
+    'Soporte humano prioritario'
   ];
 
   const plans: Plan[] = [
@@ -78,10 +78,10 @@ const PricingSection: React.FC = () => {
   });
 
   const proofMessages = [
-    { name: 'María de Lima', action: 'agregó una inversión inmobiliaria', time: 'hace 2 min' },
+    { name: 'María de Lima', action: 'armó su fondo de emergencia', time: 'hace 2 min' },
     { name: 'José de Bogotá', action: 'contrató el plan Anual', time: 'hace 5 min' },
     { name: 'Ana de CDMX', action: 'configuró metas familiares', time: 'hace 8 min' },
-    { name: 'Luis de Buenos Aires', action: 'registró mantenimiento de vehículo', time: 'hace 12 min' }
+    { name: 'Luis de Buenos Aires', action: 'bajó sus suscripciones duplicadas', time: 'hace 12 min' }
   ];
 
   React.useEffect(() => {
@@ -109,8 +109,8 @@ const PricingSection: React.FC = () => {
     <section className="py-24 bg-[#f8f7f5]" id="pricing">
       <div className="max-w-7xl mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-4xl lg:text-6xl font-black text-secondary mb-6">Planes diseñados para tu libertad</h2>
-          <p className="text-xl text-gray-500 max-w-2xl mx-auto font-medium">Inversiones pensadas para escalar tu patrimonio. Sin comisiones ocultas, sin sorpresas.</p>
+          <h2 className="text-4xl lg:text-6xl font-black text-secondary mb-6">Planes simples para ordenar tu dinero</h2>
+          <p className="text-xl text-gray-500 max-w-2xl mx-auto font-medium">Precio claro, sin letra chica. Probalo y sentí alivio en tu próximo cierre de mes.</p>
         </div>
         
         <div className="max-w-3xl mx-auto mb-12 md:mb-14">
@@ -211,7 +211,7 @@ const PricingSection: React.FC = () => {
         </div>
         
         <p className="text-center mt-16 text-sm font-bold text-gray-400">
-          ¿Necesitas un plan a medida? <a href="#" className="text-primary hover:underline">Contacta con ventas</a>
+          ¿Tenés dudas? <a href="mailto:soporte@controla.site" className="text-primary hover:underline">Escribinos y te ayudamos</a>
         </p>
       </div>
 

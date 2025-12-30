@@ -12,10 +12,10 @@ const FinalCTA: React.FC = () => {
         
         <div className="relative z-10">
           <h2 className="text-3xl lg:text-6xl font-black text-white mb-8 leading-tight">
-            ¿Listo para tomar las riendas de tu capital?
+            ¿Listo para llegar tranquilo a fin de mes?
           </h2>
           <p className="text-primary-light text-xl mb-12 max-w-2xl mx-auto font-medium">
-            Únete a más de 2,000 profesionales que ya simplificaron su vida financiera. Empieza hoy mismo y deja que la IA trabaje por vos.
+            Personas comunes ya están pagando a tiempo, recortando gastos hormiga y ahorrando sin planillas. Empezá hoy y sentí alivio en tu próximo cierre de mes.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <a 
@@ -23,14 +23,14 @@ const FinalCTA: React.FC = () => {
               onClick={() => trackMetaEvent('Lead', { content_name: 'finalcta_comenzar_ahora' })}
               className="bg-secondary text-white px-10 py-5 rounded-2xl font-black text-xl hover:bg-black transition-all shadow-2xl active:scale-95 text-center"
             >
-              Comenzar ahora mismo
+              Ordenar mi dinero hoy
             </a>
             <a 
               href="https://demo.controla.site/"
               onClick={() => trackMetaEvent('Lead', { content_name: 'finalcta_ver_demo' })}
               className="bg-white/20 text-white border border-white/30 backdrop-blur-md px-10 py-5 rounded-2xl font-bold text-xl hover:bg-white/30 transition-all active:scale-95 text-center"
             >
-              Ver Demo Live
+              Ver cómo funciona
             </a>
           </div>
         </div>

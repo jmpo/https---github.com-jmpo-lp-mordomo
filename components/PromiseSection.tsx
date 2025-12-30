@@ -4,46 +4,46 @@ import React from 'react';
 const PromiseSection: React.FC = () => {
   const values = [
     {
-      title: 'Todo en un solo sistema',
-      desc: 'Olvidate de usar 5 apps diferentes. Centraliza finanzas, clientes, vehículos e inversiones en una plataforma unificada.',
+      title: 'Todo en un solo lugar',
+      desc: 'Tus cuentas, tarjetas y gastos fijos juntos. Sin saltar entre apps.',
       icon: 'hub',
       bgColor: 'bg-orange-50',
       iconColor: 'text-orange-500'
     },
     {
-      title: 'Control confirmado',
-      desc: 'Cada centavo rastreado y verificado. Nada se escapa de tu supervisión financiera diaria.',
-      icon: 'check_circle',
-      bgColor: 'bg-green-50',
-      iconColor: 'text-green-500'
-    },
-    {
-      title: 'Menos decisiones',
-      desc: 'La IA analiza datos complejos por vos. Recibe alertas claras y sugerencias listas para ejecutar.',
-      icon: 'psychology',
-      bgColor: 'bg-blue-50',
-      iconColor: 'text-blue-500'
-    },
-    {
-      title: 'El sistema trabaja por vos',
-      desc: 'Automatización inteligente de cobros y recordatorios para que te enfoques en crecer, no en operar.',
-      icon: 'smart_toy',
-      bgColor: 'bg-purple-50',
-      iconColor: 'text-purple-500'
-    },
-    {
-      title: 'Historial y trazabilidad',
-      desc: 'Registro inmutable de cada movimiento. Auditoría completa disponible en segundos para tu tranquilidad.',
-      icon: 'receipt_long',
-      bgColor: 'bg-orange-50',
-      iconColor: 'text-orange-600'
-    },
-    {
-      title: 'Pensado para la vida real',
-      desc: 'Diseñado para empresarios de carne y hueso, con flujos de trabajo intuitivos, no para contadores.',
-      icon: 'favorite',
+      title: 'Alerta antes del rojo',
+      desc: 'Te avisa si este mes te vas a quedar corto y qué pago mover.',
+      icon: 'warning',
       bgColor: 'bg-red-50',
       iconColor: 'text-red-500'
+    },
+    {
+      title: 'Plan de ahorro simple',
+      desc: 'Metas claras y transferencias programadas para que no se derrita la plata.',
+      icon: 'savings',
+      bgColor: 'bg-green-50',
+      iconColor: 'text-green-600'
+    },
+    {
+      title: 'Gastos hormiga a la vista',
+      desc: 'Detecta antojos y suscripciones que te comen el sueldo.',
+      icon: 'visibility',
+      bgColor: 'bg-blue-50',
+      iconColor: 'text-blue-600'
+    },
+    {
+      title: 'Historial claro',
+      desc: 'Ves cada movimiento sin revisar el banco ni descargar planillas.',
+      icon: 'receipt_long',
+      bgColor: 'bg-amber-50',
+      iconColor: 'text-amber-600'
+    },
+    {
+      title: 'Pensado para personas reales',
+      desc: 'Sin jerga financiera: pasos simples para llegar a fin de mes con aire.',
+      icon: 'favorite',
+      bgColor: 'bg-purple-50',
+      iconColor: 'text-purple-500'
     }
   ];
 
@@ -61,11 +61,11 @@ const PromiseSection: React.FC = () => {
         {/* Main Heading */}
         <div className="max-w-4xl mx-auto text-center mb-16 space-y-6">
           <h2 className="text-4xl lg:text-6xl font-black text-secondary leading-tight">
-            No necesitás trabajar más ni ganar más. <br />
-            <span className="text-primary">Necesitás controlar mejor.</span>
+            No necesitás ganar más; <br />
+            <span className="text-primary">necesitás saber a dónde va tu dinero.</span>
           </h2>
           <p className="text-lg text-gray-500 leading-relaxed max-w-2xl mx-auto">
-            El caos financiero no se soluciona con más ingresos, sino con mejor administración. Controla IA transforma la complejidad de tus operaciones en claridad absoluta, dándote el poder de tomar decisiones basadas en datos reales.
+            Controla IA te da claridad diaria: cuánto entra, cuánto sale y qué recortar sin vivir apretado.
           </p>
         </div>
 
@@ -90,7 +90,7 @@ const PromiseSection: React.FC = () => {
             href="#pricing"
             className="flex items-center gap-3 bg-[#181411] hover:bg-black text-white px-10 py-5 rounded-2xl font-bold text-lg transition-all shadow-2xl active:scale-95 group"
           >
-            Empieza a controlar hoy
+            Empezar a ordenar mi plata
             <span className="material-symbols-outlined transition-transform group-hover:translate-x-1">arrow_forward</span>
           </a>
         </div>

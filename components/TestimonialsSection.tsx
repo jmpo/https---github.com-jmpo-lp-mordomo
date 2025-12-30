@@ -5,20 +5,20 @@ const TestimonialsSection: React.FC = () => {
   const testimonials = [
     {
       name: "Andrés Gutiérrez",
-      role: "Propietario de Flota Comercial",
-      content: "Mantener mis vehículos al día era un caos. Con Controla IA, los recordatorios de mantenimiento preventivo son automáticos. Evité reparaciones carísimas de motor simplemente haciendo el service a tiempo. Un ahorro real.",
+      role: "Empleado administrativo",
+      content: "Siempre llegaba raspando al 25. Ahora sé qué día pagar cada cosa y cuánto puedo gastar sin miedo. Es la primera vez que cierro un mes con plata a favor.",
       image: "https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg?auto=compress&cs=tinysrgb&w=150"
     },
     {
       name: "Laura Martínez",
-      role: "Freelance Digital",
-      content: "Como independiente, odiaba sentarme los domingos a sumar facturas. Conectar mi banco y ver cómo la IA categoriza todo automáticamente me devolvió la paz mental. Ya no me asusta el cierre de mes.",
+      role: "Freelance",
+      content: "Odiaba sumar recibos los domingos. Conecté mis cuentas y la app me avisa antes de quedar corta. Armé un fondo de emergencia en 2 meses.",
       image: "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=150"
     },
     {
       name: "Ricardo Sosa",
-      role: "Inversionista Particular",
-      content: "La capacidad de tener mis inversiones y mis gastos fijos en la misma pantalla es invaluable. Me ayudó a identificar que estaba gastando de más en suscripciones que ni usaba.",
+      role: "Papá de 2",
+      content: "Tenía suscripciones y gastos chicos que se comían el sueldo. Controla IA los marcó y ahora ahorro fijo para la escuela de mis hijos.",
       image: "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=150"
     }
   ];
@@ -28,10 +28,10 @@ const TestimonialsSection: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-3xl lg:text-5xl font-extrabold text-secondary mb-4">
-            Historias reales de <span className="text-primary">éxito financiero</span>
+            Historias reales de <span className="text-primary">personas comunes</span>
           </h2>
           <p className="text-lg text-gray-500 max-w-2xl mx-auto">
-            Personas como vos que decidieron dejar atrás las hojas de cálculo y tomar el control total.
+            Personas como vos que dejaron de perder plata y ahora llegan al mes con aire.
           </p>
         </div>
 

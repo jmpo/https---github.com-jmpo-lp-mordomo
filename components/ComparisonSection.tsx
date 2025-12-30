@@ -7,7 +7,7 @@ const ComparisonSection: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-3xl lg:text-5xl font-extrabold mb-4">¿Por qué cambiar hoy?</h2>
-          <p className="text-gray-400 text-lg">La diferencia entre sobrevivir y escalar.</p>
+          <p className="text-gray-400 text-lg">La diferencia entre vivir al día y llegar con aire.</p>
         </div>
         
         <div className="grid md:grid-cols-2 gap-8 lg:gap-0 lg:divide-x lg:divide-gray-800">
@@ -19,15 +19,15 @@ const ComparisonSection: React.FC = () => {
             <ul className="space-y-6">
               <li className="flex gap-3 text-gray-300">
                 <span className="material-symbols-outlined text-sm pt-1">close</span>
-                Horas perdidas en Excel cada fin de semana.
+                Planillas y apps de banco que no avisan nada.
               </li>
               <li className="flex gap-3 text-gray-300">
                 <span className="material-symbols-outlined text-sm pt-1">close</span>
-                Incertidumbre constante sobre el flujo de caja.
+                No sabes cuánto podés gastar sin quedarte corto.
               </li>
               <li className="flex gap-3 text-gray-300">
                 <span className="material-symbols-outlined text-sm pt-1">close</span>
-                Multas por olvidos en fechas clave.
+                Olvidos de pagos y gastos hormiga que se comen el sueldo.
               </li>
             </ul>
           </div>
@@ -40,15 +40,15 @@ const ComparisonSection: React.FC = () => {
             <ul className="space-y-6">
               <li className="flex gap-3">
                 <span className="material-symbols-outlined text-primary text-sm pt-1">check</span>
-                Visibilidad 24/7 de tu salud financiera real.
+                Alertas antes del rojo y recordatorios de pagos.
               </li>
               <li className="flex gap-3">
                 <span className="material-symbols-outlined text-primary text-sm pt-1">check</span>
-                Automatización total de ingresos y egresos.
+                Proyección del mes: sabés cuánto queda para gastar.
               </li>
               <li className="flex gap-3">
                 <span className="material-symbols-outlined text-primary text-sm pt-1">check</span>
-                Asistente inteligente que te ahorra dinero cada mes.
+                Plan de ahorro automático para tus metas sin planillas.
               </li>
             </ul>
           </div>
