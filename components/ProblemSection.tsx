@@ -74,7 +74,11 @@ const ProblemSection: React.FC = () => {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
           {problems.map((p, i) => (
-            <div key={i} className="bg-white p-10 rounded-[2.5rem] border border-gray-100 shadow-sm hover:shadow-2xl transition-all duration-500 group relative overflow-hidden">
+            <div 
+              key={i} 
+              className="bg-white p-10 rounded-[2.5rem] border border-gray-100 shadow-sm hover:shadow-2xl transition-all duration-500 group relative overflow-hidden hover-lift reveal-up"
+              style={{ animationDelay: `${0.08 * i}s` }}
+            >
               {/* Decorative background shape */}
               <div className={`absolute -right-4 -top-4 w-24 h-24 ${p.bgColor} opacity-0 group-hover:opacity-40 rounded-full transition-all duration-500 blur-2xl`}></div>
               

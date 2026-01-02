@@ -165,7 +165,8 @@ const PricingSection: React.FC = () => {
                     : 'border-gray-100 scale-100'
                 } shadow-xl transition-all duration-500 md:hover:translate-y-[-10px] group flex flex-col ${
                   isBestValue ? 'bg-gradient-to-b from-emerald-50 to-white' : ''
-                }`}
+                } reveal-up`}
+                style={{ animationDelay: `${0.08 * i}s` }}
               >
                 {p.highlight && (
                   <div className={`absolute -top-5 left-1/2 -translate-x-1/2 text-white text-[10px] font-black px-6 py-2 rounded-full uppercase tracking-[0.2em] shadow-lg ${

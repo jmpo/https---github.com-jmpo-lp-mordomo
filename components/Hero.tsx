@@ -4,7 +4,7 @@ import { trackMetaEvent } from '../metaPixel';
 
 const Hero: React.FC = () => {
   return (
-    <section className="relative pt-12 pb-16 overflow-hidden">
+    <section className="relative pt-12 pb-16 overflow-hidden hero-aurora">
       <div className="max-w-6xl mx-auto px-4 grid lg:grid-cols-[1.05fr_0.95fr] gap-10 items-start">
         
         {/* Left Side: Content */}
@@ -42,7 +42,7 @@ const Hero: React.FC = () => {
             <a 
               href="#pricing"
               onClick={() => trackMetaEvent('Lead', { content_name: 'hero_comenzar_ahora' })}
-              className="bg-primary hover:bg-primary-dark text-white px-8 py-4 rounded-xl font-bold text-lg transition-all shadow-xl shadow-primary/30 active:scale-95 text-center"
+              className="bg-primary hover:bg-primary-dark text-white px-8 py-4 rounded-xl font-bold text-lg transition-all shadow-xl shadow-primary/30 active:scale-95 text-center cta-shine"
             >
               Quiero dejar de vivir en el desorden financiero
             </a>
@@ -176,7 +176,7 @@ const Hero: React.FC = () => {
               </div>
 
               {/* Status floating */}
-              <div className="absolute bottom-4 right-4 bg-secondary text-white p-3 rounded-xl shadow-2xl flex items-center gap-3">
+              <div className="absolute bottom-4 right-4 bg-secondary text-white p-3 rounded-xl shadow-2xl flex items-center gap-3 animate-float">
                 <div className="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center">
                   <span className="material-symbols-outlined text-xs text-primary animate-pulse">check_circle</span>
                 </div>

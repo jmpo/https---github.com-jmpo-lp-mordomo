@@ -11,7 +11,6 @@ import ComparisonSection from './components/ComparisonSection';
 import PricingSection from './components/PricingSection';
 import FinalCTA from './components/FinalCTA';
 import Footer from './components/Footer';
-import AudienceSection from './components/AudienceSection';
 import { initMetaPixel } from './metaPixel';
 
 const App: React.FC = () => {
@@ -28,9 +27,8 @@ const App: React.FC = () => {
         <VideoSection />
         <PromiseSection />
         <SolutionSection />
-        <AudienceSection />
-        <TestimonialsSection />
         <ComparisonSection />
+        <TestimonialsSection />
         <PricingSection />
         <FinalCTA />
       </main>

@@ -5,7 +5,7 @@ import { trackMetaEvent } from '../metaPixel';
 const FinalCTA: React.FC = () => {
   return (
     <section className="py-24 px-4">
-      <div className="max-w-5xl mx-auto bg-primary rounded-[3rem] p-12 lg:p-20 text-center relative overflow-hidden shadow-2xl shadow-primary/30">
+      <div className="max-w-5xl mx-auto bg-primary rounded-[3rem] p-12 lg:p-20 text-center relative overflow-hidden shadow-2xl shadow-primary/30 reveal-up">
         {/* Decorative elements */}
         <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -mr-32 -mt-32"></div>
         <div className="absolute bottom-0 left-0 w-48 h-48 bg-black/5 rounded-full -ml-24 -mb-24"></div>
@@ -21,7 +21,7 @@ const FinalCTA: React.FC = () => {
             <a 
               href="#pricing"
               onClick={() => trackMetaEvent('Lead', { content_name: 'finalcta_comenzar_ahora' })}
-              className="bg-secondary text-white px-10 py-5 rounded-2xl font-black text-xl hover:bg-black transition-all shadow-2xl active:scale-95 text-center"
+              className="bg-secondary text-white px-10 py-5 rounded-2xl font-black text-xl hover:bg-black transition-all shadow-2xl active:scale-95 text-center cta-shine"
             >
               Quiero tomar control ahora
             </a>
