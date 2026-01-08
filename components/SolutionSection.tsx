@@ -1,179 +1,70 @@
 
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+
+const layers = [
+  {
+    title: '🏛️ CAPA 1: La "Cuenta Madre" (Centralización de Activos)',
+    highlight: 'Aquí es donde ocurre la magia. En lugar de tener tus inversiones dispersas:',
+    points: [
+      'Creas tu Cuenta Madre dentro de la plataforma.',
+      'Desglosas tus Subcuentas: Bonos, Acciones, CDA, Fondos, Cripto.',
+      'El Resultado: Cada vez que entras, no ves "cuánto gastaste", ves "CUÁNTO TIENES". El efecto psicológico es brutal: te motiva a seguir creciendo.',
+    ],
+  },
+  {
+    title: '⚙️ CAPA 2: El Motor de Gastos Recurrentes (Defensa Automática)',
+    highlight: 'Protege tu capital de los gastos fijos sin esfuerzo mental.',
+    points: [
+      'Cargas tus obligaciones (Alquiler, Luz, Internet) una sola vez.',
+      'El sistema las descuenta automáticamente mes a mes.',
+      'Tú solo te preocupas por el dinero que queda libre (tu Free Cash Flow).',
+    ],
+  },
+  {
+    title: '👁️ CAPA 3: Visión Artificial de Consumo (Ingesta sin Dolor)',
+    highlight: 'Para los gastos del día a día, eliminamos la fricción.',
+    points: [
+      'Usas nuestra IA para escanear facturas al instante.',
+      'El sistema categoriza el gasto y ajusta tu Patrimonio Neto en tiempo real.',
+    ],
+  },
+];
 
 const SolutionSection: React.FC = () => {
-  const [counter, setCounter] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCounter(prev => (prev < 15420000 ? prev + 125000 : 15420000));
-    }, 50);
-    return () => clearInterval(interval);
-  }, []);
-
-  const formatGs = (val: number) => {
-    return new Intl.NumberFormat('es-PY', { style: 'currency', currency: 'PYG', maximumFractionDigits: 0 }).format(val);
-  };
-
   return (
-    <section className="py-24 bg-white overflow-hidden" id="solution">
-      <div className="max-w-7xl mx-auto px-4">
-        <div className="grid lg:grid-cols-2 gap-20 items-center">
-          
-          {/* Enhanced Animated Visual Side */}
-          <div className="relative h-[600px] flex items-center justify-center">
-            {/* Soft background glow */}
-            <div className="absolute inset-0 bg-primary/10 rounded-full blur-[120px] scale-75 animate-pulse"></div>
+    <section id="mecanismo" className="py-20 bg-[#0b1220] text-white">
+      <div className="max-w-6xl mx-auto px-4 space-y-10">
+        <div className="space-y-3 text-center">
+          <p className="text-[12px] font-black uppercase tracking-[0.18em] text-primary">
+            Integración de Inversiones + Gastos
+          </p>
+          <h2 className="text-3xl lg:text-4xl font-black">Cómo funciona la "Arquitectura de Riqueza Silenciosa"</h2>
+          <p className="text-white/70 max-w-3xl mx-auto">
+            Mientras tú vives tu vida, Controla opera en segundo plano con un sistema de tres capas que los bancos no quieren que tengas tan fácil.
+          </p>
+        </div>
 
-            {/* Simulated App Matrix - "The Growth Engine" */}
-            <div className="relative z-20 w-full max-w-md bg-[#f8f7f5] rounded-[2.5rem] border border-gray-200 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.15)] p-8 space-y-8 animate-in fade-in zoom-in duration-1000 overflow-hidden">
-              
-              {/* Header with Counter */}
-              <div className="flex justify-between items-start">
-                <div>
-                  <p className="text-[10px] font-black text-primary tracking-widest uppercase mb-1">Saldo proyectado del mes</p>
-                  <h4 className="text-3xl font-black text-secondary tabular-nums">
-                    {formatGs(counter)}
-                  </h4>
-                </div>
-                <div className="bg-green-50 text-green-600 px-3 py-1 rounded-full text-[10px] font-black flex items-center gap-1">
-                  <span className="material-symbols-outlined text-xs">trending_up</span>
-                  +12.5%
-                </div>
-              </div>
-
-              {/* Matrix Columns Animation */}
-              <div className="space-y-6">
-                <div className="flex justify-between items-end gap-1.5 h-40">
-                  {[35, 60, 40, 85, 55, 75, 45, 80, 95, 65, 85, 100].map((h, i) => (
-                    <div 
-                      key={i} 
-                      className="w-full bg-gray-200/50 rounded-t-lg relative overflow-hidden group"
-                      style={{ height: `${h}%` }}
-                    >
-                      <div 
-                        className="absolute bottom-0 left-0 w-full bg-primary rounded-t-lg transition-all duration-1000"
-                        style={{ 
-                          height: '0%', 
-                          animation: `grow-up 3s ease-out forwards ${i * 0.1}s` 
-                        }}
-                      >
-                        <div className="absolute top-0 left-0 w-full h-1 bg-white/30"></div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-                <div className="flex justify-between text-[9px] font-black text-gray-400 uppercase tracking-widest border-t border-gray-100 pt-3">
-                  <span>ENE</span><span>MAY</span><span>SEP</span><span>DIC</span>
-                </div>
-              </div>
-
-              {/* Money Flow Particles (Floating Gs.) */}
-              <div className="absolute inset-0 pointer-events-none overflow-hidden">
-                {[...Array(6)].map((_, i) => (
-                  <div 
-                    key={i}
-                    className="absolute text-primary/20 font-black text-xl animate-float-money"
-                    style={{ 
-                      left: `${Math.random() * 80}%`, 
-                      top: '100%',
-                      animationDelay: `${i * 1.5}s`,
-                      animationDuration: `${4 + Math.random() * 4}s`
-                    }}
-                  >
-                    Gs.
-                  </div>
+        <div className="grid lg:grid-cols-3 gap-6">
+          {layers.map((layer, index) => (
+            <div
+              key={layer.title}
+              className="bg-white/5 border border-white/10 rounded-3xl p-6 lg:p-7 shadow-lg shadow-black/20 space-y-4 hover:shadow-2xl transition-all"
+              style={{ animationDelay: `${index * 0.06}s` }}
+            >
+              <p className="text-xl font-extrabold">{layer.title}</p>
+              <p className="text-sm font-semibold text-primary">{layer.highlight}</p>
+              <ul className="space-y-2 text-sm text-white/80 leading-relaxed">
+                {layer.points.map(point => (
+                  <li key={point} className="flex items-start gap-2">
+                    <span className="material-symbols-outlined text-primary text-base">check_circle</span>
+                    <span>{point}</span>
+                  </li>
                 ))}
-              </div>
-
-              {/* Floating AI Insight Card (Modernized) */}
-              <div className="absolute -right-4 bottom-12 bg-secondary text-white p-5 rounded-3xl shadow-2xl border border-primary/20 max-w-[200px] animate-float group hover:scale-105 transition-transform">
-                <div className="flex items-center gap-2 mb-3">
-                  <div className="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center">
-                    <span className="material-symbols-outlined text-primary text-xs animate-pulse">auto_awesome</span>
-                  </div>
-                  <span className="text-[9px] font-black tracking-widest text-primary uppercase">Optimización IA</span>
-                </div>
-                <p className="text-[11px] leading-relaxed text-gray-300">
-                  Detectamos <span className="text-white font-bold">gasto hormiga</span> en delivery. Recorta Gs. 320.000 al mes moviéndolo a tu ahorro.
-                </p>
-              </div>
+              </ul>
             </div>
-
-            {/* Decorative Orbs */}
-            <div className="absolute top-10 left-10 w-32 h-32 bg-primary/20 rounded-full blur-3xl animate-pulse"></div>
-            <div className="absolute bottom-10 right-0 w-40 h-40 bg-blue-400/10 rounded-full blur-3xl animate-pulse delay-700"></div>
-          </div>
-          
-          <div className="space-y-8">
-            <h2 className="text-4xl lg:text-6xl font-black text-secondary leading-[1.1]">
-              Controla es el sistema que te muestra, con claridad total, qué está pasando con tu dinero.
-            </h2>
-            <p className="text-lg text-gray-600 leading-relaxed font-medium">
-              Todo tu dinero. Un solo lugar. Cero estrés mental.
-            </p>
-            
-            <div className="space-y-6 pt-4">
-              {[
-                { t: 'Dejar de vivir mes a mes a ciegas', d: 'Ves todo en un solo lugar, sin planillas.', i: 'visibility' },
-                { t: 'Saber cuánto podés gastar sin culpa', d: 'Proyección clara del mes y alerta antes del rojo.', i: 'pace' },
-                { t: 'Anticiparte a problemas financieros', d: 'Detectás fugas y recibís recordatorios clave.', i: 'bug_report' },
-                { t: 'Tomar decisiones con tranquilidad', d: 'Números reales, no suposiciones ni miedo.', i: 'verified_user' },
-                { t: 'Empezar a avanzar hacia tus metas', d: 'Metas con montos sugeridos y seguimiento simple.', i: 'flag' }
-              ].map((item, idx) => (
-                <div key={idx} className="flex gap-5 group">
-                  <div className="flex-shrink-0 w-14 h-14 bg-gray-50 rounded-2xl flex items-center justify-center text-gray-400 group-hover:bg-primary/10 group-hover:text-primary transition-all duration-500">
-                    <span className="material-symbols-outlined text-3xl" style={{ fontVariationSettings: "'FILL' 1" }}>{item.i}</span>
-                  </div>
-                  <div className="pt-1">
-                    <h4 className="font-black text-xl mb-1 group-hover:text-primary transition-colors">{item.t}</h4>
-                    <p className="text-sm text-gray-500 leading-relaxed font-medium">{item.d}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <div className="bg-gray-50 border border-gray-100 rounded-2xl p-5 text-sm font-semibold text-gray-700 space-y-2">
-              <p className="text-secondary font-black text-base">No es solo control financiero. Es paz mental.</p>
-              <p>No tener control financiero no solo te cuesta dinero: te cuesta tranquilidad, foco y futuro.</p>
-              <p className="text-primary font-bold">El precio de no hacer nada siempre es más alto.</p>
-              <div className="space-y-1 text-gray-600">
-                <p>Cada mes sin control:</p>
-                <ul className="list-disc list-inside text-sm pl-2 space-y-1">
-                  <li>Perdés oportunidades</li>
-                  <li>Repetís errores</li>
-                  <li>Reforzás el desorden</li>
-                </ul>
-              </div>
-            </div>
-
-            <div className="pt-8">
-              <a 
-                href="#pricing"
-                className="inline-flex items-center gap-4 bg-primary hover:bg-primary-dark text-white px-10 py-5 rounded-2xl font-black text-lg transition-all shadow-[0_20px_50px_rgba(244,140,37,0.3)] active:scale-95 group"
-              >
-                Quiero empezar a ordenar mi dinero
-                <span className="material-symbols-outlined transition-transform group-hover:translate-x-2">arrow_forward</span>
-              </a>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
-      <style>{`
-        @keyframes grow-up {
-          from { height: 0%; }
-          to { height: 100%; }
-        }
-        @keyframes float-money {
-          0% { transform: translateY(0) rotate(0deg); opacity: 0; }
-          20% { opacity: 1; }
-          80% { opacity: 1; }
-          100% { transform: translateY(-600px) rotate(360deg); opacity: 0; }
-        }
-        .animate-float-money {
-          animation: float-money linear infinite;
-        }
-      `}</style>
     </section>
   );
 };

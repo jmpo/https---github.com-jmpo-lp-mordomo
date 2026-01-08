@@ -4,29 +4,42 @@ import { trackMetaEvent } from '../metaPixel';
 
 const Header: React.FC = () => {
   return (
-    <header className="sticky top-0 z-50 w-full bg-[#f8f7f5]/80 backdrop-blur-md border-b border-gray-100">
-      <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
-        <div className="flex items-center gap-2 cursor-pointer" onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}>
-          <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-white shadow-lg shadow-primary/20">
-            <span className="material-symbols-outlined text-xl">grid_view</span>
+    <header className="sticky top-0 z-50 w-full bg-[#0b1220]/85 backdrop-blur-xl border-b border-white/10 text-white">
+      <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+        <div
+          className="flex items-center gap-2 cursor-pointer"
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        >
+          <div className="w-9 h-9 bg-primary rounded-xl flex items-center justify-center text-secondary shadow-lg shadow-primary/30">
+            <span className="material-symbols-outlined text-lg">grid_view</span>
           </div>
-          <span className="text-xl font-extrabold tracking-tight">Controla IA</span>
+          <div>
+            <p className="text-xs uppercase tracking-[0.18em] text-white/60 font-black">Controla IA</p>
+            <p className="text-lg font-extrabold leading-none">Arquitectura Financiera</p>
+          </div>
         </div>
-        
-        <nav className="hidden md:flex items-center gap-8 text-sm font-semibold text-gray-600">
-          <a href="#features" className="hover:text-primary transition-colors">Características</a>
-          <a href="#pricing" className="hover:text-primary transition-colors">Precios</a>
-          <a href="#solution" className="hover:text-primary transition-colors">Solución</a>
+
+        <nav className="hidden md:flex items-center gap-6 text-sm font-semibold text-white/70">
+          <a href="#hero" className="hover:text-white transition-colors">Inicio</a>
+          <a href="#lead" className="hover:text-white transition-colors">El cambio</a>
+          <a href="#mecanismo" className="hover:text-white transition-colors">Arquitectura</a>
+          <a href="#oferta" className="hover:text-white transition-colors">Oferta</a>
         </nav>
 
-        <div className="flex items-center gap-4">
-          <a href="https://app.controla.site/" className="hidden sm:block text-sm font-bold hover:text-primary transition-colors">Iniciar sesión</a>
-          <a 
+        <div className="flex items-center gap-3">
+          <a
             href="https://demo.controla.site/"
             onClick={() => trackMetaEvent('Lead', { content_name: 'header_demo' })}
-            className="bg-primary hover:bg-primary-dark text-white px-5 py-2.5 rounded-xl text-sm font-bold transition-all shadow-lg shadow-primary/20 active:scale-95 text-center"
+            className="hidden sm:inline-flex text-sm font-bold text-white/80 hover:text-white"
           >
-            Comenzar prueba
+            Ver demo
+          </a>
+          <a
+            href="#oferta"
+            onClick={() => trackMetaEvent('Lead', { content_name: 'header_cta' })}
+            className="bg-primary text-secondary font-black text-sm px-4 py-2 rounded-xl shadow-lg shadow-primary/30 hover:bg-primary-dark transition-all active:scale-95"
+          >
+            Construir patrimonio
           </a>
         </div>
       </div>
