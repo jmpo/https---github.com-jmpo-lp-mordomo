@@ -9,6 +9,7 @@ import PricingSection from './components/PricingSection';
 import Footer from './components/Footer';
 import { initMetaPixel } from './metaPixel';
 import Lp2Page from './components/lp2/Lp2Page';
+import TransformationSection from './components/TransformationSection';
 
 const App: React.FC = () => {
   const isLp2 = typeof window !== 'undefined' && window.location.pathname.toLowerCase().includes('/lp2');
@@ -29,6 +30,7 @@ const App: React.FC = () => {
         <ProblemSection />
         <VideoSection />
         <SolutionSection />
+        <TransformationSection />
         <PricingSection />
       </main>
       <Footer />

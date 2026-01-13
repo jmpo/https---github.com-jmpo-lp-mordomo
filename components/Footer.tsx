@@ -12,13 +12,14 @@ const Footer: React.FC = () => {
             </div>
             <div>
               <p className="text-xs uppercase tracking-[0.18em] text-white/60 font-black">Controla IA</p>
-              <p className="text-lg font-extrabold leading-none">Arquitectura de Riqueza Silenciosa</p>
+              <p className="text-lg font-extrabold leading-none">Tu sueldo sin fugas</p>
             </div>
           </div>
           <div className="flex gap-4 text-sm font-semibold text-white/70">
             <a href="#hero" className="hover:text-white transition-colors">Inicio</a>
-            <a href="#lead" className="hover:text-white transition-colors">El cambio</a>
-            <a href="#mecanismo" className="hover:text-white transition-colors">Arquitectura</a>
+            <a href="#lead" className="hover:text-white transition-colors">Problema</a>
+            <a href="#mecanismo" className="hover:text-white transition-colors">Solución</a>
+            <a href="#metas" className="hover:text-white transition-colors">Metas</a>
             <a href="#oferta" className="hover:text-white transition-colors">Oferta</a>
           </div>
           <a href="https://wa.link/wcvh0b" className="text-sm font-bold text-primary hover:text-primary/80 transition-colors">

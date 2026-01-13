@@ -7,30 +7,43 @@ const ProblemSection: React.FC = () => {
       <div className="max-w-5xl mx-auto px-4 space-y-10">
         <div className="text-center space-y-4">
           <div className="inline-flex items-center gap-2 bg-white/5 border border-white/10 px-3 py-1 rounded-full">
-            <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-            <span className="text-[11px] font-black uppercase tracking-[0.18em] text-white/70">La gran mentira del mercado</span>
+            <span className="material-symbols-outlined text-sm text-rose-300">report</span>
+            <span className="text-[11px] font-black uppercase tracking-[0.18em] text-white/70">El problema real</span>
           </div>
-          <h2 className="text-3xl lg:text-4xl font-black">
-            Deja de jugar a "No Gastar" y empieza a jugar a "Ganar" 🏆
+          <h2 className="text-3xl lg:text-4xl font-black leading-tight">
+            La triste realidad de la carrera de la rata
           </h2>
+          <p className="text-white/70 text-base max-w-3xl mx-auto">
+            Trabajas, cobras y aun así llegas en cero. No es falta de esfuerzo: hay fugas invisibles que nadie te enseñó a tapar.
+          </p>
         </div>
 
         <div className="bg-white/5 border border-white/10 rounded-[32px] p-8 lg:p-10 shadow-2xl shadow-black/30 space-y-6">
-          <p className="text-lg text-white/80 leading-relaxed">
-            Hay una mentira gigante en el mundo de las finanzas personales: "Si dejas de comprar café, serás millonario".
-          </p>
-          <div className="space-y-3 text-white/75">
-            <p className="font-semibold">Falso. Nadie se hace rico solo recortando. Te haces rico gestionando.</p>
-            <p>
-              El problema de las apps actuales (y del Excel) es que son "Espejos de Pobreza". Solo sirven para recordarte que
-              gastaste dinero, generándote culpa y ansiedad. Por eso las abandonas.
-            </p>
-            <p>
-              Para salir de la carrera de la rata, necesitas cambiar el enfoque. Necesitas dejar de actuar como un "ahorrador asustado" y empezar a operar como un "Gestor de Patrimonio".
-            </p>
-            <p className="text-primary font-bold">
-              Y para eso, no necesitas un Excel. Necesitas una Arquitectura.
-            </p>
+          <div className="grid gap-4">
+            {[
+              {
+                title: 'Cobras y pagas',
+                desc: 'El dinero entra y sale tan rápido que ni lo ves.',
+              },
+              {
+                title: 'El "gasto hormiga" te mata',
+                desc: 'Ese café, esa suscripción que no usas, ese delivery extra... se comen el 30% de tu esfuerzo.',
+              },
+              {
+                title: 'Compras doble',
+                desc: 'Vas al súper y compras detergente, llegas a casa y ya tenías. Acabas de tirar dinero a la basura.',
+              },
+            ].map((item) => (
+              <div key={item.title} className="flex items-start gap-4 rounded-2xl bg-white/5 border border-rose-500/20 px-4 py-4">
+                <div className="w-10 h-10 rounded-2xl bg-rose-500/15 text-rose-300 flex items-center justify-center shrink-0 shadow-inner shadow-black/10">
+                  <span className="material-symbols-outlined text-xl" style={{ fontVariationSettings: "'wght' 700" }}>close</span>
+                </div>
+                <div className="space-y-1">
+                  <p className="text-lg font-extrabold text-white">{item.title}</p>
+                  <p className="text-white/75 text-sm leading-relaxed">{item.desc}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>

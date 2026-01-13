@@ -20,43 +20,46 @@ type Plan = {
 
 const bonuses = [
   {
-    title: 'El Dashboard "Patrimonio 360"',
-    desc: 'La herramienta visual para ver tus inversiones y gastos en un solo lugar.',
+    title: 'Panel 360 para ver tu plata',
+    desc: 'Tus cuentas, gastos y despensa en un solo lugar. Sin hojas de cálculo.',
     badge: 'Lo usan todos',
   },
   {
-    title: 'El Módulo de "Piloto Automático"',
-    desc: 'Para tus gastos fijos recurrentes (configúralo y olvídalo).',
+    title: 'Piloto automático de cuentas fijas',
+    desc: 'Carga alquiler, luz e internet una vez y recibe alertas antes de que venzan.',
     badge: 'Ahorra tiempo',
   },
   {
-    title: 'BONUS EXCLUSIVO 1: El "Proyector de Libertad" (Ingeniería Inversa de Metas)',
+    title: 'Calculadora de Metas ($2/día)',
     desc: [
-      'La mayoría de la gente nunca cumple sus sueños porque los ve "demasiado grandes" ("Necesito $5,000 USD para el viaje a Disney... es imposible").',
-      'Esta herramienta elimina la ansiedad utilizando Matemática Inversa:',
-      'Tú defines el sueño: (Ej: "Pagar el auto", "Viaje a Europa", "Fondo de Retiro").',
-      'El sistema hace la ingeniería: Calcula automáticamente la "Micro-Cuota de Éxito".',
-      'Tú obtienes el mapa: Te dice exactamente: "Si separas $15 USD a la semana o $2 USD al día, llegarás a tu meta el 10 de Octubre".',
-      'El Resultado: Convierte una meta gigante e intimidante en una victoria diaria fácil de cumplir. (Valor Real: Incalculable para tu paz mental).',
+      'Define tu meta: viaje, tarjeta o moto.',
+      'Te decimos cuánto guardar por día o por semana.',
+      'Ves la barra avanzar. Si te atrasas, te damos un ajuste simple.',
     ],
     badge: 'El más deseado',
   },
   {
-    title: 'BONUS EXCLUSIVO 2: Escáner IA Ilimitado',
-    desc: 'Sube todas las facturas que quieras, el sistema nunca se cansa.',
+    title: 'Escáner IA ilimitado',
+    desc: 'Sube todas las facturas que quieras, el sistema encuentra los montos y categorías al instante.',
     badge: 'Ahorra fugas',
   },
 ];
 
-const bonusIcons = ['dashboard_customize', 'autopay', 'flag', 'document_scanner'];
+const bonusIcons = ['dashboard_customize', 'event_repeat', 'flag', 'document_scanner'];
 
 const sharedFeatures = [
-  'Calendario de pagos y recordatorios',
-  'Alertas antes de que falte dinero',
-  'Metas de ahorro con monto sugerido',
-  'Detección de gastos hormiga y suscripciones',
-  'Lista inteligente de supermercado',
-  'Soporte humano prioritario',
+  'Escaneo de tickets con IA y categorización',
+  'Inventario de despensa sin compras dobles',
+  'Metas con monto diario sugerido',
+  'Alertas antes de quedarte en cero',
+  'Recordatorios de pagos y mantenimientos',
+  'Listas inteligentes de supermercado',
+];
+
+const leakCosts = [
+  { title: 'Comida que se vence en la despensa', icon: 'cancel' },
+  { title: 'Suscripciones que olvidaste cancelar', icon: 'do_not_disturb_on' },
+  { title: 'Intereses de tarjeta por no pagar a tiempo', icon: 'warning' },
 ];
 
 const plans: Plan[] = [
@@ -117,6 +120,7 @@ const PricingSection: React.FC = () => {
   const [toastIndex, setToastIndex] = React.useState(0);
   const [showProof, setShowProof] = React.useState(false);
   const sectionRef = React.useRef<HTMLDivElement | null>(null);
+  const bestPlanHref = plans.find((p) => p.highlight === 'value')?.href ?? plans[0].href;
 
   React.useEffect(() => {
     const target = Date.now() + 12 * 60 * 60 * 1000;
@@ -161,21 +165,32 @@ const PricingSection: React.FC = () => {
   return (
     <section className="py-24 bg-[#0f172a] text-white" id="oferta" ref={sectionRef}>
       <div className="max-w-7xl mx-auto px-4">
-        <div className="text-center mb-16 space-y-4">
-          <h2 className="text-4xl lg:text-5xl font-black">Ten el mismo control que un Director Financiero (CFO), pero en tu celular.</h2>
-          <p className="text-lg text-white/70 max-w-3xl mx-auto font-medium">
-            Activa tu Arquitectura de Riqueza Silenciosa con la oferta que mejor se adapte a ti.
+        <div className="text-center mb-10 space-y-4">
+          <h2 className="text-4xl lg:text-5xl font-black">¿Cuánto te cuesta no tener Controla?</h2>
+          <p className="text-lg text-white/70 max-w-4xl mx-auto font-medium">
+            Comida que se vence, suscripciones olvidadas e intereses por pagar tarde. Eso es mínimo $100 USD al mes en pérdidas. Controla te cuesta menos que una pizza.
           </p>
+        </div>
+
+        <div className="grid md:grid-cols-3 gap-4 max-w-5xl mx-auto mb-10">
+          {leakCosts.map((item) => (
+            <div key={item.title} className="bg-white/5 border border-white/10 rounded-2xl p-5 flex items-start gap-3 shadow-lg shadow-black/20">
+              <div className="w-10 h-10 rounded-2xl bg-primary/15 text-primary flex items-center justify-center shrink-0">
+                <span className="material-symbols-outlined text-xl">{item.icon}</span>
+              </div>
+              <p className="text-sm font-semibold text-white/80 text-left">{item.title}</p>
+            </div>
+          ))}
         </div>
 
         <div className="max-w-3xl mx-auto mb-12 md:mb-14">
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3 bg-white/5 border border-white/15 shadow-lg shadow-black/20 px-6 py-4 rounded-3xl">
-            <span className="text-xs font-black uppercase tracking-[0.16em] text-primary">Oferta de lanzamiento</span>
+            <span className="text-xs font-black uppercase tracking-[0.16em] text-primary">Prueba gratis activa</span>
             <div className="flex items-center gap-2 text-sm font-bold text-white">
               <span className="material-symbols-outlined text-primary text-lg">hourglass_top</span>
               Termina en {countdown}
             </div>
-            <span className="text-xs font-semibold text-white/70">Garantía 30 días o te devolvemos el 100%</span>
+            <span className="text-xs font-semibold text-white/70">Cancela cuando quieras.</span>
           </div>
         </div>
 
@@ -269,8 +284,11 @@ const PricingSection: React.FC = () => {
         <div className="max-w-4xl mx-auto mt-14 bg-white/5 border border-white/10 rounded-[32px] p-8 lg:p-10 shadow-xl shadow-black/30 space-y-6">
           <div className="flex items-center gap-2 text-sm font-black uppercase tracking-[0.16em] text-primary">
             <span className="material-symbols-outlined text-base">verified</span>
-            Lo que desbloqueas hoy
+            Todo lo que recibes desde el día 1 (sin letra chica)
           </div>
+          <p className="text-white/70 text-sm font-semibold">
+            Acceso inmediato a las herramientas que tapan fugas, avisan antes de que falte dinero y te muestran cuánto puedes gastar sin miedo.
+          </p>
           <div className="grid md:grid-cols-2 gap-6">
             {bonuses.map((item, index) => {
               const isBonus = index >= 2;
@@ -325,8 +343,19 @@ const PricingSection: React.FC = () => {
             })}
           </div>
           <div className="text-center text-sm text-white/60 font-semibold">
-            Valor Total del Sistema: <span className="line-through decoration-white/40">$350 USD/año</span> · TU INVERSIÓN HOY: Solo USD 3.33 / mes (Plan Anual, total USD 39.99)
+            Cuesta menos que una pizza: desde USD 3.33 / mes (Plan Anual, total USD 39.99).
           </div>
+        </div>
+
+        <div className="flex flex-col items-center gap-3 mt-10">
+          <a
+            href={bestPlanHref}
+            onClick={() => trackMetaEvent('Lead', { content_name: 'pricing_cta_final' })}
+            className="inline-flex items-center gap-3 bg-primary text-secondary px-8 py-4 rounded-2xl font-black text-lg shadow-xl shadow-primary/30 hover:bg-primary-dark transition-all active:scale-95 cta-shine"
+          >
+            👉 QUIERO EL PLAN ANUAL POR USD 39.99
+          </a>
+          <p className="text-sm font-semibold text-white/70">Cancela cuando quieras. Pero te aseguro que no querrás.</p>
         </div>
 
         <p className="text-center mt-16 text-sm font-bold text-white/60">

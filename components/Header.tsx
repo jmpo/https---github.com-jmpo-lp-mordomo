@@ -15,14 +15,15 @@ const Header: React.FC = () => {
           </div>
           <div>
             <p className="text-xs uppercase tracking-[0.18em] text-white/60 font-black">Controla IA</p>
-            <p className="text-lg font-extrabold leading-none">Arquitectura Financiera</p>
+            <p className="text-lg font-extrabold leading-none">Sueldo sin fugas</p>
           </div>
         </div>
 
         <nav className="hidden md:flex items-center gap-6 text-sm font-semibold text-white/70">
           <a href="#hero" className="hover:text-white transition-colors">Inicio</a>
-          <a href="#lead" className="hover:text-white transition-colors">El cambio</a>
-          <a href="#mecanismo" className="hover:text-white transition-colors">Arquitectura</a>
+          <a href="#lead" className="hover:text-white transition-colors">Problema</a>
+          <a href="#mecanismo" className="hover:text-white transition-colors">Solución</a>
+          <a href="#metas" className="hover:text-white transition-colors">Metas</a>
           <a href="#oferta" className="hover:text-white transition-colors">Oferta</a>
         </nav>
 
@@ -39,7 +40,7 @@ const Header: React.FC = () => {
             onClick={() => trackMetaEvent('Lead', { content_name: 'header_cta' })}
             className="bg-primary text-secondary font-black text-sm px-4 py-2 rounded-xl shadow-lg shadow-primary/30 hover:bg-primary-dark transition-all active:scale-95"
           >
-            Construir patrimonio
+            Encontrar fugas
           </a>
         </div>
       </div>
