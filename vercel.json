@@ -1,6 +1,8 @@
 {
   "rewrites": [
     { "source": "/lp2", "destination": "/index.html" },
-    { "source": "/lp2/(.*)", "destination": "/index.html" }
+    { "source": "/lp2/(.*)", "destination": "/index.html" },
+    { "source": "/lp3", "destination": "/index.html" },
+    { "source": "/lp3/(.*)", "destination": "/index.html" }
   ]
 }
