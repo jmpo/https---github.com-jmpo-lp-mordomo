@@ -66,12 +66,9 @@ const faqs = [
 ];
 
 const modules = [
-  { icon: 'radar', title: 'Radar de control', desc: 'Detecta gastos ocultos, repeticiones raras y desvíos antes de que duelan.' },
-  { icon: 'notifications_active', title: 'Alertas automáticas', desc: 'Vencimientos, pagos grandes y recordatorios clave, sin depender de tu memoria.' },
-  { icon: 'flag', title: 'Metas protegidas', desc: 'Monto, fecha y progreso visual. Sabés si vas en ritmo o necesitás ajustar.' },
-  { icon: 'shopping_basket', title: 'Mercado + stock', desc: 'Lista inteligente y control de inventario para evitar compras duplicadas.' },
-  { icon: 'directions_car', title: 'Vehículos al día', desc: 'Mantenimientos, revisiones y costos proyectados en un solo lugar.' },
-  { icon: 'insights', title: 'Panel único', desc: 'Dinero, metas, gastos y próximos pasos en una sola pantalla.' },
+  { icon: 'photo_camera', title: 'Sacás una foto 📸 → te devolvemos tiempo', desc: 'La IA lee tus gastos; no perdés ni un segundo tecleando. Recuperás tus fines de semana.' },
+  { icon: 'shopping_cart', title: 'Mirá tu alacena en el cel 🛒 → cuidamos tu bolsillo', desc: 'Nunca más tirás comida ni comprás doble. Evitás gastar en lo que ya tenías.' },
+  { icon: 'flag', title: 'Definís el sueño 🎯 → te damos el mapa', desc: '“Guardá USD 2 hoy” y llegás a la meta sin matemáticas complicadas. El sistema te guía.' },
 ];
 
 const decisionPaths = [
@@ -98,7 +95,12 @@ const bonuses = [
   { title: '🛒 Script de mercado inteligente', desc: 'Lista + inventario para dejar de comprar dos veces lo mismo y ahorrar sin pensar.' },
 ];
 
-const heroPreview = '/app-preview.gif';
+const transformation = [
+  { title: 'El fin del estrés', desc: 'Apoyás la cabeza en la almohada sabiendo que todo está cubierto. Adiós al insomnio financiero.' },
+  { title: 'Compras sin culpa', desc: 'Pedí esa pizza o esos zapatos: el sistema te dice si podés hacerlo sin tocar el alquiler.' },
+  { title: 'Dinero “aparecido”', desc: 'Entre $50 y $200 en el primer mes al eliminar compras dobles y suscripciones olvidadas.' },
+  { title: 'Meta con fecha', desc: 'Moto, viaje o pagar la tarjeta: deja de ser un sueño y se convierte en una fecha real.' },
+];
 
 const plans = [
   {
@@ -192,24 +194,14 @@ const Lp3Page: React.FC = () => {
           <div className="absolute -left-10 top-6 w-64 h-64 bg-[#d946ef]/15 blur-[120px]" />
           <div className="absolute right-0 -bottom-20 w-80 h-80 bg-[#22c55e]/10 blur-[140px]" />
 
-          <div className="relative max-w-6xl mx-auto px-4 py-14 lg:py-20 grid lg:grid-cols-[1.05fr_0.95fr] gap-12 items-center">
+          <div className="relative max-w-6xl mx-auto px-4 py-14 lg:py-20 space-y-6">
             <div className="space-y-6">
-              <div className="inline-flex items-center gap-2 bg-white border border-[#e8ddff] px-3 py-1 rounded-full text-xs font-black uppercase tracking-[0.18em] text-[#7c7394]">
-                <span className="material-symbols-outlined text-sm text-[#8b5cf6]">verified</span>
-                Control total sin planillas
-              </div>
-
               <div className="space-y-3">
+                <p className="text-[13px] font-black uppercase tracking-[0.18em] text-[#c026d3]">¿CANSADO DE SENTIR ESE NUDO EN EL ESTÓMAGO CADA FIN DE MES?</p>
                 <h1 className="text-4xl lg:text-5xl font-black leading-[1.05] text-[#0f0a1a]">
-                  Que no te quede la cuenta en cero al final de mes
+                  Cómo convertir tu sueldo en una fuente de paz mental (y terminar el mes con dinero extra) sin tener que convertirte en un tacaño ni usar hojas de cálculo.
                 </h1>
-                <p className="text-xl font-extrabold text-[#8b5cf6]">Decisiones claras cada semana. Sin planillas. Sin apps sueltas.</p>
-                <p className="text-lg text-[#4b445f] max-w-2xl">
-                  Controla IA centraliza tu dinero, vencimientos y metas. Te dice qué pagar, qué ajustar y cuánto ahorrar antes de que desaparezca el saldo.
-                </p>
-                <p className="text-sm font-semibold text-[#6b6287]">
-                  Radar financiero real: detecta gastos invisibles, evita duplicados y te muestra avance de metas sin que tengas que pensarlo.
-                </p>
+                <p className="text-xl font-extrabold text-[#8b5cf6]">Descubre el sistema que trabaja mientras duermes para tapar las fugas de dinero que hoy te mantienen estancado.</p>
               </div>
 
               <div className="flex flex-col sm:flex-row gap-4">
@@ -217,7 +209,7 @@ const Lp3Page: React.FC = () => {
                   onClick={() => handleLead('lp3_hero_offer', '#planes')}
                   className="inline-flex items-center justify-center gap-2 bg-[#22c55e] text-[#0f172a] px-7 py-4 rounded-2xl font-black text-lg shadow-2xl shadow-[#22c55e]/30 hover:bg-[#16a34a] transition-all active:scale-95"
                 >
-                  Ver oferta completa
+                  👉 QUIERO SENTIR ESTE ALIVIO AHORA
                   <span className="material-symbols-outlined">arrow_forward</span>
                 </button>
                 <button
@@ -228,9 +220,10 @@ const Lp3Page: React.FC = () => {
                   <span className="material-symbols-outlined">play_circle</span>
                 </button>
               </div>
+            <p className="text-xs font-semibold text-[#6b6287]">Empieza gratis. Resultados desde el primer día.</p>
 
-              <div className="space-y-2 bg-white border border-[#e8ddff] rounded-3xl p-5 shadow-sm">
-                <p className="text-sm font-black text-[#0f0a1a]">Lo que cambia hoy mismo:</p>
+            <div className="space-y-2 bg-white border border-[#e8ddff] rounded-3xl p-5 shadow-sm">
+              <p className="text-sm font-black text-[#0f0a1a]">Lo que cambia hoy mismo:</p>
                 <ul className="grid sm:grid-cols-2 gap-2 text-sm text-[#4b445f] font-semibold">
                   {heroBullets.map((item) => (
                     <li key={item} className="flex items-start gap-2">
@@ -241,54 +234,18 @@ const Lp3Page: React.FC = () => {
                 </ul>
               </div>
             </div>
-
-              <div className="space-y-4">
-                <div className="bg-[#0f0a1a] text-white rounded-[28px] p-7 shadow-2xl shadow-black/40 border border-[#1f1535]">
-                  <div className="flex items-center justify-between mb-4">
-                    <div>
-                      <p className="text-sm font-black text-[#a78bfa]">Vista previa del panel</p>
-                      <p className="text-xl font-black mt-1">Radar de Control Activo</p>
-                  </div>
-                  <div className="bg-[#22c55e]/15 text-[#22c55e] px-3 py-1 rounded-full text-xs font-black">IA + Sistema</div>
-                </div>
-
-                <div className="space-y-2 text-sm font-semibold text-white/80">
-                  {radarPoints.map((item) => (
-                    <div key={item} className="flex items-start gap-2">
-                      <span className="material-symbols-outlined text-[#22c55e] text-base">check_circle</span>
-                      <span>{item}</span>
-                    </div>
-                  ))}
-                </div>
-
-                <button
-                  onClick={() => handleLead('lp3_hero_preview', '#planes')}
-                  className="mt-5 w-full inline-flex items-center justify-center gap-2 bg-white/10 text-white px-4 py-3 rounded-xl font-black text-sm border border-white/15 hover:bg-white/15 transition-all active:scale-95"
-                >
-                  Ver oferta y activarlo
-                  <span className="material-symbols-outlined text-base">arrow_forward</span>
-                </button>
-              </div>
-              <div className="rounded-[28px] overflow-hidden border border-[#e8ddff] shadow-xl bg-white">
-                <img
-                  src={heroPreview}
-                  alt="Vista previa del panel Controla IA"
-                  className="w-full h-full object-cover"
-                  loading="lazy"
-                />
-              </div>
-            </div>
           </div>
         </section>
 
         <section className="bg-white text-[#0f0a1a] py-12">
-          <div className="max-w-6xl mx-auto px-4 grid lg:grid-cols-[1fr_1fr] gap-6 items-center">
+          <div className="max-w-6xl mx-auto px-4 grid lg:grid-cols-[1fr_1fr] gap-6 items-start">
             <div className="space-y-3">
-              <p className="text-sm font-black uppercase tracking-[0.2em] text-[#8b5cf6]">¿Te pasa esto?</p>
-              <h2 className="text-3xl font-black leading-tight">Dolores que Controla IA elimina</h2>
+              <p className="text-sm font-black uppercase tracking-[0.2em] text-[#8b5cf6]">Seamos honestos</p>
+              <h2 className="text-3xl font-black leading-tight">¿Te suena familiar esta escena?</h2>
               <p className="text-[#4b445f] font-semibold">
-                No es falta de disciplina, es falta de un panel que piense por vos. Estos son los problemas que el sistema resuelve desde el día uno.
+                Día 25. Abrís la app del banco. Esa taquicardia antes de ver el saldo. Pensás: “¿En qué diablos se me fue toda la plata?”. Trabajás, cumplís, pero el dinero se escapa.
               </p>
+              <p className="text-[#4b445f] font-semibold">No necesitás ganar más para arreglarlo. Necesitás dejar de perder lo que ya tenés.</p>
               <div className="grid sm:grid-cols-2 gap-3">
                 {painPoints.map((item) => (
                   <div key={item} className="flex items-start gap-2 bg-[#f8f7ff] border border-[#e8ddff] rounded-2xl px-3 py-3 text-sm text-[#4b445f] font-semibold">
@@ -300,19 +257,37 @@ const Lp3Page: React.FC = () => {
             </div>
 
             <div className="bg-[#0f0a1a] text-white rounded-[24px] p-6 shadow-xl shadow-black/35 border border-[#1f1535] space-y-3">
-              <p className="text-sm font-black uppercase tracking-[0.16em] text-[#a78bfa]">Lo que sentís después</p>
+              <p className="text-sm font-black uppercase tracking-[0.16em] text-[#a78bfa]">Lo que cambia en 30 días</p>
               <ul className="space-y-2 text-sm text-white/80 font-semibold">
-                <li className="flex items-start gap-2"><span className="material-symbols-outlined text-[#22c55e] text-base">check_circle</span>Sabés cuánto es tuyo y cuánto va a vencer.</li>
-                <li className="flex items-start gap-2"><span className="material-symbols-outlined text-[#22c55e] text-base">check_circle</span>Detectás fugas y suscripciones inútiles a tiempo.</li>
-                <li className="flex items-start gap-2"><span className="material-symbols-outlined text-[#22c55e] text-base">check_circle</span>Metas protegidas con avance visible cada semana.</li>
+                {transformation.map((item) => (
+                  <li key={item.title} className="flex items-start gap-2">
+                    <span className="material-symbols-outlined text-[#22c55e] text-base">check_circle</span>
+                    <span><span className="font-bold text-white">{item.title}:</span> {item.desc}</span>
+                  </li>
+                ))}
               </ul>
               <button
                 onClick={() => handleLead('lp3_pain_cta', '#planes')}
                 className="inline-flex items-center justify-center gap-2 bg-[#22c55e] text-[#0f172a] px-5 py-3 rounded-xl font-black shadow-lg shadow-[#22c55e]/40 hover:bg-[#16a34a] transition-all active:scale-95"
               >
-                Quiero dejar de improvisar
+                👉 Quiero sentir este alivio ahora
                 <span className="material-symbols-outlined">arrow_forward</span>
               </button>
+            </div>
+          </div>
+        </section>
+
+        <section className="bg-white text-[#0f0a1a] py-12">
+          <div className="max-w-6xl mx-auto px-4 space-y-4">
+            <p className="text-sm font-black uppercase tracking-[0.2em] text-[#8b5cf6]">Imaginá tu vida en 30 días</p>
+            <h2 className="text-3xl font-black">No te hablo de una app. Te hablo de lo que pasa cuando activás el sistema.</h2>
+            <div className="grid md:grid-cols-2 gap-3">
+              {transformation.map((item) => (
+                <div key={item.title} className="bg-[#f8f7ff] border border-[#e8ddff] rounded-2xl p-4 shadow-sm">
+                  <p className="font-black text-[#0f0a1a]">✅ {item.title}</p>
+                  <p className="text-sm text-[#4b445f] font-semibold leading-relaxed">{item.desc}</p>
+                </div>
+              ))}
             </div>
           </div>
         </section>
@@ -328,18 +303,14 @@ const Lp3Page: React.FC = () => {
             <div className="relative">
               <div className="absolute -inset-6 bg-[#d946ef]/10 blur-3xl rounded-3xl opacity-60" />
               <div className="relative rounded-3xl overflow-hidden border border-white/10 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.35)] bg-[#0f0d0c]">
-                <div className="absolute top-4 left-4 z-10 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/80 text-xs font-bold text-[#0f0a1a] shadow-sm backdrop-blur">
-                  <span className="material-symbols-outlined text-sm text-[#8b5cf6]">verified</span>
-                  Video real del sistema
-                </div>
-                <div className="relative" style={{ paddingTop: '56.25%' }}>
+                <div style={{ position: 'relative', paddingTop: '56.25%' }}>
                   <iframe
-                    src={videoSrc}
+                    src="https://player.mediadelivery.net/embed/364591/d1270fc1-fda6-4383-9a7b-36d9c9cde7ad?autoplay=true&loop=false&muted=false&preload=true&responsive=true"
                     loading="lazy"
-                    title="Controla IA en acción"
                     style={{ border: 0, position: 'absolute', top: 0, height: '100%', width: '100%' }}
                     allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;"
-                    allowFullScreen
+                    allowFullScreen={true}
+                    title="Controla IA en acción"
                   ></iframe>
                 </div>
               </div>
@@ -357,12 +328,69 @@ const Lp3Page: React.FC = () => {
           </div>
         </section>
 
+        <section id="decision" className="bg-[#f5f4fb] text-[#0f0a1a] py-16">
+          <div className="max-w-6xl mx-auto px-4 space-y-8">
+            <div className="text-center space-y-3">
+              <h3 className="text-3xl font-black">¿Vas a dejar que se te escape otro mes?</h3>
+              <p className="text-[#4b445f] font-semibold">Tenés dos opciones hoy. Elegí la que te devuelve paz mental.</p>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-4">
+              <div className="bg-white border border-[#f1d7ff] rounded-2xl p-5 shadow-sm">
+                <div className="flex items-center gap-2 text-[#c026d3] font-black">
+                  <span className="material-symbols-outlined">close</span>
+                  Opción A: Seguir igual
+                </div>
+                <p className="mt-2 text-sm text-[#4b445f] font-semibold">
+                  Llegar a fin de mes con taquicardia, preguntándote dónde está tu dinero y sintiendo que trabajás solo para pagar cuentas.
+                </p>
+                <p className="mt-2 text-sm font-semibold text-[#4b445f]">Costo: tu paz mental + cientos de dólares perdidos en fugas.</p>
+              </div>
+
+              <div className="bg-[#0f0a1a] text-white rounded-2xl p-5 shadow-xl shadow-black/35 border border-[#1f1535]">
+                <div className="flex items-center gap-2 text-[#22c55e] font-black">
+                  <span className="material-symbols-outlined">check_circle</span>
+                  Opción B: Tomar el control hoy
+                </div>
+                <p className="mt-2 text-sm text-white/80 font-semibold">
+                  Activar el sistema, encontrar el dinero perdido en los primeros 5 minutos y empezar a construir la vida tranquila que te merecés.
+                </p>
+                <p className="mt-2 text-sm text-white/80 font-semibold">Todo con alertas y un mapa claro, sin planillas.</p>
+              </div>
+            </div>
+
+            <div className="bg-white border border-[#e8ddff] rounded-2xl p-4 text-center shadow-sm">
+              <p className="text-sm font-bold text-[#4b445f]">El precio de tu tranquilidad es ridículo: menos que un café y un sándwich. Desde USD 5 / mes.</p>
+              <p className="text-xs font-semibold text-[#6b6287]">Garantía total: si no sentís paz, no pagás.</p>
+            </div>
+
+            <div className="flex flex-col sm:flex-row gap-3 justify-center">
+              <button
+                onClick={() => handleLead('lp3_decision_cta', '#planes')}
+                className="inline-flex items-center justify-center gap-2 bg-[#22c55e] text-[#0f172a] px-7 py-3 rounded-xl font-black shadow-lg shadow-[#22c55e]/40 hover:bg-[#16a34a] transition-all active:scale-95"
+              >
+                👉 Sí, quiero tomar el control de mi vida
+                <span className="material-symbols-outlined">arrow_forward</span>
+              </button>
+              <a
+                href={demoLink}
+                onClick={() => handleLead('lp3_decision_demo')}
+                className="inline-flex items-center justify-center gap-2 bg-white border border-[#e8ddff] px-7 py-3 rounded-xl font-bold text-[#4b445f] hover:border-[#c4b5fd] transition-all active:scale-95"
+              >
+                Ver demo primero
+                <span className="material-symbols-outlined">play_circle</span>
+              </a>
+            </div>
+          </div>
+        </section>
+
         <section id="planes" className="bg-[#0f0a1a] text-white py-16 lg:py-20">
           <div className="max-w-6xl mx-auto px-4 space-y-8">
             <div className="text-center max-w-3xl mx-auto space-y-3">
-              <p className="text-sm font-black uppercase tracking-[0.2em] text-[#a78bfa]">Oferta que convierte</p>
-              <p className="text-3xl lg:text-4xl font-black">Elegí cómo activar tu centro de control</p>
-              <p className="text-white/75 font-semibold">Mismos precios que la landing principal, con la comparación que mejor decide.</p>
+              <p className="text-sm font-black uppercase tracking-[0.2em] text-[#a78bfa]">Activa tu tranquilidad</p>
+              <p className="text-3xl lg:text-4xl font-black">Elegí cómo querés empezar</p>
+              <p className="text-white/75 font-semibold">En 5 minutos encontrás dinero perdido y empezás a dormir tranquilo. Cancelás cuando quieras.</p>
+              <p className="text-white font-black">Desde USD 5 / mes. Menos que un café y un sándwich.</p>
             </div>
 
             <div className="grid md:grid-cols-3 gap-6">
@@ -474,9 +502,9 @@ const Lp3Page: React.FC = () => {
         <section id="modulos" className="bg-white text-[#0f0a1a] py-14">
           <div className="max-w-6xl mx-auto px-4 space-y-6">
             <div className="text-center space-y-2">
-              <p className="text-sm font-black uppercase tracking-[0.2em] text-[#8b5cf6]">Todo lo que necesitás</p>
-              <p className="text-3xl font-black">Un solo sistema, todos tus controles</p>
-              <p className="text-[#4b445f] font-semibold">No pagás módulos sueltos ni apps extra. Todo está incluido.</p>
+              <p className="text-sm font-black uppercase tracking-[0.2em] text-[#8b5cf6]">Tu nuevo vehículo</p>
+              <p className="text-3xl font-black">Tu único trabajo es vivir. Nosotros nos encargamos de los números.</p>
+              <p className="text-[#4b445f] font-semibold">Olvidate de “administrar”. Este sistema hace el trabajo aburrido y te devuelve paz mental.</p>
             </div>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
               {modules.map((item) => (
@@ -598,49 +626,6 @@ const Lp3Page: React.FC = () => {
           </div>
         </section>
 
-        <section id="decision" className="bg-[#f5f4fb] text-[#0f0a1a] py-16">
-          <div className="max-w-4xl mx-auto px-4 space-y-6 text-center">
-            <h3 className="text-3xl font-black">Tu decisión de hoy define tus próximos 12 meses</h3>
-            <p className="text-[#4b445f] font-semibold">Tenés dos opciones claras:</p>
-
-            <div className="grid md:grid-cols-2 gap-4">
-              {decisionPaths.map((path) => (
-                <div key={path.title} className="bg-white border border-[#e8ddff] rounded-2xl p-5 shadow-sm text-left space-y-2">
-                  <div className="flex items-center gap-2">
-                    <span className={`material-symbols-outlined ${path.color}`}>{path.icon}</span>
-                    <p className="font-black text-[#0f0a1a]">{path.title}</p>
-                  </div>
-                  <p className="text-sm text-[#4b445f] font-semibold">{path.desc}</p>
-                </div>
-              ))}
-            </div>
-
-            <div className="bg-white border border-[#e8ddff] rounded-2xl p-5 shadow-sm text-left space-y-2">
-              <p className="font-black text-[#0f0a1a]">La opción acertada</p>
-              <p className="text-sm text-[#4b445f] font-semibold">
-                Asegurá tu centro de control hoy. Activalo, probalo 7 días y sentí la diferencia entre improvisar y decidir con datos y alertas.
-              </p>
-            </div>
-
-            <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              <button
-                onClick={() => handleLead('lp3_decision_cta', '#planes')}
-                className="inline-flex items-center justify-center gap-2 bg-[#22c55e] text-[#0f172a] px-7 py-3 rounded-xl font-black shadow-lg shadow-[#22c55e]/40 hover:bg-[#16a34a] transition-all active:scale-95"
-              >
-                Ver oferta completa
-                <span className="material-symbols-outlined">arrow_forward</span>
-              </button>
-              <a
-                href={demoLink}
-                onClick={() => handleLead('lp3_decision_demo')}
-                className="inline-flex items-center justify-center gap-2 bg-white border border-[#e8ddff] px-7 py-3 rounded-xl font-bold text-[#4b445f] hover:border-[#c4b5fd] transition-all active:scale-95"
-              >
-                Ver demo primero
-                <span className="material-symbols-outlined">play_circle</span>
-              </a>
-            </div>
-          </div>
-        </section>
       </main>
     </div>
   );
