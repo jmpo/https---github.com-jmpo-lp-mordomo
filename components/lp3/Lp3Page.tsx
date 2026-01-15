@@ -407,7 +407,7 @@ const Lp3Page: React.FC = () => {
                     </div>
 
                     <button
-                      onClick={() => handleLead(`lp3_plan_${plan.name.toLowerCase()}`, '#planes')}
+                      onClick={() => handleLead(`lp3_plan_${plan.name.toLowerCase()}`, plan.href)}
                       className={`w-full inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl font-black transition-all active:scale-95 ${
                         isHighlight ? 'bg-[#22c55e] text-[#0f172a] hover:bg-[#16a34a]' : 'bg-white/10 text-white hover:bg-white/20'
                       }`}
