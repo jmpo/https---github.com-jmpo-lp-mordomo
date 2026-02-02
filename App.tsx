@@ -11,16 +11,21 @@ import { initMetaPixel } from './metaPixel';
 import Lp2Page from './components/lp2/Lp2Page';
 import TransformationSection from './components/TransformationSection';
 import Lp3Page from './components/lp3/Lp3Page';
+import NegociosPage from './components/negocios/NegociosPage';
 
 const App: React.FC = () => {
   const pathname = typeof window !== 'undefined' ? window.location.pathname.toLowerCase() : '';
   const isLp2 = pathname.includes('/lp2');
   const isLp3 = pathname.includes('/lp3');
+  const isNegocios = pathname.includes('/negocios');
 
   useEffect(() => {
     initMetaPixel();
   }, []);
 
+  if (isNegocios) {
+    return <NegociosPage />;
+  }
   if (isLp3) {
     return <Lp3Page />;
   }

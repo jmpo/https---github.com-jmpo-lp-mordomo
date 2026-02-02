@@ -336,26 +336,28 @@ const Lp3Page: React.FC = () => {
             </div>
 
             <div className="grid md:grid-cols-2 gap-4">
-              <div className="bg-white border border-[#f1d7ff] rounded-2xl p-5 shadow-sm">
-                <div className="flex items-center gap-2 text-[#c026d3] font-black">
-                  <span className="material-symbols-outlined">close</span>
-                  Opción A: Seguir igual
-                </div>
-                <p className="mt-2 text-sm text-[#4b445f] font-semibold">
+              <div className="bg-white border border-[#f1d7ff] rounded-3xl p-6 shadow-sm space-y-3">
+                <span className="inline-flex items-center gap-2 text-xs font-black uppercase tracking-[0.2em] text-[#c026d3] bg-[#fdf2ff] px-3 py-1 rounded-full">
+                  <span className="material-symbols-outlined text-sm">close</span>
+                  Opción A
+                </span>
+                <p className="text-xl font-black text-[#0f0a1a]">Seguir igual</p>
+                <p className="text-sm text-[#4b445f] font-semibold">
                   Llegar a fin de mes con taquicardia, preguntándote dónde está tu dinero y sintiendo que trabajás solo para pagar cuentas.
                 </p>
-                <p className="mt-2 text-sm font-semibold text-[#4b445f]">Costo: tu paz mental + cientos de dólares perdidos en fugas.</p>
+                <p className="text-sm font-semibold text-[#c026d3]">Costo: tu paz mental + cientos de dólares perdidos en fugas.</p>
               </div>
 
-              <div className="bg-[#0f0a1a] text-white rounded-2xl p-5 shadow-xl shadow-black/35 border border-[#1f1535]">
-                <div className="flex items-center gap-2 text-[#22c55e] font-black">
-                  <span className="material-symbols-outlined">check_circle</span>
-                  Opción B: Tomar el control hoy
-                </div>
-                <p className="mt-2 text-sm text-white/80 font-semibold">
+              <div className="bg-gradient-to-br from-[#0f0a1a] via-[#1a0f2b] to-[#140b24] text-white rounded-3xl p-6 shadow-xl shadow-black/35 border border-[#26143d] space-y-3">
+                <span className="inline-flex items-center gap-2 text-xs font-black uppercase tracking-[0.2em] text-[#22c55e] bg-white/10 px-3 py-1 rounded-full">
+                  <span className="material-symbols-outlined text-sm">check_circle</span>
+                  Opción B
+                </span>
+                <p className="text-xl font-black">Tomar el control hoy</p>
+                <p className="text-sm text-white/85 font-semibold">
                   Activar el sistema, encontrar el dinero perdido en los primeros 5 minutos y empezar a construir la vida tranquila que te merecés.
                 </p>
-                <p className="mt-2 text-sm text-white/80 font-semibold">Todo con alertas y un mapa claro, sin planillas.</p>
+                <p className="text-sm text-white/85 font-semibold">Todo con alertas y un mapa claro, sin planillas.</p>
               </div>
             </div>
 
