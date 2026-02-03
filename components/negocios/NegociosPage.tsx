@@ -4,46 +4,61 @@ import { trackMetaEvent } from '../../metaPixel';
 const demoLink = 'https://demo.controla.site/';
 const videoSrc = 'https://player.mediadelivery.net/embed/364591/d1270fc1-fda6-4383-9a7b-36d9c9cde7ad?autoplay=false&loop=false&muted=false&preload=true&responsive=true';
 
-const painPoints = [
-  'El "Robo Hormiga" Invisible: compras duplicadas, vueltos que no cuadran y suscripciones fantasma.',
-  'Ceguera de Inventario: comprás mercancía que ya tenías o perdés ventas por quedarte sin stock.',
-  'Estrés de Fin de Mes: llegás al día 30 sin saber si hubo ganancia real o solo moviste dinero.',
-];
-
-const mechanismItems = [
+const villainPoints = [
   {
-    title: 'Escaneo con IA',
-    desc: 'Sacás una foto a tus facturas y la app extrae fechas, montos y proveedores al instante.',
+    title: 'La Trampa del Supermercado',
+    desc: 'Comprás “por si acaso”, llegás a casa y ya tenías. Dinero a la basura.',
   },
   {
-    title: 'Alertas Anti-Desastre',
-    desc: 'Notificaciones antes de quedarte sin caja o cuando un gasto se sale de lo normal.',
+    title: 'La Hemorragia de las Suscripciones',
+    desc: 'Esos $5, $10 y $15 olvidados suman más de $300 al año.',
   },
   {
-    title: 'Auditoría Automática',
-    desc: 'El sistema cruza tus gastos con tu inventario para justificar cada centavo.',
+    title: 'El “Impuesto” del Olvido',
+    desc: 'No cambiaste el aceite a tiempo. Lo barato termina en reparación cara.',
   },
 ];
 
-const benefits = [
-  'Visibilidad Total: Dashboard con ingresos, gastos y margen neto en tiempo real.',
-  'Inventario Blindado: stock, caducidad y reabastecimiento automático.',
-  'Flota bajo Control: mantenimiento, gasolina y gastos de vehículos.',
-  'Multiusuario Seguro: tu equipo registra, vos controlás con permisos.',
+const mechanismSteps = [
+  {
+    title: 'Paso 1: Sacá la foto',
+    desc: 'Apuntás al ticket o factura. La IA extrae datos y categoriza en segundos.',
+  },
+  {
+    title: 'Paso 2: Escaneá tu despensa',
+    desc: 'Antes de comprar, mirás tu celular. Si ya tenés leche: “¡NO COMPRES!”.',
+  },
+  {
+    title: 'Paso 3: Blindaje total',
+    desc: 'Registrás tu vehículo. Alertas antes de vencimientos, multas o sorpresas.',
+  },
 ];
 
-const faqs = [
+const transformation = [
+  'Dormís tranquilo: sabés exactamente cuánto tenés.',
+  'Cumplís metas: el viaje o la moto se pagan con lo que dejás de perder.',
+  'Control total: sos el CEO de tu propia vida.',
+];
+
+const offerStack = [
+  'El Escáner de IA (Valuado en $15/mes)',
+  'Gestor de Despensa Anti-Desperdicio (Valuado en $10/mes)',
+  'Asistente de Mantenimiento Vehicular (Valuado en $5/mes)',
+  'Proyector de Metas de Ahorro (Invaluable)',
+];
+
+const testimonials = [
   {
-    q: '¿Es difícil de configurar?',
-    a: 'No. Está diseñado para gente ocupada. Si sabés usar WhatsApp, sabés usar Controla. En menos de 5 minutos empezás.',
+    q: '“Recuperé $150 USD en mi primera semana.”',
+    a: 'Veo exactamente en qué se va el dinero y corté fugas que ni sabía que tenía.',
   },
   {
-    q: '¿Mis datos están seguros?',
-    a: 'Usamos encriptación de grado bancario. Tus números son solo tuyos y nadie más accede.',
+    q: '“Ahora compro con cabeza, no con ansiedad.”',
+    a: 'La despensa me avisa lo que ya tengo y dejo de duplicar compras.',
   },
   {
-    q: '¿Sirve para mi tipo de negocio?',
-    a: 'Si comprás insumos, vendés productos o servicios y tenés gastos, Controla es para vos. Funciona para constructoras, restaurantes, tiendas y servicios.',
+    q: '“Por fin sé mi ganancia real.”',
+    a: 'El panel me muestra margen y gastos en segundos, sin planillas.',
   },
 ];
 
@@ -82,37 +97,66 @@ const NegociosPage: React.FC = () => {
     trackMetaEvent('Lead', { content_name: label });
     if (href && typeof window !== 'undefined') {
       if (href.startsWith('#')) {
-        document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
+        const id = href.slice(1);
+        const target = document.getElementById(id);
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+        } else {
+          window.location.hash = href;
+        }
       } else {
         window.location.href = href;
       }
     }
   };
 
-  const headingFont = { fontFamily: 'Inter, Montserrat, sans-serif' } as React.CSSProperties;
-  const bodyFont = { fontFamily: 'Roboto, Open Sans, sans-serif' } as React.CSSProperties;
+  const scrollToOffer = () => {
+    const target = document.getElementById('oferta');
+    if (!target) return;
+    const y = target.getBoundingClientRect().top + window.pageYOffset - 72;
+    window.scrollTo({ top: y, behavior: 'smooth' });
+  };
+
+  const goToOffer = () => {
+    if (typeof window === 'undefined') return;
+    const path = window.location.pathname.toLowerCase();
+    if (!path.includes('/negocios')) {
+      window.location.href = '/negocios#oferta';
+      return;
+    }
+    window.location.hash = '#oferta';
+    requestAnimationFrame(scrollToOffer);
+    setTimeout(scrollToOffer, 120);
+  };
+
+  const headingFont = { fontFamily: 'Inter, "Space Grotesk", sans-serif' } as React.CSSProperties;
 
   return (
-    <div className="min-h-screen bg-[#0f172a] text-white" style={bodyFont}>
-      <header className="sticky top-0 z-40 bg-[#0f172a]/90 backdrop-blur-xl border-b border-white/10">
+    <div className="min-h-screen bg-[#000000] text-white">
+      <div className="sticky top-0 z-50 bg-[#ccff00] text-black">
+        <div className="max-w-6xl mx-auto px-4 py-2 text-center text-xs font-black uppercase tracking-[0.2em]">
+          ⚠️ ¿Tu sueldo no llega al día 30? Lee esto antes de gastar un centavo más.
+        </div>
+      </div>
+
+      <header className="border-b border-white/10 bg-[#000000]/90 backdrop-blur-xl">
         <div className="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center gap-3 cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-            <div className="w-10 h-10 rounded-2xl bg-[#00e599] text-[#0f172a] font-black flex items-center justify-center shadow-lg shadow-[#00e599]/30">
+            <div className="w-10 h-10 rounded-2xl bg-[#00ff9d] text-[#000000] font-black flex items-center justify-center shadow-lg shadow-[#00ff9d]/30">
               <span className="material-symbols-outlined text-lg">grid_view</span>
             </div>
             <div>
               <p className="text-[11px] font-black uppercase tracking-[0.18em] text-white/60">Controla IA</p>
-              <p className="text-lg font-extrabold leading-none">Negocios</p>
+              <p className="text-lg font-extrabold leading-none">Controla IA</p>
             </div>
           </div>
 
           <nav className="hidden md:flex items-center gap-6 text-sm font-semibold text-white/70">
-            <a href="#autoridad" className="hover:text-white transition-colors">Autoridad</a>
-            <a href="#dolor" className="hover:text-white transition-colors">Dolor</a>
-            <a href="#mecanismo" className="hover:text-white transition-colors">Mecanismo</a>
-            <a href="#beneficios" className="hover:text-white transition-colors">Beneficios</a>
+            <a href="#villano" className="hover:text-white transition-colors">El villano</a>
+            <a href="#mecanismo" className="hover:text-white transition-colors">Cómo funciona</a>
+            <a href="#transformacion" className="hover:text-white transition-colors">Transformación</a>
             <a href="#oferta" className="hover:text-white transition-colors">Oferta</a>
-            <a href="#faq" className="hover:text-white transition-colors">FAQ</a>
+            <a href="#faq" className="hover:text-white transition-colors">Objeciones</a>
           </nav>
 
           <div className="flex items-center gap-3">
@@ -125,9 +169,9 @@ const NegociosPage: React.FC = () => {
             </a>
             <button
               onClick={() => handleLead('negocios_header_cta', '#oferta')}
-              className="bg-[#00e599] text-[#0f172a] font-black text-sm px-4 py-2 rounded-xl shadow-lg shadow-[#00e599]/30 hover:brightness-95 transition-all active:scale-95"
+              className="bg-[#ccff00] text-black font-black text-sm px-4 py-2 rounded-xl shadow-lg shadow-[#ccff00]/30 hover:brightness-95 transition-all active:scale-95"
             >
-              Empezar prueba gratis
+              Escanear mis gastos ahora
             </button>
           </div>
         </div>
@@ -135,31 +179,27 @@ const NegociosPage: React.FC = () => {
 
       <main>
         <section className="relative overflow-hidden">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_15%_20%,rgba(0,229,153,0.25),transparent_45%),radial-gradient(circle_at_85%_10%,rgba(255,92,0,0.2),transparent_40%)]" />
-          <div className="absolute -left-16 top-24 w-64 h-64 bg-[#00e599]/15 blur-[130px]" />
-          <div className="absolute right-0 -bottom-24 w-80 h-80 bg-[#ff5c00]/10 blur-[140px]" />
-
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_12%_20%,rgba(204,255,0,0.12),transparent_45%),radial-gradient(circle_at_85%_15%,rgba(0,255,157,0.12),transparent_50%)]" />
           <div className="relative max-w-6xl mx-auto px-4 py-14 lg:py-20 grid lg:grid-cols-[1.05fr_0.95fr] gap-12 items-center">
             <div className="space-y-6">
-              <p className="text-xs font-black uppercase tracking-[0.22em] text-[#00e599]">
-                Para dueños de negocio que odian el Excel
+              <h1 className="text-4xl lg:text-6xl font-black leading-[1.05]" style={headingFont}>
+                Dejá de regalar el 30% de tu sueldo a los “Gastos Fantasma”.
+              </h1>
+              <p className="text-lg text-white/70 font-semibold max-w-2xl">
+                No necesitás ganar más dinero, necesitás dejar de perderlo. Controla es la primera IA que audita tu bolsillo,
+                escanea tus tickets y vigila tu despensa para que encuentres dinero “oculto” en 5 minutos.
               </p>
-              <div className="space-y-3">
-                <h1 className="text-4xl lg:text-5xl font-black leading-[1.05]" style={headingFont}>
-                  Recuperá el 20% de tus ganancias y eliminá el caos administrativo en 5 minutos al día.
-                </h1>
-                <p className="text-lg text-white/75 font-semibold">
-                  Dejá de adivinar dónde está tu dinero. Controla usa IA para auditar tus facturas, vigilar tu inventario
-                  y decirte exactamente cuánto ganás, sin tener que teclear nada.
-                </p>
+
+              <div className="text-sm text-white/80 font-semibold border-l-2 border-[#ccff00] pl-4">
+                ⭐⭐⭐⭐⭐ “Recuperé $150 USD en mi primera semana” - Comentario verificado.
               </div>
 
               <div className="flex flex-col sm:flex-row gap-4">
                 <button
                   onClick={() => handleLead('negocios_hero_cta', '#oferta')}
-                  className="inline-flex items-center justify-center gap-2 bg-[#00e599] text-[#0f172a] px-7 py-4 rounded-2xl font-black text-lg shadow-2xl shadow-[#00e599]/30 hover:brightness-95 transition-all active:scale-95"
+                  className="inline-flex items-center justify-center gap-2 bg-[#ccff00] text-black px-7 py-4 rounded-2xl font-black text-lg shadow-2xl shadow-[#ccff00]/30 hover:brightness-95 transition-all active:scale-95"
                 >
-                  👉 Empezar prueba gratis
+                  👉 Escanear mis gastos ahora
                   <span className="material-symbols-outlined">arrow_forward</span>
                 </button>
                 <button
@@ -170,15 +210,14 @@ const NegociosPage: React.FC = () => {
                   <span className="material-symbols-outlined">play_circle</span>
                 </button>
               </div>
-              <p className="text-xs font-semibold text-white/60">Sin tarjeta de crédito • Se instala en 1 minuto</p>
+              <p className="text-xs font-semibold text-white/60">Empieza gratis • Sin tarjeta</p>
             </div>
 
-            <div className="relative">
-              <div className="absolute -inset-6 bg-[#00e599]/10 blur-3xl rounded-3xl opacity-70" />
-              <div className="relative rounded-3xl overflow-hidden border border-white/10 shadow-[0_30px_90px_-20px_rgba(0,0,0,0.55)]">
+            <div className="grid gap-4">
+              <div className="rounded-3xl overflow-hidden border border-white/10 shadow-[0_30px_90px_-25px_rgba(0,0,0,0.7)] bg-white/5">
                 <img
                   src="/app-preview.gif"
-                  alt="Dashboard de Controla IA"
+                  alt="Dashboard Controla"
                   className="w-full h-full object-cover"
                   loading="lazy"
                 />
@@ -187,33 +226,23 @@ const NegociosPage: React.FC = () => {
           </div>
         </section>
 
-        <section id="autoridad" className="bg-[#121826] py-10 border-y border-white/5">
-          <div className="max-w-6xl mx-auto px-4 space-y-4">
-            <p className="text-center text-sm font-black tracking-[0.2em] text-white/60">
-              MÁS DE 500 EMPRESARIOS LATINOS YA TIENEN EL CONTROL TOTAL
-            </p>
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-center text-white/50 text-sm font-semibold">
-              <div className="border border-white/10 rounded-xl py-3">Restaurantes</div>
-              <div className="border border-white/10 rounded-xl py-3">Tiendas</div>
-              <div className="border border-white/10 rounded-xl py-3">Constructoras</div>
-              <div className="border border-white/10 rounded-xl py-3">Agencias</div>
-            </div>
-          </div>
-        </section>
-
-        <section id="dolor" className="bg-black py-14">
+        <section id="villano" className="py-16 bg-[#111111]">
           <div className="max-w-6xl mx-auto px-4 space-y-6">
-            <div className="space-y-3">
-              <h2 className="text-3xl font-black" style={headingFont}>Tu negocio tiene un "agujero en el bolsillo" y no lo ves.</h2>
-              <p className="text-white/70 font-semibold">
-                Mientras seguís anotando en cuadernos o peleando con hojas de cálculo, esto es lo que pasa con tu dinero:
+            <div className="text-center space-y-2">
+              <h2 className="text-3xl font-black" style={headingFont}>
+                El sistema está diseñado para que te quedes en cero.
+              </h2>
+              <p className="text-white/70 font-semibold max-w-3xl mx-auto">
+                Tu banco, el supermercado y las apps de suscripción tienen un plan para vaciarte los bolsillos. Y está
+                funcionando porque confiás en tu memoria.
               </p>
             </div>
             <div className="grid md:grid-cols-3 gap-4">
-              {painPoints.map((item) => (
-                <div key={item} className="bg-white/5 border border-white/10 rounded-2xl p-4">
-                  <span className="material-symbols-outlined text-[#ff5c00]">error</span>
-                  <p className="text-sm text-white/80 font-semibold mt-2">{item}</p>
+              {villainPoints.map((item) => (
+                <div key={item.title} className="bg-black border border-white/10 rounded-2xl p-5">
+                  <span className="material-symbols-outlined text-[#ff3b30]">dangerous</span>
+                  <p className="mt-2 font-black text-white">{item.title}</p>
+                  <p className="text-sm text-white/70 font-semibold">{item.desc}</p>
                 </div>
               ))}
             </div>
@@ -223,14 +252,16 @@ const NegociosPage: React.FC = () => {
         <section id="mecanismo" className="py-16">
           <div className="max-w-6xl mx-auto px-4 grid lg:grid-cols-[1fr_1fr] gap-8 items-start">
             <div className="space-y-4">
-              <h2 className="text-3xl font-black" style={headingFont}>No contrates más personal. Activá a tu gerente financiero digital.</h2>
+              <h2 className="text-3xl font-black" style={headingFont}>
+                Tu detector de mentiras financiero (con IA) 🤖
+              </h2>
               <p className="text-white/70 font-semibold">
-                Controla no es una agenda. Es un sistema inteligente que trabaja por vos las 24 horas.
+                Olvidate de Excel. Olvidate de anotar en servilletas. Controla hace el trabajo sucio.
               </p>
               <div className="space-y-3">
-                {mechanismItems.map((item) => (
+                {mechanismSteps.map((item) => (
                   <div key={item.title} className="bg-white/5 border border-white/10 rounded-2xl p-4">
-                    <p className="font-black text-[#00e599]">{item.title}</p>
+                    <p className="font-black text-[#ccff00]">{item.title}</p>
                     <p className="text-sm text-white/75 font-semibold">{item.desc}</p>
                   </div>
                 ))}
@@ -238,8 +269,8 @@ const NegociosPage: React.FC = () => {
             </div>
 
             <div className="relative">
-              <div className="absolute -inset-6 bg-[#00e599]/10 blur-3xl rounded-3xl opacity-60" />
-              <div className="relative rounded-3xl overflow-hidden border border-white/10 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.55)] bg-black">
+              <div className="absolute -inset-6 bg-[#00ff9d]/10 blur-3xl rounded-3xl opacity-60" />
+              <div className="relative rounded-3xl overflow-hidden border border-white/10 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.6)] bg-black">
                 <div style={{ position: 'relative', paddingTop: '56.25%' }}>
                   <iframe
                     src={videoSrc}
@@ -251,28 +282,40 @@ const NegociosPage: React.FC = () => {
                   ></iframe>
                 </div>
               </div>
-              <div className="flex justify-center mt-4">
-                <button
-                  onClick={() => handleLead('negocios_video_cta', '#oferta')}
-                  className="bg-[#00e599] text-[#0f172a] px-6 py-3 rounded-xl font-black shadow-lg shadow-[#00e599]/30 hover:brightness-95 transition-all active:scale-95"
+              <div className="flex justify-center mt-4 relative z-10 pointer-events-auto">
+                <a
+                  href="#oferta"
+                  onClick={(event) => {
+                    event.preventDefault();
+                    trackMetaEvent('Lead', { content_name: 'negocios_video_cta' });
+                    goToOffer();
+                  }}
+                  className="bg-[#ccff00] text-black px-6 py-3 rounded-xl font-black shadow-lg shadow-[#ccff00]/30 hover:brightness-95 transition-all active:scale-95 pointer-events-auto"
                 >
                   Ver oferta después del video
-                </button>
+                </a>
               </div>
             </div>
           </div>
         </section>
 
-        <section id="beneficios" className="py-14 bg-[#0b111e]">
-          <div className="max-w-6xl mx-auto px-4 space-y-6">
-            <h2 className="text-3xl font-black" style={headingFont}>Lo que obtenés al tomar el control hoy:</h2>
-            <div className="grid md:grid-cols-2 gap-4">
-              {benefits.map((item) => (
-                <div key={item} className="flex items-start gap-3 bg-white/5 border border-white/10 rounded-2xl p-4">
-                  <span className="material-symbols-outlined text-[#00e599]">check_circle</span>
-                  <p className="text-sm text-white/80 font-semibold">{item}</p>
-                </div>
-              ))}
+        <section id="transformacion" className="py-16 bg-[#111111]">
+          <div className="max-w-6xl mx-auto px-4 grid lg:grid-cols-[1.1fr_0.9fr] gap-8 items-center">
+            <div className="space-y-4">
+              <h2 className="text-3xl font-black" style={headingFont}>
+                Imaginá despertar el día 25 y tener dinero en la cuenta. 😌
+              </h2>
+              <p className="text-white/70 font-semibold">
+                No es magia. Es matemáticas. Cuando tapás las fugas, el balde se llena solo.
+              </p>
+              <div className="space-y-2">
+                {transformation.map((item) => (
+                  <div key={item} className="flex items-start gap-3">
+                    <span className="material-symbols-outlined text-[#00ff9d]">check_circle</span>
+                    <p className="text-sm text-white/80 font-semibold">{item}</p>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </section>
@@ -280,78 +323,86 @@ const NegociosPage: React.FC = () => {
         <section id="oferta" className="py-16">
           <div className="max-w-6xl mx-auto px-4 space-y-8">
             <div className="text-center space-y-2">
-              <h2 className="text-3xl font-black" style={headingFont}>Cuesta menos que un café al día. Te ahorra miles al mes.</h2>
-              <p className="text-white/70 font-semibold">Plan Emprendedor. Elegí cómo querés empezar.</p>
+              <h2 className="text-3xl font-black" style={headingFont}>
+                Todo lo que incluye tu cuenta Controla
+              </h2>
+              <p className="text-white/70 font-semibold">Valor real: <span className="line-through">$30 USD/mes</span></p>
+              <p className="text-[#ccff00] font-black text-xl">Planes premium desde el precio de un café.</p>
+            </div>
+
+            <div className="relative rounded-[28px] p-[1px] bg-[linear-gradient(135deg,rgba(204,255,0,0.7),rgba(0,255,157,0.15),rgba(255,59,48,0.2))] shadow-[0_30px_90px_-30px_rgba(0,0,0,0.8)]">
+              <div className="rounded-[26px] bg-[#050505] border border-white/10 p-6 md:p-8">
+                <div className="flex flex-wrap items-center gap-3 mb-5">
+                  <span className="text-[11px] font-black uppercase tracking-[0.2em] text-black bg-[#ccff00] px-3 py-1 rounded-full">Incluye hoy</span>
+                  <span className="text-xs font-bold text-white/60">Todo listo para encontrar dinero perdido desde el día 1.</span>
+                </div>
+                <div className="grid md:grid-cols-2 gap-4">
+                  {offerStack.map((item) => (
+                    <div key={item} className="flex items-start gap-3 bg-white/5 border border-white/10 rounded-2xl p-4">
+                      <span className="material-symbols-outlined text-[#ccff00]">check_circle</span>
+                      <p className="text-sm text-white/80 font-semibold">{item}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
 
             <div className="grid md:grid-cols-3 gap-6">
               {plans.map((plan) => {
                 const isHighlight = plan.highlight;
+                const isMonthly = plan.months === 1;
                 return (
                   <div
                     key={plan.name}
                     className={`p-8 rounded-3xl border transition-all duration-300 ${
                       isHighlight
-                        ? 'bg-white text-[#0f172a] border-[#00e599] shadow-2xl shadow-[#00e599]/20'
-                        : 'bg-white/5 border-white/10'
+                        ? 'bg-white text-black border-[#ccff00] shadow-[0_30px_80px_-30px_rgba(204,255,0,0.35)]'
+                        : isMonthly
+                          ? 'bg-white text-black border-white/20 shadow-[0_22px_70px_-40px_rgba(0,255,157,0.35)] hover:border-[#00ff9d]/70 hover:shadow-[0_28px_80px_-45px_rgba(0,255,157,0.45)]'
+                          : 'bg-[#111111] text-white border-white/15 hover:border-[#ccff00]/60 hover:shadow-[0_20px_60px_-30px_rgba(204,255,0,0.25)]'
                     }`}
                   >
                     <div className="flex items-center justify-between mb-4">
                       <div>
-                        <p className={`text-sm font-black ${isHighlight ? 'text-[#0f172a]' : 'text-white'}`}>{plan.name}</p>
-                        <p className={`text-3xl font-black mt-1 ${isHighlight ? 'text-[#0f172a]' : 'text-white'}`}>USD {plan.price.toFixed(2)}</p>
-                        <p className={`text-sm font-semibold ${isHighlight ? 'text-[#334155]' : 'text-white/70'}`}>Total hoy: USD {plan.total.toFixed(2)}</p>
+                        <p className={`text-sm font-black ${isHighlight || isMonthly ? 'text-black' : 'text-white'}`}>{plan.name}</p>
+                        <p className={`text-3xl font-black mt-1 ${isHighlight || isMonthly ? 'text-black' : 'text-white'}`}>USD {plan.price.toFixed(2)}</p>
+                        <p className={`text-sm font-semibold ${isHighlight || isMonthly ? 'text-[#1f2937]' : 'text-white/70'}`}>Total hoy: USD {plan.total.toFixed(2)}</p>
                         {plan.months > 1 && (
-                          <p className={`text-xs font-semibold ${isHighlight ? 'text-[#475569]' : 'text-white/60'}`}>
+                          <p className={`text-xs font-semibold ${isHighlight ? 'text-[#4b5563]' : 'text-white/60'}`}>
                             Pago único por {plan.months} meses
                           </p>
+                        )}
+                        {isMonthly && (
+                          <p className="text-xs font-semibold text-[#4b5563]">Ideal para probar 1 mes</p>
                         )}
                       </div>
                       {plan.badge && (
                         <span className={`text-xs font-black uppercase tracking-[0.16em] px-3 py-1 rounded-full ${
-                          isHighlight ? 'bg-[#00e599]/15 text-[#0f172a]' : 'bg-white/10 text-white'
+                          isHighlight ? 'bg-[#ccff00]/20 text-black' : 'bg-white/10 text-white'
                         }`}>
                           {plan.badge}
                         </span>
                       )}
-                    </div>
-
-                    <div className={`space-y-2 text-sm font-semibold mb-6 ${isHighlight ? 'text-[#334155]' : 'text-white/80'}`}>
-                      <div className="flex items-center gap-2">
-                        <span className={`material-symbols-outlined text-base ${isHighlight ? 'text-[#00e599]' : 'text-[#00e599]'}`}>
-                          verified
+                      {!plan.badge && !isHighlight && (
+                        <span className={`text-xs font-black uppercase tracking-[0.16em] px-3 py-1 rounded-full ${
+                          isMonthly ? 'bg-[#00ff9d]/20 text-[#0b3b2b]' : 'bg-white/10 text-white/70'
+                        }`}>
+                          Entrada
                         </span>
-                        Usuarios ilimitados
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <span className={`material-symbols-outlined text-base ${isHighlight ? 'text-[#00e599]' : 'text-[#00e599]'}`}>
-                          bolt
-                        </span>
-                        Escaneo de facturas con IA
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <span className={`material-symbols-outlined text-base ${isHighlight ? 'text-[#00e599]' : 'text-[#00e599]'}`}>
-                          directions_car
-                        </span>
-                        Módulo de vehículos e inventario
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <span className={`material-symbols-outlined text-base ${isHighlight ? 'text-[#00e599]' : 'text-[#00e599]'}`}>
-                          chat
-                        </span>
-                        Soporte prioritario por WhatsApp
-                      </div>
+                      )}
                     </div>
 
                     <button
                       onClick={() => handleLead(`negocios_plan_${plan.name.toLowerCase()}`, plan.href)}
                       className={`w-full inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl font-black transition-all active:scale-95 ${
                         isHighlight
-                          ? 'bg-[#00e599] text-[#0f172a] hover:brightness-95'
-                          : 'bg-white/10 text-white hover:bg-white/20'
+                          ? 'bg-[#ccff00] text-black hover:brightness-95'
+                          : isMonthly
+                            ? 'bg-black/90 text-white hover:bg-black'
+                            : 'bg-white/10 text-white hover:bg-white/20 border border-white/10'
                       }`}
                     >
-                      👉 Activar mi cuenta ahora
+                      🛒 Comprar ahora
                       <span className="material-symbols-outlined text-base">arrow_forward</span>
                     </button>
                   </div>
@@ -361,20 +412,18 @@ const NegociosPage: React.FC = () => {
           </div>
         </section>
 
-        <section id="faq" className="bg-black py-16">
+        <section id="faq" className="py-16 bg-[#111111]">
           <div className="max-w-6xl mx-auto px-4 space-y-6">
             <div className="text-center space-y-2">
-              <p className="text-sm font-black uppercase tracking-[0.2em] text-white/60">Preguntas frecuentes</p>
-              <h2 className="text-3xl font-black" style={headingFont}>Preguntas frecuentes</h2>
+              <h2 className="text-3xl font-black" style={headingFont}>
+                Clientes satisfechos
+              </h2>
             </div>
-            <div className="grid lg:grid-cols-2 gap-4">
-              {faqs.map((faq) => (
-                <div key={faq.q} className="bg-white/5 border border-white/10 rounded-2xl p-4 flex gap-3">
-                  <span className="material-symbols-outlined text-[#00e599] mt-0.5">add</span>
-                  <div>
-                    <p className="font-black text-white">{faq.q}</p>
-                    <p className="text-sm text-white/80 font-semibold">{faq.a}</p>
-                  </div>
+            <div className="grid lg:grid-cols-3 gap-4">
+              {testimonials.map((item) => (
+                <div key={item.q} className="bg-black border border-white/10 rounded-2xl p-4">
+                  <p className="font-black text-white">{item.q}</p>
+                  <p className="text-sm text-white/80 font-semibold mt-2">{item.a}</p>
                 </div>
               ))}
             </div>
@@ -383,20 +432,18 @@ const NegociosPage: React.FC = () => {
 
         <section className="py-16">
           <div className="max-w-6xl mx-auto px-4">
-            <div className="bg-[#0b111e] border border-white/10 rounded-[28px] p-8 md:p-10 shadow-xl">
+            <div className="bg-black border border-white/10 rounded-[28px] p-8 md:p-10 shadow-xl">
               <div className="grid md:grid-cols-[1.1fr_0.9fr] gap-6 items-center">
                 <div className="space-y-3">
-                  <h2 className="text-3xl font-black" style={headingFont}>Dejá de perder dinero hoy mismo.</h2>
-                  <p className="text-white/70 font-semibold">
-                    Activá Controla y empezá a recuperar margen desde esta semana.
-                  </p>
+                  <p className="text-sm font-black uppercase tracking-[0.2em] text-white/50">El dinero no cuida de sí mismo.</p>
+                  <h2 className="text-3xl font-black" style={headingFont}>Tú tienes que hacerlo.</h2>
                 </div>
                 <div className="flex flex-col gap-3">
                   <button
                     onClick={() => handleLead('negocios_final_cta', '#oferta')}
-                    className="inline-flex items-center justify-center gap-2 bg-[#00e599] text-[#0f172a] px-6 py-4 rounded-xl font-black shadow-lg shadow-[#00e599]/30 hover:brightness-95 transition-all active:scale-95"
+                    className="inline-flex items-center justify-center gap-2 bg-[#ccff00] text-black px-6 py-4 rounded-xl font-black shadow-lg shadow-[#ccff00]/30 hover:brightness-95 transition-all active:scale-95"
                   >
-                    🚀 Quiero controlar mi negocio
+                    👉 Empieza ahora
                     <span className="material-symbols-outlined">arrow_forward</span>
                   </button>
                   <a
