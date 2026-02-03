@@ -4,110 +4,46 @@ import { trackMetaEvent } from '../../metaPixel';
 const demoLink = 'https://demo.controla.site/';
 const videoSrc = 'https://player.mediadelivery.net/embed/364591/d1270fc1-fda6-4383-9a7b-36d9c9cde7ad?autoplay=false&loop=false&muted=false&preload=true&responsive=true';
 
-const heroBullets = [
-  'Separas gastos personales y del negocio sin duplicar trabajo.',
-  'Ves caja real, próximos pagos y margen en un solo panel.',
-  'Alertas inteligentes antes de quedarte sin flujo.',
-];
-
-const personalBusinessCards = [
-  {
-    title: 'Personal',
-    subtitle: 'Tu vida diaria sin ansiedad financiera.',
-    items: ['Suscripciones invisibles bajo control', 'Metas familiares con ritmo real', 'Compras del mes sin sorpresas'],
-    tone: 'bg-white',
-    subtitleClass: 'text-[color:var(--muted)]',
-    badgeClass: 'bg-black/5 text-[color:var(--ink)]',
-    listClass: 'text-[color:var(--ink)]',
-    badge: 'Modo personal',
-  },
-  {
-    title: 'Negocio',
-    subtitle: 'Decisiones con caja clara y previsión.',
-    items: ['Ingresos por cliente y proyecto', 'Costos fijos vs variables en segundos', 'Proyección de impuestos y deudas'],
-    tone: 'bg-[#0f172a] text-white',
-    subtitleClass: 'text-white/70',
-    badgeClass: 'bg-white/10 text-white',
-    listClass: 'text-white/85',
-    badge: 'Modo negocio',
-  },
-];
-
 const painPoints = [
-  'Mezclás cuentas y no sabés cuánto es realmente tuyo.',
-  'Pagás proveedores sin una vista clara del flujo de caja.',
-  'Te enterás tarde de los vencimientos e intereses.',
-  'No tenés reportes simples para decidir qué recortar o invertir.',
+  'El "Robo Hormiga" Invisible: compras duplicadas, vueltos que no cuadran y suscripciones fantasma.',
+  'Ceguera de Inventario: comprás mercancía que ya tenías o perdés ventas por quedarte sin stock.',
+  'Estrés de Fin de Mes: llegás al día 30 sin saber si hubo ganancia real o solo moviste dinero.',
 ];
 
-const workflowSteps = [
+const mechanismItems = [
   {
-    title: 'Centralizás ingresos y gastos',
-    desc: 'Cargás lo real y el sistema te muestra el saldo verdadero, no el del banco.',
+    title: 'Escaneo con IA',
+    desc: 'Sacás una foto a tus facturas y la app extrae fechas, montos y proveedores al instante.',
   },
   {
-    title: 'Separás personal vs negocio',
-    desc: 'Dos vistas, misma data. Sin Excel ni doble carga.',
+    title: 'Alertas Anti-Desastre',
+    desc: 'Notificaciones antes de quedarte sin caja o cuando un gasto se sale de lo normal.',
   },
   {
-    title: 'Recibís alertas accionables',
-    desc: 'Vencimientos, fugas y oportunidades antes de que duelan.',
-  },
-  {
-    title: 'Tomás decisiones con claridad',
-    desc: 'Sabés qué pagar, qué ajustar y cuánto podés reinvertir.',
+    title: 'Auditoría Automática',
+    desc: 'El sistema cruza tus gastos con tu inventario para justificar cada centavo.',
   },
 ];
 
-const featureGrid = [
-  {
-    title: 'Panel dual inteligente',
-    desc: 'Vista personal + vista negocio con categorías automáticas y filtros rápidos.',
-    icon: 'space_dashboard',
-  },
-  {
-    title: 'Flujo de caja proyectado',
-    desc: 'Simulá semana a semana y evitá quedarte sin caja.',
-    icon: 'timeline',
-  },
-  {
-    title: 'Alertas que sí importan',
-    desc: 'Recordatorios de pagos, impuestos y suscripciones sin perder tiempo.',
-    icon: 'notifications_active',
-  },
-  {
-    title: 'Reportes listos para decidir',
-    desc: 'Visualizá margen, gasto por rubro y oportunidades de ahorro.',
-    icon: 'query_stats',
-  },
-  {
-    title: 'Rutina semanal guiada',
-    desc: 'Checklist en 10 minutos para cerrar la semana con números claros.',
-    icon: 'task_alt',
-  },
-  {
-    title: 'Inventario y compras',
-    desc: 'Evitá duplicar compras y cuidá el capital de trabajo.',
-    icon: 'inventory_2',
-  },
+const benefits = [
+  'Visibilidad Total: Dashboard con ingresos, gastos y margen neto en tiempo real.',
+  'Inventario Blindado: stock, caducidad y reabastecimiento automático.',
+  'Flota bajo Control: mantenimiento, gasolina y gastos de vehículos.',
+  'Multiusuario Seguro: tu equipo registra, vos controlás con permisos.',
 ];
 
-const outcomes = [
+const faqs = [
   {
-    title: 'Caja predecible',
-    desc: 'Sabés cuánto entra, cuánto sale y cuándo. Sin sorpresas.',
+    q: '¿Es difícil de configurar?',
+    a: 'No. Está diseñado para gente ocupada. Si sabés usar WhatsApp, sabés usar Controla. En menos de 5 minutos empezás.',
   },
   {
-    title: 'Separación real',
-    desc: 'Tus finanzas personales no se mezclan con el negocio.',
+    q: '¿Mis datos están seguros?',
+    a: 'Usamos encriptación de grado bancario. Tus números son solo tuyos y nadie más accede.',
   },
   {
-    title: 'Decisiones rápidas',
-    desc: 'Ves en minutos qué ajustar y qué potenciar.',
-  },
-  {
-    title: 'Menos estrés',
-    desc: 'Alertas y rutina semanal para dormir tranquilo.',
+    q: '¿Sirve para mi tipo de negocio?',
+    a: 'Si comprás insumos, vendés productos o servicios y tenés gastos, Controla es para vos. Funciona para constructoras, restaurantes, tiendas y servicios.',
   },
 ];
 
@@ -141,25 +77,6 @@ const plans = [
   },
 ];
 
-const faqs = [
-  {
-    q: '¿Puedo separar gastos personales y del negocio?',
-    a: 'Sí. Tenés dos vistas con la misma data, sin doble carga y con filtros rápidos.',
-  },
-  {
-    q: '¿Necesito saber de finanzas?',
-    a: 'No. El sistema guía la rutina semanal y te muestra solo lo importante.',
-  },
-  {
-    q: '¿Sirve si soy freelancer o microempresa?',
-    a: 'Está pensado para emprendedores con poco tiempo y necesidad de claridad inmediata.',
-  },
-  {
-    q: '¿Puedo cancelar cuando quiera?',
-    a: 'Sí. Cancelás cuando quieras y tenés garantía de 7 días.',
-  },
-];
-
 const NegociosPage: React.FC = () => {
   const handleLead = (label: string, href?: string) => {
     trackMetaEvent('Lead', { content_name: label });
@@ -172,52 +89,45 @@ const NegociosPage: React.FC = () => {
     }
   };
 
-  const themeVars = {
-    '--ink': '#0f172a',
-    '--muted': '#5b6478',
-    '--brand': '#0ea5e9',
-    '--brand-strong': '#0284c7',
-    '--accent': '#f97316',
-    '--sand': '#f4f1ea',
-    '--surface': '#ffffff',
-    '--surface-alt': '#fdf6ef',
-  } as React.CSSProperties;
+  const headingFont = { fontFamily: 'Inter, Montserrat, sans-serif' } as React.CSSProperties;
+  const bodyFont = { fontFamily: 'Roboto, Open Sans, sans-serif' } as React.CSSProperties;
 
   return (
-    <div className="min-h-screen bg-[color:var(--sand)] text-[color:var(--ink)]" style={themeVars}>
-      <header className="sticky top-0 z-40 bg-[color:var(--sand)]/90 backdrop-blur-xl border-b border-black/5">
+    <div className="min-h-screen bg-[#0f172a] text-white" style={bodyFont}>
+      <header className="sticky top-0 z-40 bg-[#0f172a]/90 backdrop-blur-xl border-b border-white/10">
         <div className="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center gap-3 cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-            <div className="w-10 h-10 rounded-2xl bg-[color:var(--brand)] text-white font-black flex items-center justify-center shadow-lg shadow-black/10">
+            <div className="w-10 h-10 rounded-2xl bg-[#00e599] text-[#0f172a] font-black flex items-center justify-center shadow-lg shadow-[#00e599]/30">
               <span className="material-symbols-outlined text-lg">grid_view</span>
             </div>
             <div>
-              <p className="text-[11px] font-black uppercase tracking-[0.18em] text-[color:var(--muted)]">Controla IA</p>
-              <p className="text-lg font-extrabold leading-none">Panel Doble</p>
+              <p className="text-[11px] font-black uppercase tracking-[0.18em] text-white/60">Controla IA</p>
+              <p className="text-lg font-extrabold leading-none">Negocios</p>
             </div>
           </div>
 
-          <nav className="hidden md:flex items-center gap-6 text-sm font-semibold text-[color:var(--muted)]">
-            <a href="#beneficios" className="hover:text-[color:var(--ink)] transition-colors">Beneficios</a>
-            <a href="#flujo" className="hover:text-[color:var(--ink)] transition-colors">Cómo funciona</a>
-            <a href="#demo" className="hover:text-[color:var(--ink)] transition-colors">Demo</a>
-            <a href="#planes" className="hover:text-[color:var(--ink)] transition-colors">Planes</a>
-            <a href="#faq" className="hover:text-[color:var(--ink)] transition-colors">FAQ</a>
+          <nav className="hidden md:flex items-center gap-6 text-sm font-semibold text-white/70">
+            <a href="#autoridad" className="hover:text-white transition-colors">Autoridad</a>
+            <a href="#dolor" className="hover:text-white transition-colors">Dolor</a>
+            <a href="#mecanismo" className="hover:text-white transition-colors">Mecanismo</a>
+            <a href="#beneficios" className="hover:text-white transition-colors">Beneficios</a>
+            <a href="#oferta" className="hover:text-white transition-colors">Oferta</a>
+            <a href="#faq" className="hover:text-white transition-colors">FAQ</a>
           </nav>
 
           <div className="flex items-center gap-3">
             <a
               href={demoLink}
               onClick={() => handleLead('negocios_header_demo')}
-              className="hidden sm:inline-flex text-sm font-bold text-[color:var(--muted)] hover:text-[color:var(--ink)]"
+              className="hidden sm:inline-flex text-sm font-bold text-white/80 hover:text-white"
             >
               Ver demo
             </a>
             <button
-              onClick={() => handleLead('negocios_header_cta', '#planes')}
-              className="bg-[color:var(--accent)] text-[#1f1300] font-black text-sm px-4 py-2 rounded-xl shadow-lg shadow-black/10 hover:brightness-95 transition-all active:scale-95"
+              onClick={() => handleLead('negocios_header_cta', '#oferta')}
+              className="bg-[#00e599] text-[#0f172a] font-black text-sm px-4 py-2 rounded-xl shadow-lg shadow-[#00e599]/30 hover:brightness-95 transition-all active:scale-95"
             >
-              Quiero ordenar mis gastos
+              Empezar prueba gratis
             </button>
           </div>
         </div>
@@ -225,212 +135,111 @@ const NegociosPage: React.FC = () => {
 
       <main>
         <section className="relative overflow-hidden">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_10%_20%,rgba(14,165,233,0.2),transparent_55%),radial-gradient(circle_at_85%_10%,rgba(249,115,22,0.18),transparent_45%),linear-gradient(180deg,rgba(255,255,255,0.9),rgba(244,241,234,1))]" />
-          <div className="absolute -left-16 top-20 w-64 h-64 bg-[color:var(--brand)]/10 blur-[120px]" />
-          <div className="absolute right-0 -bottom-24 w-80 h-80 bg-[color:var(--accent)]/15 blur-[140px]" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_15%_20%,rgba(0,229,153,0.25),transparent_45%),radial-gradient(circle_at_85%_10%,rgba(255,92,0,0.2),transparent_40%)]" />
+          <div className="absolute -left-16 top-24 w-64 h-64 bg-[#00e599]/15 blur-[130px]" />
+          <div className="absolute right-0 -bottom-24 w-80 h-80 bg-[#ff5c00]/10 blur-[140px]" />
 
-          <div className="relative max-w-6xl mx-auto px-4 py-14 lg:py-20 grid lg:grid-cols-[1.1fr_0.9fr] gap-12 items-center">
+          <div className="relative max-w-6xl mx-auto px-4 py-14 lg:py-20 grid lg:grid-cols-[1.05fr_0.95fr] gap-12 items-center">
             <div className="space-y-6">
-              <div className="inline-flex items-center gap-2 bg-white/70 border border-black/10 px-3 py-1 rounded-full text-xs font-black uppercase tracking-[0.18em]">
-                <span className="material-symbols-outlined text-sm text-[color:var(--brand)]">verified</span>
-                Nuevo: control personal + negocio
-              </div>
-
-              <div className="space-y-3 reveal-up">
-                <h1 className="text-4xl lg:text-5xl font-black leading-[1.05]">
-                  Gastos personales y de negocio en un solo panel, sin caos ni planillas.
+              <p className="text-xs font-black uppercase tracking-[0.22em] text-[#00e599]">
+                Para dueños de negocio que odian el Excel
+              </p>
+              <div className="space-y-3">
+                <h1 className="text-4xl lg:text-5xl font-black leading-[1.05]" style={headingFont}>
+                  Recuperá el 20% de tus ganancias y eliminá el caos administrativo en 5 minutos al día.
                 </h1>
-                <p className="text-xl font-extrabold text-[color:var(--brand-strong)]">
-                  Separás cuentas, ves tu caja real y tomás decisiones en minutos.
-                </p>
-                <p className="text-lg text-[color:var(--muted)] max-w-2xl">
-                  Controla IA te da una vista clara de lo que es tuyo, lo que es del negocio y lo que viene. Sin duplicar trabajo.
+                <p className="text-lg text-white/75 font-semibold">
+                  Dejá de adivinar dónde está tu dinero. Controla usa IA para auditar tus facturas, vigilar tu inventario
+                  y decirte exactamente cuánto ganás, sin tener que teclear nada.
                 </p>
               </div>
 
-              <div className="flex flex-col sm:flex-row gap-4 reveal-up reveal-delay-1">
+              <div className="flex flex-col sm:flex-row gap-4">
                 <button
-                  onClick={() => handleLead('negocios_hero_cta', '#planes')}
-                  className="inline-flex items-center justify-center gap-2 bg-[color:var(--accent)] text-[#1f1300] px-7 py-4 rounded-2xl font-black text-lg shadow-2xl shadow-black/10 hover:brightness-95 transition-all active:scale-95"
+                  onClick={() => handleLead('negocios_hero_cta', '#oferta')}
+                  className="inline-flex items-center justify-center gap-2 bg-[#00e599] text-[#0f172a] px-7 py-4 rounded-2xl font-black text-lg shadow-2xl shadow-[#00e599]/30 hover:brightness-95 transition-all active:scale-95"
                 >
-                  Quiero control real
+                  👉 Empezar prueba gratis
                   <span className="material-symbols-outlined">arrow_forward</span>
                 </button>
                 <button
-                  onClick={() => handleLead('negocios_hero_demo', '#demo')}
-                  className="inline-flex items-center justify-center gap-2 bg-white/80 border border-black/10 px-7 py-4 rounded-2xl font-bold text-[color:var(--ink)] hover:bg-white transition-all active:scale-95"
+                  onClick={() => handleLead('negocios_hero_demo', '#mecanismo')}
+                  className="inline-flex items-center justify-center gap-2 bg-white/5 border border-white/15 px-7 py-4 rounded-2xl font-bold text-white/90 hover:bg-white/10 transition-all active:scale-95"
                 >
                   Ver cómo funciona
                   <span className="material-symbols-outlined">play_circle</span>
                 </button>
               </div>
-
-              <div className="bg-white/80 border border-black/10 rounded-3xl p-5 shadow-sm reveal-up reveal-delay-2">
-                <p className="text-sm font-black text-[color:var(--ink)]">Lo que cambia esta semana:</p>
-                <ul className="grid sm:grid-cols-2 gap-2 text-sm text-[color:var(--muted)] font-semibold">
-                  {heroBullets.map((item) => (
-                    <li key={item} className="flex items-start gap-2">
-                      <span className="material-symbols-outlined text-[color:var(--brand)] text-base">check_circle</span>
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-
-            <div className="space-y-4 reveal-up reveal-delay-3">
-              <div className="relative rounded-[26px] bg-white/85 border border-black/10 shadow-xl p-4">
-                <div className="absolute -top-4 right-4 bg-[color:var(--brand)] text-white text-xs font-black px-3 py-1 rounded-full shadow-lg">
-                  Panel en vivo
-                </div>
-                <div className="rounded-2xl overflow-hidden border border-black/5">
-                  <img
-                    src="/app-preview.gif"
-                    alt="Vista del panel de Controla IA"
-                    className="w-full h-full object-cover"
-                    loading="lazy"
-                  />
-                </div>
-              </div>
-
-              <div className="grid grid-cols-2 gap-3">
-                {outcomes.map((item) => (
-                  <div key={item.title} className="bg-white/80 border border-black/10 rounded-2xl p-3 shadow-sm">
-                    <p className="text-sm font-black text-[color:var(--ink)]">{item.title}</p>
-                    <p className="text-xs font-semibold text-[color:var(--muted)]">{item.desc}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section id="beneficios" className="py-14">
-          <div className="max-w-6xl mx-auto px-4 space-y-6">
-            <div className="text-center space-y-2">
-              <p className="text-sm font-black uppercase tracking-[0.2em] text-[color:var(--brand-strong)]">Dos mundos, un control</p>
-              <p className="text-3xl font-black">Personal y negocio dejan de pelearse.</p>
-              <p className="text-[color:var(--muted)] font-semibold max-w-2xl mx-auto">
-                Tenés claridad instantánea de lo que podés gastar, lo que debés cubrir y cuánto podés reinvertir.
-              </p>
-            </div>
-            <div className="grid md:grid-cols-2 gap-4">
-              {personalBusinessCards.map((card) => (
-                <div
-                  key={card.title}
-                  className={`${card.tone} rounded-3xl p-6 border border-black/10 shadow-sm space-y-3`}
-                >
-                  <span className={`text-xs font-black uppercase tracking-[0.2em] px-3 py-1 rounded-full inline-flex ${card.badgeClass}`}>
-                    {card.badge}
-                  </span>
-                  <p className="text-2xl font-black">{card.title}</p>
-                  <p className={`text-sm font-semibold ${card.subtitleClass}`}>{card.subtitle}</p>
-                  <ul className={`space-y-2 text-sm font-semibold ${card.listClass}`}>
-                    {card.items.map((item) => (
-                      <li key={item} className="flex items-start gap-2">
-                        <span className="material-symbols-outlined text-[color:var(--accent)] text-base">check_circle</span>
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="py-12 bg-[color:var(--surface)]">
-          <div className="max-w-6xl mx-auto px-4 grid lg:grid-cols-[1.1fr_0.9fr] gap-6 items-start">
-            <div className="space-y-3">
-              <p className="text-sm font-black uppercase tracking-[0.2em] text-[color:var(--brand-strong)]">¿Te suena?</p>
-              <h2 className="text-3xl font-black leading-tight">Cuando todo se mezcla, todo se vuelve ruido.</h2>
-              <p className="text-[color:var(--muted)] font-semibold">
-                Si no separás gastos, terminás decidiendo tarde y pagando de más. El problema no es trabajar mucho. Es no ver el tablero.
-              </p>
-              <div className="grid sm:grid-cols-2 gap-3">
-                {painPoints.map((item) => (
-                  <div key={item} className="flex items-start gap-2 bg-[color:var(--surface-alt)] border border-black/5 rounded-2xl px-3 py-3 text-sm text-[color:var(--muted)] font-semibold">
-                    <span className="material-symbols-outlined text-[color:var(--accent)] text-base">warning</span>
-                    <span>{item}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="bg-[#0f172a] text-white rounded-[24px] p-6 shadow-xl shadow-black/25 border border-black/20 space-y-3">
-              <p className="text-sm font-black uppercase tracking-[0.16em] text-white/70">Lo que cambia en 30 días</p>
-              <ul className="space-y-2 text-sm text-white/80 font-semibold">
-                {outcomes.map((item) => (
-                  <li key={item.title} className="flex items-start gap-2">
-                    <span className="material-symbols-outlined text-[color:var(--accent)] text-base">check_circle</span>
-                    <span><span className="font-bold text-white">{item.title}:</span> {item.desc}</span>
-                  </li>
-                ))}
-              </ul>
-              <button
-                onClick={() => handleLead('negocios_pain_cta', '#planes')}
-                className="inline-flex items-center justify-center gap-2 bg-[color:var(--accent)] text-[#1f1300] px-5 py-3 rounded-xl font-black shadow-lg shadow-black/20 hover:brightness-95 transition-all active:scale-95"
-              >
-                Quiero ese control
-                <span className="material-symbols-outlined">arrow_forward</span>
-              </button>
-            </div>
-          </div>
-        </section>
-
-        <section id="flujo" className="py-14">
-          <div className="max-w-6xl mx-auto px-4 space-y-6">
-            <div className="text-center space-y-2">
-              <p className="text-sm font-black uppercase tracking-[0.2em] text-[color:var(--brand-strong)]">Tu flujo en minutos</p>
-              <p className="text-3xl font-black">Una rutina simple para controlar todo.</p>
-            </div>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-              {workflowSteps.map((step, index) => (
-                <div key={step.title} className="bg-white border border-black/10 rounded-2xl p-4 shadow-sm">
-                  <div className="w-10 h-10 rounded-full bg-[color:var(--brand)] text-white font-black flex items-center justify-center mb-3">
-                    {index + 1}
-                  </div>
-                  <p className="text-sm font-black">{step.title}</p>
-                  <p className="text-sm text-[color:var(--muted)] font-semibold">{step.desc}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="py-14 bg-[color:var(--surface)]">
-          <div className="max-w-6xl mx-auto px-4 space-y-6">
-            <div className="text-center space-y-2">
-              <p className="text-sm font-black uppercase tracking-[0.2em] text-[color:var(--brand-strong)]">Herramientas clave</p>
-              <p className="text-3xl font-black">Todo lo que necesitás para ordenar tu dinero.</p>
-            </div>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {featureGrid.map((item) => (
-                <div key={item.title} className="p-5 rounded-2xl border border-black/10 bg-white hover:shadow-lg transition-all">
-                  <div className="flex items-center gap-2 mb-2">
-                    <span className="material-symbols-outlined text-[color:var(--brand-strong)]">{item.icon}</span>
-                    <p className="text-sm font-black">{item.title}</p>
-                  </div>
-                  <p className="text-sm text-[color:var(--muted)] font-semibold leading-relaxed">{item.desc}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section id="demo" className="bg-[#0f172a] text-white py-16">
-          <div className="max-w-6xl mx-auto px-4 space-y-8">
-            <div className="text-center max-w-3xl mx-auto space-y-3">
-              <p className="text-sm font-black uppercase tracking-[0.2em] text-white/70">Mirá el panel real</p>
-              <p className="text-3xl font-black">90 segundos para entenderlo todo.</p>
-              <p className="text-white/75 font-semibold">
-                Sin promesas vacías. Esto es Controla IA mostrando caja, pagos y categorías en vivo.
-              </p>
+              <p className="text-xs font-semibold text-white/60">Sin tarjeta de crédito • Se instala en 1 minuto</p>
             </div>
 
             <div className="relative">
-              <div className="absolute -inset-6 bg-[color:var(--brand)]/10 blur-3xl rounded-3xl opacity-60" />
-              <div className="relative rounded-3xl overflow-hidden border border-white/10 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.45)] bg-black">
+              <div className="absolute -inset-6 bg-[#00e599]/10 blur-3xl rounded-3xl opacity-70" />
+              <div className="relative rounded-3xl overflow-hidden border border-white/10 shadow-[0_30px_90px_-20px_rgba(0,0,0,0.55)]">
+                <img
+                  src="/app-preview.gif"
+                  alt="Dashboard de Controla IA"
+                  className="w-full h-full object-cover"
+                  loading="lazy"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="autoridad" className="bg-[#121826] py-10 border-y border-white/5">
+          <div className="max-w-6xl mx-auto px-4 space-y-4">
+            <p className="text-center text-sm font-black tracking-[0.2em] text-white/60">
+              MÁS DE 500 EMPRESARIOS LATINOS YA TIENEN EL CONTROL TOTAL
+            </p>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-center text-white/50 text-sm font-semibold">
+              <div className="border border-white/10 rounded-xl py-3">Restaurantes</div>
+              <div className="border border-white/10 rounded-xl py-3">Tiendas</div>
+              <div className="border border-white/10 rounded-xl py-3">Constructoras</div>
+              <div className="border border-white/10 rounded-xl py-3">Agencias</div>
+            </div>
+          </div>
+        </section>
+
+        <section id="dolor" className="bg-black py-14">
+          <div className="max-w-6xl mx-auto px-4 space-y-6">
+            <div className="space-y-3">
+              <h2 className="text-3xl font-black" style={headingFont}>Tu negocio tiene un "agujero en el bolsillo" y no lo ves.</h2>
+              <p className="text-white/70 font-semibold">
+                Mientras seguís anotando en cuadernos o peleando con hojas de cálculo, esto es lo que pasa con tu dinero:
+              </p>
+            </div>
+            <div className="grid md:grid-cols-3 gap-4">
+              {painPoints.map((item) => (
+                <div key={item} className="bg-white/5 border border-white/10 rounded-2xl p-4">
+                  <span className="material-symbols-outlined text-[#ff5c00]">error</span>
+                  <p className="text-sm text-white/80 font-semibold mt-2">{item}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section id="mecanismo" className="py-16">
+          <div className="max-w-6xl mx-auto px-4 grid lg:grid-cols-[1fr_1fr] gap-8 items-start">
+            <div className="space-y-4">
+              <h2 className="text-3xl font-black" style={headingFont}>No contrates más personal. Activá a tu gerente financiero digital.</h2>
+              <p className="text-white/70 font-semibold">
+                Controla no es una agenda. Es un sistema inteligente que trabaja por vos las 24 horas.
+              </p>
+              <div className="space-y-3">
+                {mechanismItems.map((item) => (
+                  <div key={item.title} className="bg-white/5 border border-white/10 rounded-2xl p-4">
+                    <p className="font-black text-[#00e599]">{item.title}</p>
+                    <p className="text-sm text-white/75 font-semibold">{item.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="relative">
+              <div className="absolute -inset-6 bg-[#00e599]/10 blur-3xl rounded-3xl opacity-60" />
+              <div className="relative rounded-3xl overflow-hidden border border-white/10 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.55)] bg-black">
                 <div style={{ position: 'relative', paddingTop: '56.25%' }}>
                   <iframe
                     src={videoSrc}
@@ -442,26 +251,37 @@ const NegociosPage: React.FC = () => {
                   ></iframe>
                 </div>
               </div>
-            </div>
-
-            <div className="flex flex-col items-center gap-3">
-              <button
-                onClick={() => handleLead('negocios_video_cta', '#planes')}
-                className="bg-[color:var(--accent)] hover:brightness-95 text-[#1f1300] px-8 py-4 rounded-xl font-black text-lg transition-all shadow-xl shadow-black/20 active:scale-95"
-              >
-                Ver oferta después del video
-              </button>
-              <p className="text-sm font-semibold text-white/70">No necesitás tarjeta para mirar. Solo 90 segundos.</p>
+              <div className="flex justify-center mt-4">
+                <button
+                  onClick={() => handleLead('negocios_video_cta', '#oferta')}
+                  className="bg-[#00e599] text-[#0f172a] px-6 py-3 rounded-xl font-black shadow-lg shadow-[#00e599]/30 hover:brightness-95 transition-all active:scale-95"
+                >
+                  Ver oferta después del video
+                </button>
+              </div>
             </div>
           </div>
         </section>
 
-        <section id="planes" className="bg-[color:var(--sand)] text-[color:var(--ink)] py-16 lg:py-20">
+        <section id="beneficios" className="py-14 bg-[#0b111e]">
+          <div className="max-w-6xl mx-auto px-4 space-y-6">
+            <h2 className="text-3xl font-black" style={headingFont}>Lo que obtenés al tomar el control hoy:</h2>
+            <div className="grid md:grid-cols-2 gap-4">
+              {benefits.map((item) => (
+                <div key={item} className="flex items-start gap-3 bg-white/5 border border-white/10 rounded-2xl p-4">
+                  <span className="material-symbols-outlined text-[#00e599]">check_circle</span>
+                  <p className="text-sm text-white/80 font-semibold">{item}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section id="oferta" className="py-16">
           <div className="max-w-6xl mx-auto px-4 space-y-8">
-            <div className="text-center max-w-3xl mx-auto space-y-3">
-              <p className="text-sm font-black uppercase tracking-[0.2em] text-[color:var(--brand-strong)]">Activa tu claridad</p>
-              <p className="text-3xl lg:text-4xl font-black">Elegí cómo querés empezar</p>
-              <p className="text-[color:var(--muted)] font-semibold">En minutos encontrás dinero perdido y empezás a planificar sin estrés.</p>
+            <div className="text-center space-y-2">
+              <h2 className="text-3xl font-black" style={headingFont}>Cuesta menos que un café al día. Te ahorra miles al mes.</h2>
+              <p className="text-white/70 font-semibold">Plan Emprendedor. Elegí cómo querés empezar.</p>
             </div>
 
             <div className="grid md:grid-cols-3 gap-6">
@@ -472,38 +292,54 @@ const NegociosPage: React.FC = () => {
                     key={plan.name}
                     className={`p-8 rounded-3xl border transition-all duration-300 ${
                       isHighlight
-                        ? 'bg-white text-[color:var(--ink)] border-black/5 shadow-2xl shadow-black/10'
-                        : 'bg-white/70 border-black/10 shadow-lg shadow-black/5'
+                        ? 'bg-white text-[#0f172a] border-[#00e599] shadow-2xl shadow-[#00e599]/20'
+                        : 'bg-white/5 border-white/10'
                     }`}
                   >
                     <div className="flex items-center justify-between mb-4">
                       <div>
-                        <p className="text-sm font-black">{plan.name}</p>
-                        <p className="text-3xl font-black mt-1">USD {plan.price.toFixed(2)}</p>
-                        <p className="text-sm font-semibold text-[color:var(--muted)]">Total hoy: USD {plan.total.toFixed(2)}</p>
+                        <p className={`text-sm font-black ${isHighlight ? 'text-[#0f172a]' : 'text-white'}`}>{plan.name}</p>
+                        <p className={`text-3xl font-black mt-1 ${isHighlight ? 'text-[#0f172a]' : 'text-white'}`}>USD {plan.price.toFixed(2)}</p>
+                        <p className={`text-sm font-semibold ${isHighlight ? 'text-[#334155]' : 'text-white/70'}`}>Total hoy: USD {plan.total.toFixed(2)}</p>
                         {plan.months > 1 && (
-                          <p className="text-xs font-semibold text-[color:var(--muted)]">Pago único por {plan.months} meses</p>
+                          <p className={`text-xs font-semibold ${isHighlight ? 'text-[#475569]' : 'text-white/60'}`}>
+                            Pago único por {plan.months} meses
+                          </p>
                         )}
                       </div>
                       {plan.badge && (
-                        <span className="text-xs font-black uppercase tracking-[0.16em] px-3 py-1 rounded-full bg-[color:var(--surface-alt)] text-[color:var(--brand-strong)]">
+                        <span className={`text-xs font-black uppercase tracking-[0.16em] px-3 py-1 rounded-full ${
+                          isHighlight ? 'bg-[#00e599]/15 text-[#0f172a]' : 'bg-white/10 text-white'
+                        }`}>
                           {plan.badge}
                         </span>
                       )}
                     </div>
 
-                    <div className="space-y-2 text-sm font-semibold mb-6 text-[color:var(--muted)]">
+                    <div className={`space-y-2 text-sm font-semibold mb-6 ${isHighlight ? 'text-[#334155]' : 'text-white/80'}`}>
                       <div className="flex items-center gap-2">
-                        <span className="material-symbols-outlined text-[color:var(--brand)] text-base">verified</span>
-                        Garantía 7 días
+                        <span className={`material-symbols-outlined text-base ${isHighlight ? 'text-[#00e599]' : 'text-[#00e599]'}`}>
+                          verified
+                        </span>
+                        Usuarios ilimitados
                       </div>
                       <div className="flex items-center gap-2">
-                        <span className="material-symbols-outlined text-[color:var(--brand)] text-base">bolt</span>
-                        Activación guiada en minutos
+                        <span className={`material-symbols-outlined text-base ${isHighlight ? 'text-[#00e599]' : 'text-[#00e599]'}`}>
+                          bolt
+                        </span>
+                        Escaneo de facturas con IA
                       </div>
                       <div className="flex items-center gap-2">
-                        <span className="material-symbols-outlined text-[color:var(--brand)] text-base">check_small</span>
-                        Alertas y panel en todos los dispositivos
+                        <span className={`material-symbols-outlined text-base ${isHighlight ? 'text-[#00e599]' : 'text-[#00e599]'}`}>
+                          directions_car
+                        </span>
+                        Módulo de vehículos e inventario
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <span className={`material-symbols-outlined text-base ${isHighlight ? 'text-[#00e599]' : 'text-[#00e599]'}`}>
+                          chat
+                        </span>
+                        Soporte prioritario por WhatsApp
                       </div>
                     </div>
 
@@ -511,45 +347,30 @@ const NegociosPage: React.FC = () => {
                       onClick={() => handleLead(`negocios_plan_${plan.name.toLowerCase()}`, plan.href)}
                       className={`w-full inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl font-black transition-all active:scale-95 ${
                         isHighlight
-                          ? 'bg-[color:var(--accent)] text-[#1f1300] hover:brightness-95'
-                          : 'bg-white border border-black/10 text-[color:var(--ink)] hover:bg-white/90'
+                          ? 'bg-[#00e599] text-[#0f172a] hover:brightness-95'
+                          : 'bg-white/10 text-white hover:bg-white/20'
                       }`}
                     >
-                      Elegir {plan.name}
+                      👉 Activar mi cuenta ahora
                       <span className="material-symbols-outlined text-base">arrow_forward</span>
                     </button>
                   </div>
                 );
               })}
             </div>
-
-            <div className="bg-white/70 border border-black/5 rounded-3xl px-6 py-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 text-sm font-bold text-[color:var(--muted)]">
-              <div className="flex items-center gap-2">
-                <span className="material-symbols-outlined text-[color:var(--brand)]">info</span>
-                Cancelás cuando quieras. Avisamos antes de renovar.
-              </div>
-              <a
-                href={demoLink}
-                onClick={() => handleLead('negocios_planes_demo')}
-                className="inline-flex items-center gap-2 text-[color:var(--brand-strong)] font-black"
-              >
-                Ver demo antes de pagar
-                <span className="material-symbols-outlined text-base">play_circle</span>
-              </a>
-            </div>
           </div>
         </section>
 
-        <section id="faq" className="bg-[#0f172a] text-white py-16">
+        <section id="faq" className="bg-black py-16">
           <div className="max-w-6xl mx-auto px-4 space-y-6">
             <div className="text-center space-y-2">
-              <p className="text-sm font-black uppercase tracking-[0.2em] text-white/70">Preguntas frecuentes</p>
-              <p className="text-3xl font-black">Lo que siempre preguntan antes de entrar</p>
+              <p className="text-sm font-black uppercase tracking-[0.2em] text-white/60">Preguntas frecuentes</p>
+              <h2 className="text-3xl font-black" style={headingFont}>Preguntas frecuentes</h2>
             </div>
             <div className="grid lg:grid-cols-2 gap-4">
               {faqs.map((faq) => (
                 <div key={faq.q} className="bg-white/5 border border-white/10 rounded-2xl p-4 flex gap-3">
-                  <span className="material-symbols-outlined text-[color:var(--accent)] mt-0.5">add</span>
+                  <span className="material-symbols-outlined text-[#00e599] mt-0.5">add</span>
                   <div>
                     <p className="font-black text-white">{faq.q}</p>
                     <p className="text-sm text-white/80 font-semibold">{faq.a}</p>
@@ -557,46 +378,35 @@ const NegociosPage: React.FC = () => {
                 </div>
               ))}
             </div>
-            <div className="flex justify-center">
-              <button
-                onClick={() => handleLead('negocios_faq_cta', '#planes')}
-                className="inline-flex items-center justify-center gap-2 bg-[color:var(--accent)] text-[#1f1300] px-6 py-3 rounded-xl font-black shadow-lg shadow-black/20 hover:brightness-95 transition-all active:scale-95"
-              >
-                Ver oferta completa
-                <span className="material-symbols-outlined">arrow_forward</span>
-              </button>
-            </div>
           </div>
         </section>
 
         <section className="py-16">
           <div className="max-w-6xl mx-auto px-4">
-            <div className="bg-[color:var(--surface)] border border-black/5 rounded-[28px] p-8 md:p-10 shadow-xl">
+            <div className="bg-[#0b111e] border border-white/10 rounded-[28px] p-8 md:p-10 shadow-xl">
               <div className="grid md:grid-cols-[1.1fr_0.9fr] gap-6 items-center">
                 <div className="space-y-3">
-                  <p className="text-sm font-black uppercase tracking-[0.2em] text-[color:var(--brand-strong)]">Último paso</p>
-                  <h3 className="text-3xl font-black">Dejá de mezclar cuentas. Ganá claridad hoy.</h3>
-                  <p className="text-[color:var(--muted)] font-semibold">
-                    Activá el panel doble y tomá decisiones con datos reales desde esta semana.
+                  <h2 className="text-3xl font-black" style={headingFont}>Dejá de perder dinero hoy mismo.</h2>
+                  <p className="text-white/70 font-semibold">
+                    Activá Controla y empezá a recuperar margen desde esta semana.
                   </p>
                 </div>
                 <div className="flex flex-col gap-3">
                   <button
-                    onClick={() => handleLead('negocios_final_cta', '#planes')}
-                    className="inline-flex items-center justify-center gap-2 bg-[color:var(--accent)] text-[#1f1300] px-6 py-4 rounded-xl font-black shadow-lg shadow-black/20 hover:brightness-95 transition-all active:scale-95"
+                    onClick={() => handleLead('negocios_final_cta', '#oferta')}
+                    className="inline-flex items-center justify-center gap-2 bg-[#00e599] text-[#0f172a] px-6 py-4 rounded-xl font-black shadow-lg shadow-[#00e599]/30 hover:brightness-95 transition-all active:scale-95"
                   >
-                    Quiero activar mi panel
+                    🚀 Quiero controlar mi negocio
                     <span className="material-symbols-outlined">arrow_forward</span>
                   </button>
                   <a
                     href={demoLink}
                     onClick={() => handleLead('negocios_final_demo')}
-                    className="inline-flex items-center justify-center gap-2 bg-black/5 text-[color:var(--ink)] px-6 py-4 rounded-xl font-bold hover:bg-black/10 transition-all"
+                    className="inline-flex items-center justify-center gap-2 bg-white/10 text-white px-6 py-4 rounded-xl font-bold hover:bg-white/20 transition-all"
                   >
                     Ver demo primero
                     <span className="material-symbols-outlined">play_circle</span>
                   </a>
-                  <p className="text-xs font-semibold text-[color:var(--muted)]">Garantía 7 días. Cancelás cuando quieras.</p>
                 </div>
               </div>
             </div>
