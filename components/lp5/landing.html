@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Controla - Deja de preguntarte a dónde se fue tu dinero</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script defer src="https://unpkg.com/lucide@latest"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -944,9 +944,32 @@
         function initLucide() {
             if (window.lucide && typeof window.lucide.createIcons === 'function') {
                 window.lucide.createIcons();
+                return;
             }
+            const script = document.createElement('script');
+            script.src = 'https://unpkg.com/lucide@latest';
+            script.onload = () => {
+                if (window.lucide && typeof window.lucide.createIcons === 'function') {
+                    window.lucide.createIcons();
+                }
+            };
+            script.onerror = () => {
+                // Último intento con jsdelivr por si el otro CDN falla.
+                const fallback = document.createElement('script');
+                fallback.src = 'https://cdn.jsdelivr.net/npm/lucide@latest/dist/umd/lucide.min.js';
+                fallback.onload = () => {
+                    if (window.lucide && typeof window.lucide.createIcons === 'function') {
+                        window.lucide.createIcons();
+                    }
+                };
+                document.head.appendChild(fallback);
+            };
+            document.head.appendChild(script);
         }
-        window.addEventListener('load', initLucide);
+        window.addEventListener('DOMContentLoaded', () => {
+            initLucide();
+            setTimeout(initLucide, 800);
+        });
         
         // Countdown Timer (max 5 minutes)
         let countdownEnd = Date.now() + 5 * 60 * 1000;
@@ -1049,8 +1072,15 @@
 
         // Meta Pixel + CAPI tracking
         function readCookie(name) {
-            const match = document.cookie.match(new RegExp('(?:^|; )' + name.replace(/([.$?*|{}()[\\]\\/+^])/g, '\\$1') + '=([^;]*)'));
-            return match ? decodeURIComponent(match[1]) : null;
+            const cookies = document.cookie ? document.cookie.split('; ') : [];
+            for (let i = 0; i < cookies.length; i++) {
+                const parts = cookies[i].split('=');
+                const key = decodeURIComponent(parts.shift());
+                if (key === name) {
+                    return decodeURIComponent(parts.join('='));
+                }
+            }
+            return null;
         }
 
         function getFbpFbc() {
