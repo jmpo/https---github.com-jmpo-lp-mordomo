@@ -4,6 +4,8 @@
     { "source": "/lp2/(.*)", "destination": "/index.html" },
     { "source": "/lp3", "destination": "/index.html" },
     { "source": "/lp3/(.*)", "destination": "/index.html" },
+    { "source": "/lp5", "destination": "/lp5/index.html" },
+    { "source": "/lp5/(.*)", "destination": "/lp5/index.html" },
     { "source": "/negocios", "destination": "/index.html" },
     { "source": "/negocios/(.*)", "destination": "/index.html" }
   ]

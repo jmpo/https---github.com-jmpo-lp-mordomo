@@ -18,11 +18,18 @@ const App: React.FC = () => {
   const isLp2 = pathname.includes('/lp2');
   const isLp3 = pathname.includes('/lp3');
   const isNegocios = pathname.includes('/negocios');
+  const isLp5 = pathname.includes('/lp5');
 
   useEffect(() => {
     initMetaPixel();
   }, []);
 
+  if (isLp5) {
+    if (typeof window !== 'undefined' && !pathname.includes('/lp5/index.html')) {
+      window.location.href = '/lp5/index.html';
+    }
+    return null;
+  }
   if (isNegocios) {
     return <NegociosPage />;
   }
