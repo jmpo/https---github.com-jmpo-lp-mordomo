@@ -1034,13 +1034,49 @@
             });
         });
 
-        // Meta Pixel CTA tracking
+        // Meta Pixel + CAPI tracking
+        function readCookie(name) {
+            const match = document.cookie.match(new RegExp('(?:^|; )' + name.replace(/([.$?*|{}()[\\]\\/+^])/g, '\\$1') + '=([^;]*)'));
+            return match ? decodeURIComponent(match[1]) : null;
+        }
+
+        function getFbpFbc() {
+            const fbp = readCookie('_fbp') || undefined;
+            let fbc = readCookie('_fbc') || undefined;
+            if (!fbc) {
+                const url = new URL(window.location.href);
+                const fbclid = url.searchParams.get('fbclid');
+                if (fbclid) {
+                    fbc = `fb.1.${Date.now()}.${fbclid}`;
+                }
+            }
+            return { fbp, fbc };
+        }
+
+        function sendCapiEvent(eventName, eventId, contentName) {
+            const { fbp, fbc } = getFbpFbc();
+            const payload = {
+                event_name: eventName,
+                event_id: eventId,
+                event_source_url: window.location.href,
+                user_data: { fbp, fbc },
+                custom_data: { content_name: contentName },
+            };
+            fetch('/api/meta-conversion', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload),
+            }).catch(() => {});
+        }
+
         document.querySelectorAll('[data-fbq]').forEach((el) => {
             el.addEventListener('click', () => {
                 if (typeof fbq === 'function') {
                     const eventName = el.getAttribute('data-fbq') || 'Lead';
                     const contentName = el.getAttribute('data-content-name') || el.textContent.trim().slice(0, 50);
-                    fbq('track', eventName, { content_name: contentName });
+                    const eventId = `evt_${Date.now()}_${Math.random().toString(16).slice(2)}`;
+                    fbq('track', eventName, { content_name: contentName, event_id: eventId });
+                    sendCapiEvent(eventName, eventId, contentName);
                 }
             });
         });
