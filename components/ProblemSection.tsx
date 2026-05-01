@@ -10,6 +10,7 @@ const gOrange: React.CSSProperties = {
 
 const problems = [
   {
+    emoji: '💸',
     title: 'Cobras y pagas',
     desc: (
       <>
@@ -18,6 +19,7 @@ const problems = [
     ),
   },
   {
+    emoji: '🐜',
     title: (
       <>
         El <span style={gOrange}>"gasto hormiga"</span> te mata
@@ -31,6 +33,7 @@ const problems = [
     ),
   },
   {
+    emoji: '🛒',
     title: 'Compras doble',
     desc: (
       <>
@@ -65,9 +68,7 @@ const ProblemSection: React.FC = () => {
           <div className="grid gap-4">
             {problems.map((item, i) => (
               <div key={i} className="flex items-start gap-4 rounded-2xl bg-white/5 border border-rose-500/20 px-4 py-4">
-                <div className="w-10 h-10 rounded-2xl bg-rose-500/15 text-rose-300 flex items-center justify-center shrink-0 shadow-inner shadow-black/10">
-                  <span className="material-symbols-outlined text-xl" style={{ fontVariationSettings: "'wght' 700" }}>close</span>
-                </div>
+                <span className="text-2xl mt-0.5 shrink-0">{item.emoji}</span>
                 <div className="space-y-1">
                   <p className="text-lg font-bold text-white">{item.title}</p>
                   <p className="text-white/75 text-sm leading-relaxed font-medium">{item.desc}</p>

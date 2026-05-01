@@ -135,6 +135,15 @@ const Hero: React.FC = () => {
             <span>Ver cómo funciona en 60s</span>
           </a>
         </div>
+
+        {/* Trust badges — reducen la fricción antes de hacer clic */}
+        <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
+          <span className="text-xs text-white/50 font-medium flex items-center gap-1">🔒 Pago 100% seguro</span>
+          <span className="text-white/20 hidden sm:inline">·</span>
+          <span className="text-xs text-white/50 font-medium flex items-center gap-1">✅ Garantía 30 días</span>
+          <span className="text-white/20 hidden sm:inline">·</span>
+          <span className="text-xs text-white/50 font-medium flex items-center gap-1">🚫 Cancela cuando quieras</span>
+        </div>
       </div>
     </section>
   );

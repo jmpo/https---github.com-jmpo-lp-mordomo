@@ -17,18 +17,18 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
   try {
     const body = typeof req.body === 'string' ? JSON.parse(req.body) : req.body;
-    const {
-      event_name,
-      event_id,
-      event_source_url,
-      user_data,
-      custom_data,
-    } = body ?? {};
+    const { event_name, event_id, event_source_url, user_data, custom_data } = body ?? {};
 
     if (!event_name || !event_id) {
       res.status(400).json({ ok: false, error: 'Missing event_name or event_id' });
       return;
     }
+
+    // IP real: Vercel pone la IP del visitante en x-forwarded-for
+    const clientIp =
+      (req.headers['x-forwarded-for'] as string)?.split(',')[0]?.trim() ||
+      (req.headers['x-real-ip'] as string) ||
+      undefined;
 
     const payload = {
       data: [
@@ -40,6 +40,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
           action_source: 'website',
           user_data: {
             client_user_agent: req.headers['user-agent'],
+            ...(clientIp ? { client_ip_address: clientIp } : {}),
             ...(user_data ?? {}),
           },
           custom_data: custom_data ?? {},
@@ -48,11 +49,14 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       ...(TEST_EVENT_CODE ? { test_event_code: TEST_EVENT_CODE } : {}),
     };
 
-    const response = await fetch(`https://graph.facebook.com/v20.0/${PIXEL_ID}/events?access_token=${ACCESS_TOKEN}`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload),
-    });
+    const response = await fetch(
+      `https://graph.facebook.com/v20.0/${PIXEL_ID}/events?access_token=${ACCESS_TOKEN}`,
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      }
+    );
 
     const result = await response.json();
     res.status(response.ok ? 200 : 500).json({ ok: response.ok, result });

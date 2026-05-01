@@ -17,6 +17,8 @@ declare global {
 
 const PIXEL_ID = import.meta.env.VITE_META_PIXEL_ID;
 
+// ─── Helpers ────────────────────────────────────────────────────────────────
+
 const generateEventId = () => {
   if (typeof crypto !== 'undefined' && typeof crypto.randomUUID === 'function') {
     return crypto.randomUUID();
@@ -26,7 +28,9 @@ const generateEventId = () => {
 
 const readCookie = (name: string) => {
   if (typeof document === 'undefined') return null;
-  const match = document.cookie.match(new RegExp(`(?:^|; )${name.replace(/([.$?*|{}()[\]\\/+^])/g, '\\$1')}=([^;]*)`));
+  const match = document.cookie.match(
+    new RegExp(`(?:^|; )${name.replace(/([.$?*|{}()[\]\\/+^])/g, '\\$1')}=([^;]*)`)
+  );
   return match ? decodeURIComponent(match[1]) : null;
 };
 
@@ -36,17 +40,60 @@ const getFbpFbc = () => {
   const existingFbc = readCookie('_fbc') ?? undefined;
   let fbc = existingFbc;
 
-  // Si no existe _fbc, pero llega fbclid en la URL, construimos el token.
   if (!fbc) {
-    const url = new URL(window.location.href);
-    const fbclid = url.searchParams.get('fbclid');
-    if (fbclid) {
-      fbc = `fb.1.${Date.now()}.${fbclid}`;
-    }
+    const fbclid = new URL(window.location.href).searchParams.get('fbclid');
+    if (fbclid) fbc = `fb.1.${Date.now()}.${fbclid}`;
   }
 
   return { fbp, fbc };
 };
+
+// ID anónimo persistido 180 días — mejora match quality sin datos personales
+const getOrCreateExternalId = (): string | undefined => {
+  if (typeof document === 'undefined') return undefined;
+  const KEY = '_clid';
+  const existing = readCookie(KEY);
+  if (existing) return existing;
+  const id =
+    typeof crypto !== 'undefined' && crypto.randomUUID
+      ? crypto.randomUUID()
+      : `uid_${Date.now()}_${Math.random().toString(16).slice(2)}`;
+  const expires = new Date(Date.now() + 180 * 24 * 60 * 60 * 1000).toUTCString();
+  document.cookie = `${KEY}=${id}; expires=${expires}; path=/; SameSite=Lax`;
+  return id;
+};
+
+// ─── CAPI server-side ────────────────────────────────────────────────────────
+
+const sendCapiEvent = async (
+  eventName: string,
+  eventId: string,
+  params?: Record<string, any>
+) => {
+  try {
+    const { fbp, fbc } = getFbpFbc();
+    const externalId = getOrCreateExternalId();
+    await fetch('/api/meta-conversion', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        event_name: eventName,
+        event_id: eventId,
+        event_source_url: window.location.href,
+        user_data: {
+          ...(fbp ? { fbp } : {}),
+          ...(fbc ? { fbc } : {}),
+          ...(externalId ? { external_id: externalId } : {}),
+        },
+        custom_data: params ?? {},
+      }),
+    });
+  } catch {
+    // CAPI falla silenciosamente — el pixel browser sigue funcionando
+  }
+};
+
+// ─── Inicialización ──────────────────────────────────────────────────────────
 
 export const initMetaPixel = () => {
   if (typeof window === 'undefined') return;
@@ -77,12 +124,13 @@ export const initMetaPixel = () => {
   window.fbq?.('init', PIXEL_ID);
   window.fbq?.('track', 'PageView');
   window.fbqInitialized = true;
+
+  // PageView también va a CAPI
+  sendCapiEvent('PageView', generateEventId());
 };
 
-/**
- * Envía un evento al píxel y devuelve los datos necesarios para deduplicar con CAPI.
- * Incluye event_id por defecto para que lo reutilices en el servidor junto a fbp/fbc.
- */
+// ─── Track ───────────────────────────────────────────────────────────────────
+
 export const trackMetaEvent = (
   name: string,
   params?: Record<string, any>,
@@ -93,18 +141,19 @@ export const trackMetaEvent = (
     console.warn('Meta Pixel no está inicializado.');
     return;
   }
+
   const eventId = options?.eventId ?? generateEventId();
+
+  // 1. Pixel browser (client-side)
   window.fbq('track', name, { ...(params ?? {}), event_id: eventId });
-  const ids = getFbpFbc();
-  return { eventId, ...ids };
+
+  // 2. CAPI server-side en paralelo para deduplicación
+  sendCapiEvent(name, eventId, params);
+
+  return { eventId, ...getFbpFbc() };
 };
 
-/**
- * Úsalo para construir el payload de deduplicación en el servidor (CAPI).
- * Genera event_id si no pasas uno y adjunta fbp/fbc si existen.
- */
 export const buildMetaDedupContext = (eventId?: string) => {
   const finalEventId = eventId ?? generateEventId();
-  const ids = getFbpFbc();
-  return { eventId: finalEventId, ...ids };
+  return { eventId: finalEventId, ...getFbpFbc() };
 };

@@ -17,7 +17,6 @@ const actions = [
         La <span style={gOrange} className="font-semibold">IA lee el monto</span> y te dice cuánto te queda para gastar el resto del mes.
       </>
     ),
-    icon: 'document_scanner',
   },
   {
     title: '🏠 Controla tu despensa',
@@ -29,7 +28,6 @@ const actions = [
         solo evitando compras duplicadas.
       </>
     ),
-    icon: 'inventory_2',
   },
   {
     title: '🚗 Sin sorpresas del auto',
@@ -40,8 +38,13 @@ const actions = [
         te arruine el mes por no haber cambiado el aceite a tiempo.
       </>
     ),
-    icon: 'directions_car',
   },
+];
+
+const stats = [
+  { emoji: '👥', value: '+2,400', label: 'usuarios activos' },
+  { emoji: '⚡', value: '5 min', label: 'para configurar' },
+  { emoji: '💰', value: '$100/mes', label: 'ahorro promedio' },
 ];
 
 const SolutionSection: React.FC = () => {
@@ -65,19 +68,25 @@ const SolutionSection: React.FC = () => {
           </p>
         </div>
 
+        {/* Stats de prueba social */}
+        <div className="flex flex-wrap justify-center gap-4 sm:gap-8">
+          {stats.map((s) => (
+            <div key={s.label} className="flex flex-col items-center gap-0.5">
+              <span className="text-2xl">{s.emoji}</span>
+              <span className="text-xl font-black text-white">{s.value}</span>
+              <span className="text-xs font-medium text-white/55 uppercase tracking-wide">{s.label}</span>
+            </div>
+          ))}
+        </div>
+
         <div className="grid lg:grid-cols-3 gap-6">
           {actions.map((action, index) => (
             <div
               key={index}
-              className="bg-white/5 border border-white/10 rounded-3xl p-6 lg:p-7 shadow-lg shadow-black/20 space-y-4 hover:shadow-2xl transition-all"
+              className="bg-white/5 border border-white/10 rounded-3xl p-6 lg:p-7 shadow-lg shadow-black/20 space-y-3 hover:shadow-2xl transition-all"
               style={{ animationDelay: `${index * 0.06}s` }}
             >
-              <div className="flex items-center gap-3">
-                <div className="w-11 h-11 rounded-2xl bg-primary/15 text-primary flex items-center justify-center shadow-inner shadow-black/10">
-                  <span className="material-symbols-outlined text-xl">{action.icon}</span>
-                </div>
-                <p className="text-xl font-bold leading-snug">{action.title}</p>
-              </div>
+              <p className="text-xl font-bold leading-snug">{action.title}</p>
               <p className="text-sm text-white/75 leading-relaxed font-medium">{action.desc}</p>
             </div>
           ))}
