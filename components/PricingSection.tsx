@@ -9,13 +9,12 @@ type Plan = {
   monthlyDisplay?: number;
   compareAt?: number;
   saving?: number;
-  mentalCopy?: string;
-  bonusCopy?: string;
-  features: string[];
   cta: string;
   popular?: boolean;
   highlight?: 'popular' | 'value';
   href: string;
+  socialProof?: string;
+  relativeCopy?: string;
 };
 
 const bonuses = [
@@ -47,13 +46,14 @@ const bonuses = [
 
 const bonusIcons = ['dashboard_customize', 'event_repeat', 'flag', 'document_scanner'];
 
+// Las primeras 2 son las más valiosas — se destacan visualmente
 const sharedFeatures = [
-  'Escaneo de tickets con IA y categorización',
-  'Inventario de despensa sin compras dobles',
-  'Metas con monto diario sugerido',
-  'Alertas antes de quedarte en cero',
-  'Recordatorios de pagos y mantenimientos',
-  'Listas inteligentes de supermercado',
+  { text: '📸 Escaneo de tickets con IA y categorización', highlight: true },
+  { text: '🚨 Alertas antes de quedarte en cero', highlight: true },
+  { text: '🏠 Inventario de despensa sin compras dobles', highlight: false },
+  { text: '🎯 Metas con monto diario sugerido', highlight: false },
+  { text: '🔔 Recordatorios de pagos y mantenimientos', highlight: false },
+  { text: '🛒 Listas inteligentes de supermercado', highlight: false },
 ];
 
 const leakCosts = [
@@ -68,8 +68,7 @@ const plans: Plan[] = [
     charge: 5,
     monthlyDisplay: 5,
     months: 1,
-    features: sharedFeatures,
-    cta: 'Elegir Mensual',
+    cta: '🚀 Empezar por USD 5',
     popular: false,
     href: 'https://pay.hotmart.com/E103337720H?off=datt7ri2&checkoutMode=6',
   },
@@ -80,10 +79,10 @@ const plans: Plan[] = [
     saving: 5,
     monthlyDisplay: 4.17,
     months: 6,
-    features: sharedFeatures,
-    cta: 'Elegir Semestral',
+    cta: '🔥 Quiero ahorrar 17%',
     popular: true,
     highlight: 'popular',
+    socialProof: '👥 127 personas eligieron este plan esta semana',
     href: 'https://pay.hotmart.com/E103337720H?off=2kzn4n3n&checkoutMode=6',
   },
   {
@@ -93,10 +92,10 @@ const plans: Plan[] = [
     saving: 20,
     monthlyDisplay: 3.33,
     months: 12,
-    features: sharedFeatures,
-    cta: 'Elegir Anual',
+    cta: '⚡ Quiero el mejor precio',
     popular: true,
     highlight: 'value',
+    relativeCopy: '☕ Menos que un café al día',
     href: 'https://pay.hotmart.com/E103337720H?off=9011oxf5&checkoutMode=6',
   },
 ];
@@ -183,6 +182,7 @@ const PricingSection: React.FC = () => {
           ))}
         </div>
 
+        {/* Countdown */}
         <div className="max-w-3xl mx-auto mb-12 md:mb-14">
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3 bg-white/5 border border-white/15 shadow-lg shadow-black/20 px-6 py-4 rounded-3xl">
             <span className="text-xs font-black uppercase tracking-[0.16em] text-primary">Prueba gratis activa</span>
@@ -199,7 +199,9 @@ const PricingSection: React.FC = () => {
             const monthlyPrice = p.monthlyDisplay ?? p.charge / p.months;
             const isPopular = p.highlight === 'popular';
             const isBestValue = p.highlight === 'value';
-            const discountPercent = p.compareAt ? Math.round(((p.compareAt - p.charge) / p.compareAt) * 100) : null;
+            const discountPercent = p.compareAt
+              ? Math.round(((p.compareAt - p.charge) / p.compareAt) * 100)
+              : null;
 
             return (
               <div
@@ -207,7 +209,7 @@ const PricingSection: React.FC = () => {
                 className={`relative bg-[#0b1220] p-8 sm:p-10 lg:p-12 rounded-[3rem] border ${
                   p.popular
                     ? 'border-primary ring-[10px] ring-primary/10 scale-100 md:scale-105 md:z-10 md:shadow-2xl shadow-primary/20'
-                    : 'border-white/10 scale-100 shadow-lg shadow-black/20'
+                    : 'border-white/15 scale-100 shadow-lg shadow-black/20'
                 } transition-all duration-500 md:hover:translate-y-[-10px] group flex flex-col ${
                   isBestValue ? 'bg-gradient-to-b from-[#102138] to-[#0b1220]' : ''
                 } reveal-up`}
@@ -215,11 +217,19 @@ const PricingSection: React.FC = () => {
               >
                 {p.highlight && (
                   <div
-                    className={`absolute -top-5 left-1/2 -translate-x-1/2 text-white text-[10px] font-black px-6 py-2 rounded-full uppercase tracking-[0.2em] shadow-lg ${
+                    className={`absolute -top-5 left-1/2 -translate-x-1/2 text-white text-[10px] font-black px-6 py-2 rounded-full uppercase tracking-[0.2em] shadow-lg whitespace-nowrap ${
                       isPopular ? 'bg-primary text-secondary' : 'bg-emerald-500'
                     }`}
                   >
-                    {isPopular ? 'Más Popular' : 'Mejor Valor'}
+                    {isPopular ? '🔥 Más Popular' : '⚡ Mejor Valor'}
+                  </div>
+                )}
+
+                {/* Countdown integrado en el card popular */}
+                {isPopular && (
+                  <div className="flex items-center justify-center gap-1.5 text-[11px] font-bold text-primary/90 mb-4 -mt-2">
+                    <span className="material-symbols-outlined text-sm">hourglass_top</span>
+                    Oferta termina en {countdown}
                   </div>
                 )}
 
@@ -231,63 +241,104 @@ const PricingSection: React.FC = () => {
                     </p>
                   </div>
 
-                  <div className="bg-white/5 border border-white/10 rounded-2xl p-5 shadow-inner space-y-3 text-center">
+                  <div className="bg-white/5 border border-white/10 rounded-2xl p-5 shadow-inner space-y-2 text-center">
                     <div className="text-[11px] font-black uppercase tracking-[0.16em] text-primary">Precio por mes</div>
                     <div className="flex items-baseline justify-center gap-2 whitespace-nowrap">
-                      <span className="text-4xl lg:text-5xl font-black leading-tight text-white">USD {monthlyPrice.toFixed(2)}</span>
+                      <span className="text-4xl lg:text-5xl font-black leading-tight text-white">
+                        USD {monthlyPrice.toFixed(2)}
+                      </span>
                       <span className="text-sm font-bold text-white/60">/mes</span>
                     </div>
-                    <div className="text-sm font-bold text-white/80">
+
+                    {/* Ancla relativa de precio solo en plan Anual */}
+                    {p.relativeCopy && (
+                      <p className="text-xs font-medium text-white/50">{p.relativeCopy}</p>
+                    )}
+
+                    <div className="text-sm font-bold text-white/80 pt-1">
                       Total hoy: {currencyFormatter.format(p.charge)}{' '}
                       {p.compareAt && (
-                        <span className="text-white/40 line-through text-xs ml-1">{currencyFormatter.format(p.compareAt)}</span>
+                        <span className="text-white/40 line-through text-xs ml-1">
+                          {currencyFormatter.format(p.compareAt)}
+                        </span>
                       )}
                     </div>
-                    {p.saving && (
-                      <div className="flex justify-center">
-                        <span className="text-xs font-black text-emerald-200 bg-emerald-900/40 px-4 py-2 rounded-full shadow-sm">
-                          Ahorro real: {currencyFormatter.format(p.saving)} {discountPercent ? `(${discountPercent}% OFF)` : ''}
+
+                    {/* Badge de ahorro en una sola línea */}
+                    {p.saving && discountPercent && (
+                      <div className="flex justify-center pt-1">
+                        <span className="text-xs font-black text-emerald-200 bg-emerald-900/40 px-4 py-1.5 rounded-full shadow-sm whitespace-nowrap">
+                          💰 Ahorrás ${p.saving} · {discountPercent}% OFF
                         </span>
                       </div>
                     )}
-                    <div className="text-xs font-semibold text-white/60">Garantía 30 días.</div>
                   </div>
                 </div>
 
-                <div className="h-[1px] w-full bg-white/10 mb-8"></div>
+                <div className="h-[1px] w-full bg-white/10 mb-6"></div>
 
-                <ul className="space-y-5 mb-12 min-h-[180px]">
-                  {p.features.map((f, j) => (
-                    <li key={j} className="flex items-start gap-3 text-sm font-semibold text-white/80">
-                      <span className="material-symbols-outlined text-primary text-lg" style={{ fontVariationSettings: "'wght' 700" }}>check_circle</span>
-                      {f}
+                <ul className="space-y-4 mb-10 min-h-[180px]">
+                  {sharedFeatures.map((f, j) => (
+                    <li
+                      key={j}
+                      className={`flex items-start gap-3 text-sm ${
+                        f.highlight
+                          ? 'font-bold text-white'
+                          : 'font-medium text-white/70'
+                      }`}
+                    >
+                      <span
+                        className={`material-symbols-outlined text-lg shrink-0 ${
+                          f.highlight ? 'text-primary' : 'text-primary/60'
+                        }`}
+                        style={{ fontVariationSettings: "'wght' 700" }}
+                      >
+                        check_circle
+                      </span>
+                      {f.text}
                     </li>
                   ))}
                 </ul>
 
+                {/* CTA button */}
                 <a
                   href={p.href}
-                  onClick={() => trackMetaEvent('AddToCart', {
-                    content_ids: [`plan_${p.name.toLowerCase()}`],
-                    content_name: `Plan ${p.name} - Controla IA`,
-                    content_type: 'product',
-                    value: p.charge,
-                    currency: 'USD',
-                    num_items: 1,
-                  })}
+                  onClick={() =>
+                    trackMetaEvent('AddToCart', {
+                      content_ids: [`plan_${p.name.toLowerCase()}`],
+                      content_name: `Plan ${p.name} - Controla IA`,
+                      content_type: 'product',
+                      value: p.charge,
+                      currency: 'USD',
+                      num_items: 1,
+                    })
+                  }
                   className={`mt-auto block w-full py-5 rounded-2xl font-black text-lg transition-all active:scale-95 text-center shadow-xl ${
                     p.popular
                       ? 'bg-primary text-secondary hover:bg-primary-dark shadow-primary/30'
-                      : 'bg-white/5 text-white hover:bg-white/10 border border-white/10'
+                      : 'bg-white/10 text-white hover:bg-white/18 border border-white/25'
                   }`}
                 >
                   {p.cta}
                 </a>
+
+                {/* Garantía debajo del botón */}
+                <p className="text-center text-[11px] text-white/45 font-medium mt-3">
+                  🛡️ Garantía 30 días — si no funciona, te devolvemos el dinero.
+                </p>
+
+                {/* Prueba social bajo el CTA del plan popular */}
+                {p.socialProof && (
+                  <p className="text-center text-[11px] text-white/55 font-medium mt-1">
+                    {p.socialProof}
+                  </p>
+                )}
               </div>
             );
           })}
         </div>
 
+        {/* Bonuses */}
         <div className="max-w-4xl mx-auto mt-14 bg-white/5 border border-white/10 rounded-[32px] p-8 lg:p-10 shadow-xl shadow-black/30 space-y-6">
           <div className="flex items-center gap-2 text-sm font-black uppercase tracking-[0.16em] text-primary">
             <span className="material-symbols-outlined text-base">verified</span>
@@ -335,7 +386,6 @@ const PricingSection: React.FC = () => {
                       </div>
                     </div>
                   </div>
-
                   {Array.isArray(item.desc) ? (
                     <ul className="list-disc list-inside space-y-1.5 text-sm text-white/75 pl-1">
                       {item.desc.map((line) => (
@@ -354,22 +404,26 @@ const PricingSection: React.FC = () => {
           </div>
         </div>
 
+        {/* CTA final */}
         <div className="flex flex-col items-center gap-3 mt-10">
           <a
             href={bestPlanHref}
-            onClick={() => trackMetaEvent('AddToCart', {
-              content_ids: ['plan_anual'],
-              content_name: 'Plan Anual - Controla IA',
-              content_type: 'product',
-              value: 39.99,
-              currency: 'USD',
-              num_items: 1,
-            })}
+            onClick={() =>
+              trackMetaEvent('AddToCart', {
+                content_ids: ['plan_anual'],
+                content_name: 'Plan Anual - Controla IA',
+                content_type: 'product',
+                value: 39.99,
+                currency: 'USD',
+                num_items: 1,
+              })
+            }
             className="inline-flex items-center gap-3 bg-primary text-secondary px-8 py-4 rounded-2xl font-black text-lg shadow-xl shadow-primary/30 hover:bg-primary-dark transition-all active:scale-95 cta-shine"
           >
             👉 QUIERO EL PLAN ANUAL POR USD 39.99
           </a>
           <p className="text-sm font-semibold text-white/70">Cancela cuando quieras. Pero te aseguro que no querrás.</p>
+          <p className="text-xs text-white/40 font-medium">🛡️ Garantía de devolución 30 días sin preguntas</p>
         </div>
 
         <p className="text-center mt-16 text-sm font-bold text-white/60">
