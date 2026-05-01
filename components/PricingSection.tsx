@@ -267,7 +267,14 @@ const PricingSection: React.FC = () => {
 
                 <a
                   href={p.href}
-                  onClick={() => trackMetaEvent('InitiateCheckout', { content_name: p.name, value: p.charge, currency: 'USD' })}
+                  onClick={() => trackMetaEvent('AddToCart', {
+                    content_ids: [`plan_${p.name.toLowerCase()}`],
+                    content_name: `Plan ${p.name} - Controla IA`,
+                    content_type: 'product',
+                    value: p.charge,
+                    currency: 'USD',
+                    num_items: 1,
+                  })}
                   className={`mt-auto block w-full py-5 rounded-2xl font-black text-lg transition-all active:scale-95 text-center shadow-xl ${
                     p.popular
                       ? 'bg-primary text-secondary hover:bg-primary-dark shadow-primary/30'
@@ -350,7 +357,14 @@ const PricingSection: React.FC = () => {
         <div className="flex flex-col items-center gap-3 mt-10">
           <a
             href={bestPlanHref}
-            onClick={() => trackMetaEvent('Lead', { content_name: 'pricing_cta_final' })}
+            onClick={() => trackMetaEvent('AddToCart', {
+              content_ids: ['plan_anual'],
+              content_name: 'Plan Anual - Controla IA',
+              content_type: 'product',
+              value: 39.99,
+              currency: 'USD',
+              num_items: 1,
+            })}
             className="inline-flex items-center gap-3 bg-primary text-secondary px-8 py-4 rounded-2xl font-black text-lg shadow-xl shadow-primary/30 hover:bg-primary-dark transition-all active:scale-95 cta-shine"
           >
             👉 QUIERO EL PLAN ANUAL POR USD 39.99
