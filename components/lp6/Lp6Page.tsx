@@ -69,7 +69,7 @@ const Hero6: React.FC = () => {
         <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
           <span className="text-xs text-white/50 font-medium">🔒 Pago 100% seguro</span>
           <span className="text-white/20 hidden sm:inline">·</span>
-          <span className="text-xs text-white/50 font-medium">✅ Garantía 30 días</span>
+          <span className="text-xs text-white/50 font-medium">✅ Garantía 7 días</span>
           <span className="text-white/20 hidden sm:inline">·</span>
           <span className="text-xs text-white/50 font-medium">🚫 Cancela cuando quieras</span>
         </div>
@@ -437,7 +437,7 @@ const ObjectionsSection6: React.FC = () => (
           },
           {
             q: '❓ "¿Y si no funciona para mí?"',
-            a: 'Tenés 30 días de garantía total. Si no ves resultados concretos, te devolvemos el dinero sin preguntas ni drama. Riesgo cero para vos.',
+            a: 'Tenés 7 días de garantía total. Si no ves resultados concretos, te devolvemos el dinero sin preguntas ni drama. Riesgo cero para vos.',
           },
         ].map((o, i) => (
           <div key={i} className="bg-white/5 border border-white/10 rounded-2xl p-6 space-y-2 shadow-lg shadow-black/20">
@@ -534,7 +534,7 @@ const ClosingSection6: React.FC = () => (
             <li>• Saber exactamente en qué se va tu dinero</li>
             <li>• Empezar a ahorrar desde este mes</li>
             <li>• Dormir tranquilo sabiendo que alcanza</li>
-            <li>• Resultados reales en 30 días o te devolvemos todo</li>
+            <li>• Resultados reales en 7 días o te devolvemos todo</li>
           </ul>
         </div>
       </div>
@@ -549,7 +549,7 @@ const ClosingSection6: React.FC = () => (
           className="inline-flex items-center gap-3 bg-primary text-secondary px-8 py-5 rounded-2xl font-black text-xl shadow-xl shadow-primary/30 hover:bg-primary-dark transition-all active:scale-95 cta-shine">
           <span>👉</span><span>QUIERO DEJAR DE VIVIR AL DÍA</span>
         </a>
-        <p className="text-sm font-semibold text-white/60">🛡️ Garantía 30 días — si no funciona, te devolvemos el dinero.</p>
+        <p className="text-sm font-semibold text-white/60">🛡️ Garantía 7 días — si no funciona, te devolvemos el dinero.</p>
         <p className="text-xs text-white/40 font-medium">🔒 Pago seguro · Acceso inmediato · Cancela cuando quieras</p>
       </div>
     </div>

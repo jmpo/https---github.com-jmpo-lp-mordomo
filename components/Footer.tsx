@@ -51,7 +51,7 @@ const Footer: React.FC = () => {
           <div className="flex gap-4">
             <span className="inline-flex items-center gap-1">
               <span className="material-symbols-outlined text-primary text-base">verified</span>
-              Garantía 30 días
+              Garantía 7 días
             </span>
             <span className="inline-flex items-center gap-1">
               <span className="material-symbols-outlined text-primary text-base">lock</span>
