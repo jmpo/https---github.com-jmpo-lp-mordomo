@@ -12,6 +12,7 @@ import Lp2Page from './components/lp2/Lp2Page';
 import TransformationSection from './components/TransformationSection';
 import Lp3Page from './components/lp3/Lp3Page';
 import NegociosPage from './components/negocios/NegociosPage';
+import Lp6Page from './components/lp6/Lp6Page';
 
 const App: React.FC = () => {
   const pathname = typeof window !== 'undefined' ? window.location.pathname.toLowerCase() : '';
@@ -19,6 +20,7 @@ const App: React.FC = () => {
   const isLp3 = pathname.includes('/lp3');
   const isNegocios = pathname.includes('/negocios');
   const isLp5 = pathname.includes('/lp5');
+  const isLp6 = pathname.includes('/lp6');
 
   useEffect(() => {
     initMetaPixel();
@@ -30,6 +32,9 @@ const App: React.FC = () => {
     }
     return null;
   }
+  if (isLp6) {
+    return <Lp6Page />;
+  }
   if (isNegocios) {
     return <NegociosPage />;
   }
@@ -40,20 +45,8 @@ const App: React.FC = () => {
     return <Lp2Page />;
   }
 
-  return (
-    <div className="flex flex-col min-h-screen bg-[#0b1220] text-white">
-      <Header />
-      <main>
-        <Hero />
-        <ProblemSection />
-        <VideoSection />
-        <SolutionSection />
-        <TransformationSection />
-        <PricingSection />
-      </main>
-      <Footer />
-    </div>
-  );
+  // LP6 es ahora la landing principal
+  return <Lp6Page />;
 };
 
 export default App;
