@@ -18,33 +18,11 @@ type Plan = {
 };
 
 const bonuses = [
-  {
-    title: 'Panel 360 para ver tu plata',
-    desc: 'Tus cuentas, gastos y despensa en un solo lugar. Sin hojas de cálculo.',
-    badge: 'Lo usan todos',
-  },
-  {
-    title: 'Piloto automático de cuentas fijas',
-    desc: 'Carga alquiler, luz e internet una vez y recibe alertas antes de que venzan.',
-    badge: 'Ahorra tiempo',
-  },
-  {
-    title: 'Calculadora de Metas ($2/día)',
-    desc: [
-      'Define tu meta: viaje, tarjeta o moto.',
-      'Te decimos cuánto guardar por día o por semana.',
-      'Ves la barra avanzar. Si te atrasas, te damos un ajuste simple.',
-    ],
-    badge: 'El más deseado',
-  },
-  {
-    title: 'Escáner IA ilimitado',
-    desc: 'Sube todas las facturas que quieras, el sistema encuentra los montos y categorías al instante.',
-    badge: 'Ahorra fugas',
-  },
+  { emoji: '📊', title: 'Panel 360 de tu plata', desc: 'Tus cuentas, gastos y despensa en un solo lugar. Sin hojas de cálculo.' },
+  { emoji: '🔁', title: 'Piloto automático de cuentas fijas', desc: 'Cargá alquiler, luz e internet una vez y recibí alertas antes de que venzan.' },
+  { emoji: '🚀', title: 'Calculadora de Metas', desc: 'Define tu meta: viaje, tarjeta o moto. Te decimos cuánto guardar por día. Ves la barra avanzar.' },
+  { emoji: '🔍', title: 'Escáner IA ilimitado', desc: 'Sube todas las facturas que quieras. El sistema encuentra los montos al instante.' },
 ];
-
-const bonusIcons = ['dashboard_customize', 'event_repeat', 'flag', 'document_scanner'];
 
 // Las primeras 2 son las más valiosas — se destacan visualmente
 const sharedFeatures = [
@@ -339,68 +317,26 @@ const PricingSection: React.FC = () => {
         </div>
 
         {/* Bonuses */}
-        <div className="max-w-4xl mx-auto mt-14 bg-white/5 border border-white/10 rounded-[32px] p-8 lg:p-10 shadow-xl shadow-black/30 space-y-6">
-          <div className="flex items-center gap-2 text-sm font-black uppercase tracking-[0.16em] text-primary">
-            <span className="material-symbols-outlined text-base">verified</span>
-            Todo lo que recibes desde el día 1 (sin letra chica)
+        <div className="max-w-4xl mx-auto mt-14 bg-white/5 border border-white/10 rounded-[32px] p-8 lg:p-10 shadow-xl shadow-black/30 space-y-8">
+          <div className="text-center space-y-2">
+            <p className="text-xs font-black uppercase tracking-[0.16em] text-primary">
+              ✓ Todo lo que recibís desde el día 1
+            </p>
+            <h3 className="text-2xl lg:text-3xl font-black text-white">Sin letra chica.</h3>
           </div>
-          <p className="text-white/70 text-sm font-semibold">
-            Acceso inmediato a las herramientas que tapan fugas, avisan antes de que falte dinero y te muestran cuánto puedes gastar sin miedo.
-          </p>
-          <div className="grid md:grid-cols-2 gap-6">
-            {bonuses.map((item, index) => {
-              const isBonus = index >= 2;
-              const icon = bonusIcons[index] ?? 'workspace_premium';
-              return (
-                <div
-                  key={item.title}
-                  className={`relative bg-gradient-to-br from-white/8 via-white/5 to-transparent border border-white/10 rounded-2xl p-5 md:p-6 h-full flex flex-col gap-4 shadow-lg shadow-black/20 overflow-visible ${
-                    item.badge === 'El más deseado' ? 'ring-2 ring-primary/60 ring-offset-2 ring-offset-[#0f172a]' : ''
-                  }`}
-                >
-                  {item.badge && (
-                    <div className="absolute -top-3 right-0">
-                      <div className="bg-primary text-secondary text-[10px] font-black px-3 py-1 rounded-full shadow-[0_14px_40px_rgba(244,140,37,0.35)]">
-                        {item.badge}
-                      </div>
-                    </div>
-                  )}
-                  <div className="flex items-center gap-3">
-                    <div className="w-11 h-11 rounded-2xl bg-primary/15 text-primary flex items-center justify-center shadow-inner shadow-black/10">
-                      <span className="material-symbols-outlined text-xl">{icon}</span>
-                    </div>
-                    <div className="flex flex-col">
-                      <span className="text-[11px] font-black uppercase tracking-[0.16em] text-white/60">
-                        {isBonus ? 'Regalo exclusivo' : 'Pilar esencial'}
-                      </span>
-                      <p className="font-black text-white leading-snug">{item.title}</p>
-                      <div className="flex flex-wrap gap-2 pt-1">
-                        <span className={`text-[11px] font-black px-3 py-1 rounded-full border ${isBonus ? 'border-primary text-primary bg-primary/10' : 'border-white/10 text-white/70'}`}>
-                          {isBonus ? 'Regalo' : 'Fundamental'}
-                        </span>
-                        {item.badge && (
-                          <span className="text-[11px] font-black px-3 py-1 rounded-full bg-white/10 text-white/80 border border-white/10">
-                            {item.badge}
-                          </span>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-                  {Array.isArray(item.desc) ? (
-                    <ul className="list-disc list-inside space-y-1.5 text-sm text-white/75 pl-1">
-                      {item.desc.map((line) => (
-                        <li key={line}>{line}</li>
-                      ))}
-                    </ul>
-                  ) : (
-                    <p className="text-sm text-white/75 leading-relaxed">{item.desc}</p>
-                  )}
-                </div>
-              );
-            })}
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {bonuses.map((item) => (
+              <div key={item.title} className="bg-white/5 border border-white/10 rounded-2xl p-5 flex flex-col gap-3 shadow-lg shadow-black/20 hover:border-primary/30 transition-colors">
+                <span className="text-3xl">{item.emoji}</span>
+                <p className="font-bold text-white text-sm leading-snug">{item.title}</p>
+                <p className="text-xs text-white/60 leading-relaxed font-medium">{item.desc}</p>
+              </div>
+            ))}
           </div>
-          <div className="text-center text-sm text-white/60 font-semibold">
-            Cuesta menos que una pizza: desde USD 3.33 / mes (Plan Anual, total USD 39.99).
+          <div className="flex flex-wrap justify-center gap-5 pt-2">
+            {['✔ Acceso inmediato', '✔ Sin complicaciones', '✔ Funciona desde el primer día'].map((t) => (
+              <span key={t} className="text-sm font-semibold text-white/55">{t}</span>
+            ))}
           </div>
         </div>
 
