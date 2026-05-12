@@ -34,44 +34,62 @@ const Hero6: React.FC = () => {
       <div className="absolute inset-0 pointer-events-none" style={{ zIndex: 1, background: 'rgba(0,0,0,0.58)' }} />
       <div className="absolute inset-0 pointer-events-none" style={{ zIndex: 1, background: 'radial-gradient(ellipse 85% 65% at 50% 50%, rgba(11,18,32,0.60) 0%, transparent 100%)' }} />
 
-      <div className="relative w-full max-w-5xl mx-auto px-4 flex flex-col items-center text-center" style={{ zIndex: 2, gap: '1.25rem' }}>
-        <div className="inline-flex items-center gap-2 bg-white/10 border border-white/15 px-4 py-1.5 rounded-full">
-          <span className="material-symbols-outlined text-sm text-primary">savings</span>
-          <span className="text-[11px] font-bold uppercase tracking-[0.12em] text-white/80">
-            Para asalariados que sienten que el dinero les quema en la mano
-          </span>
-        </div>
+      {/* Desktop: 2 columnas | Mobile: 1 columna */}
+      <div className="relative w-full max-w-7xl mx-auto px-4" style={{ zIndex: 2 }}>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
 
-        <h1 style={{ fontFamily: 'Manrope, sans-serif', fontSize: 'clamp(2rem, 5.5vw, 4.8rem)', fontWeight: 800, letterSpacing: '-0.015em', lineHeight: 1.13, margin: 0 }}>
-          <span style={{ display: 'block', color: 'rgba(255,255,255,0.82)', lineHeight: 1.13 }}>El sistema simple para</span>
-          <span style={{ ...gOrange, display: 'block', lineHeight: 1.13 }}>dejar de vivir al día</span>
-          <span style={{ display: 'block', color: '#ffffff', lineHeight: 1.13 }}>y ahorrar desde este mes.</span>
-        </h1>
+          {/* Columna izquierda — texto */}
+          <div className="flex flex-col items-center text-center lg:items-start lg:text-left" style={{ gap: '1.25rem' }}>
+            <div className="inline-flex items-center gap-2 bg-white/10 border border-white/15 px-4 py-1.5 rounded-full">
+              <span className="material-symbols-outlined text-sm text-primary">savings</span>
+              <span className="text-[11px] font-bold uppercase tracking-[0.12em] text-white/80">
+                Para asalariados que sienten que el dinero les quema en la mano
+              </span>
+            </div>
 
-        <p className="max-w-xl px-1" style={{ fontFamily: 'Manrope, sans-serif', fontSize: 'clamp(0.95rem, 2vw, 1.1rem)', color: '#c8c8c8', lineHeight: 1.6, fontWeight: 500, margin: 0 }}>
-          <strong style={{ color: '#fff' }}>Aunque hoy no te alcance el dinero.</strong> Sin conocimientos financieros. Sin disciplina extrema. En menos de 5 minutos al día.
-        </p>
+            <h1 style={{ fontFamily: 'Manrope, sans-serif', fontSize: 'clamp(2rem, 4.5vw, 4rem)', fontWeight: 800, letterSpacing: '-0.015em', lineHeight: 1.13, margin: 0 }}>
+              <span style={{ display: 'block', color: 'rgba(255,255,255,0.82)', lineHeight: 1.13 }}>El sistema simple para</span>
+              <span style={{ ...gOrange, display: 'block', lineHeight: 1.13 }}>dejar de vivir al día</span>
+              <span style={{ display: 'block', color: '#ffffff', lineHeight: 1.13 }}>y ahorrar desde este mes.</span>
+            </h1>
 
-        <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto sm:justify-center">
-          <a href="#oferta" onClick={() => trackMetaEvent('Lead', { content_name: 'lp6_hero_cta' })}
-            className="inline-flex items-center justify-center gap-2 bg-primary text-secondary px-6 sm:px-7 py-4 rounded-2xl font-black text-base sm:text-lg hover:bg-primary-dark active:scale-95 cta-shine"
-            style={{ transition: 'all 300ms', boxShadow: '0 6px 32px 4px rgba(244,140,37,0.35)' }}>
-            <span>👉</span><span>QUIERO DEJAR DE VIVIR AL DÍA</span>
-          </a>
-          <a href="#video" onClick={() => trackMetaEvent('Lead', { content_name: 'lp6_hero_video' })}
-            className="inline-flex items-center justify-center gap-2 bg-white/10 border border-white/20 px-5 py-4 rounded-2xl text-sm font-semibold text-white/90 hover:bg-white/15 active:scale-95"
-            style={{ transition: 'all 300ms' }}>
-            <span className="material-symbols-outlined text-primary text-lg">play_circle</span>
-            <span>Ver cómo funciona en 60s</span>
-          </a>
-        </div>
+            <p style={{ fontFamily: 'Manrope, sans-serif', fontSize: 'clamp(0.95rem, 2vw, 1.05rem)', color: '#c8c8c8', lineHeight: 1.6, fontWeight: 500, margin: 0, maxWidth: '36rem' }}>
+              <strong style={{ color: '#fff' }}>Aunque hoy no te alcance el dinero.</strong> Sin conocimientos financieros. Sin disciplina extrema. En menos de 5 minutos al día.
+            </p>
 
-        <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
-          <span className="text-xs text-white/50 font-medium">🔒 Pago 100% seguro</span>
-          <span className="text-white/20 hidden sm:inline">·</span>
-          <span className="text-xs text-white/50 font-medium">✅ Garantía 7 días</span>
-          <span className="text-white/20 hidden sm:inline">·</span>
-          <span className="text-xs text-white/50 font-medium">🚫 Cancela cuando quieras</span>
+            <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
+              <a href="#oferta" onClick={() => trackMetaEvent('Lead', { content_name: 'lp6_hero_cta' })}
+                className="inline-flex items-center justify-center gap-2 bg-primary text-secondary px-6 sm:px-7 py-4 rounded-2xl font-black text-base sm:text-lg hover:bg-primary-dark active:scale-95 cta-shine"
+                style={{ transition: 'all 300ms', boxShadow: '0 6px 32px 4px rgba(244,140,37,0.35)' }}>
+                <span>👉</span><span>QUIERO DEJAR DE VIVIR AL DÍA</span>
+              </a>
+              <a href="#video" onClick={() => trackMetaEvent('Lead', { content_name: 'lp6_hero_video' })}
+                className="inline-flex items-center justify-center gap-2 bg-white/10 border border-white/20 px-5 py-4 rounded-2xl text-sm font-semibold text-white/90 hover:bg-white/15 active:scale-95"
+                style={{ transition: 'all 300ms' }}>
+                <span className="material-symbols-outlined text-primary text-lg">play_circle</span>
+                <span>Ver cómo funciona en 60s</span>
+              </a>
+            </div>
+
+            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-x-5 gap-y-2">
+              <span className="text-xs text-white/50 font-medium">🔒 Pago 100% seguro</span>
+              <span className="text-white/20 hidden sm:inline">·</span>
+              <span className="text-xs text-white/50 font-medium">✅ Garantía 7 días</span>
+              <span className="text-white/20 hidden sm:inline">·</span>
+              <span className="text-xs text-white/50 font-medium">🚫 Cancela cuando quieras</span>
+            </div>
+          </div>
+
+          {/* Columna derecha — mockup (solo visible en desktop, en mobile va abajo) */}
+          <div className="flex items-center justify-center">
+            <img
+              src="/lp8/mockup-hero.png"
+              alt="Controla IA - Plataforma"
+              className="w-full h-auto"
+              style={{ maxWidth: '580px', filter: 'drop-shadow(0 20px 40px rgba(0,0,0,0.4))' }}
+            />
+          </div>
+
         </div>
       </div>
     </section>
@@ -302,6 +320,87 @@ const SystemSection6: React.FC = () => (
 
 // ─── 6. VIDEO (reutilizado) ───────────────────────────────────────────────────
 // VideoSection importado
+
+// ─── MOCKUP MULTI-DEVICE ──────────────────────────────────────────────────────
+
+const MockupSection6: React.FC = () => (
+  <section className="bg-[#0b1220] py-20 border-y border-white/10 text-white">
+    <div className="max-w-5xl mx-auto px-4 text-center space-y-8">
+      <div className="space-y-3">
+        <p className="text-[12px] font-bold uppercase tracking-[0.14em] text-primary">La plataforma</p>
+        <h2 className="text-3xl lg:text-4xl font-extrabold leading-tight">
+          Todo en un solo lugar.{' '}
+          <span style={{ background: 'linear-gradient(90deg, #f48c25 0%, #fce8d4 50%, #f48c25 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
+            Simple y automático.
+          </span>
+        </h2>
+        <p className="text-white/65 max-w-xl mx-auto font-medium">
+          Dashboard, metas, despensa, vehículos e inversiones — conectados y actualizados en tiempo real.
+        </p>
+      </div>
+      <div className="flex justify-center">
+        <img
+          src="/lp8/mockup-hero.png"
+          alt="Controla IA en todos tus dispositivos"
+          className="w-full max-w-3xl h-auto"
+          style={{ filter: 'drop-shadow(0 24px 48px rgba(244,140,37,0.15))', mixBlendMode: 'screen' }}
+        />
+      </div>
+    </div>
+  </section>
+);
+
+// ─── FEATURES SHOWCASE (alternating, dark style) ──────────────────────────────
+
+const showcaseItems6 = [
+  { tag: 'Dashboard', title: 'Sistema de Finanzas Personales', desc: 'Todo separado, todo bajo control. Tus cuentas, gastos e ingresos en tiempo real.', points: ['Ingresos y gastos separados', 'Dashboard inteligente', 'Salud financiera en tiempo real', 'Reportes claros y automáticos'], img: '/lp8/dashboard.jpg', reverse: false },
+  { tag: 'Metas', title: 'Sistema de Metas Financieras', desc: 'Planificá, ahorrá y cumplí tus objetivos. Paso a paso, sin complicaciones.', points: ['Creá tus objetivos', 'Seguimiento automático', 'Progreso visual claro', 'Motivación constante'], img: '/lp8/metas.jpg', reverse: true },
+  { tag: 'Vehículos', title: 'Mantenimiento de Vehículos', desc: 'Controlá servicios y mantenimientos para que nunca te tomen por sorpresa.', points: ['Recordatorios automáticos', 'Historial por vehículo', 'Control de gastos', 'Todo en un solo lugar'], img: '/lp8/mantenimiento%20vehiculos.jpg', reverse: false },
+  { tag: 'Mercado', title: 'Lista de Supermercado Inteligente', desc: 'Creá, compartí y gestioná tus compras sin complicaciones desde el celular.', points: ['Creá listas desde el celular', 'Sin duplicados', 'Compartí o exportá', 'Compras más organizadas'], img: '/lp8/lista%20super.jpg', reverse: true },
+  { tag: 'Inversiones', title: 'Gestión de Inversiones', desc: 'Seguí tu portafolio, cobros pendientes y rendimientos. Todo organizado.', points: ['Portafolio centralizado', 'Cobros y rendimientos', 'Historial completo', 'Alertas de vencimiento'], img: '/lp8/inversiones.jpg', reverse: false },
+];
+
+const FeaturesShowcase6: React.FC = () => (
+  <section className="bg-[#0b1220] text-white py-20 border-t border-white/5">
+    <div className="max-w-6xl mx-auto px-4">
+      <div className="text-center mb-14 space-y-3">
+        <div className="inline-flex items-center gap-2 bg-white/5 border border-white/10 px-3 py-1 rounded-full">
+          <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-primary">Todo en uno</span>
+        </div>
+        <h2 className="text-3xl lg:text-4xl font-extrabold leading-tight">
+          Un sistema completo para <span style={gOrange}>tus finanzas</span>
+        </h2>
+        <p className="text-white/60 max-w-xl mx-auto font-medium">Cada módulo diseñado para resolver un problema real.</p>
+      </div>
+
+      {showcaseItems6.map((item, i) => (
+        <div key={item.tag} className={`grid gap-10 items-center py-14 ${i > 0 ? 'border-t border-white/5' : ''}`}
+          style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', direction: item.reverse ? 'rtl' : 'ltr' }}>
+          <div style={{ direction: 'ltr' }} className="space-y-5">
+            <div className="inline-flex items-center bg-primary/10 border border-primary/20 px-3 py-1 rounded-full">
+              <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-primary">{item.tag}</span>
+            </div>
+            <h3 className="text-2xl lg:text-3xl font-extrabold text-white leading-tight">{item.title}</h3>
+            <p className="text-white/60 font-medium leading-relaxed">{item.desc}</p>
+            <ul className="space-y-2.5">
+              {item.points.map((p) => (
+                <li key={p} className="flex items-center gap-3 text-sm font-semibold text-white/80">
+                  <span className="material-symbols-outlined text-primary text-base" style={{ fontVariationSettings: "'wght' 700" }}>check_circle</span>
+                  {p}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div style={{ direction: 'ltr' }}>
+            <div className="rounded-2xl overflow-hidden border border-white/10 shadow-2xl shadow-black/40">
+              <img src={item.img} alt={item.title} className="w-full block" style={{ objectFit: 'cover', objectPosition: 'top' }} />
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+);
 
 // ─── 7. TESTIMONIOS ───────────────────────────────────────────────────────────
 
@@ -567,6 +666,8 @@ const Lp6Page: React.FC = () => (
       <PainSection6 />
       <CulpaSection6 />
       <SystemSection6 />
+      <MockupSection6 />
+      <FeaturesShowcase6 />
       <VideoSection />
       <TestimonialsSection6 />
       <ObjectionsSection6 />

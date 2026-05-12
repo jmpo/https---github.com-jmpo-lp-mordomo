@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { trackMetaEvent } from '../../metaPixel';
 
 // ─── SCREENSHOTS REALES DE CONTROLA IA ───────────────────────────────────────
+const IMG_MOCKUP_HERO  = '/lp8/mockup-hero.png';
 const IMG_SOCIAL_PROOF = '/lp8/muestra%20plataforma.png';
 const IMG_DASHBOARD   = '/lp8/dashboard.jpg';
 const IMG_METAS       = '/lp8/metas.jpg';
@@ -116,38 +117,14 @@ const Hero8: React.FC = () => (
         </div>
       </div>
 
-      {/* Right — laptop mockup */}
-      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
-        {/* Laptop */}
-        <div style={{ width: '100%', maxWidth: '460px' }}>
-          {/* Screen bezel */}
-          <div style={{
-            background: '#1c1c1e',
-            borderRadius: '12px 12px 0 0',
-            padding: '10px 10px 0',
-            boxShadow: '0 24px 60px rgba(0,0,0,0.18)',
-          }}>
-            <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '6px' }}>
-              <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#3a3a3a' }} />
-            </div>
-            <div style={{ borderRadius: '4px 4px 0 0', overflow: 'hidden', aspectRatio: '16/10', background: '#fff' }}>
-              <img
-                src={IMG_DASHBOARD}
-                alt="Controla IA dashboard"
-                style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top', display: 'block' }}
-              />
-            </div>
-          </div>
-          {/* Hinge */}
-          <div style={{ background: 'linear-gradient(to bottom, #3a3a3a, #2a2a2a)', height: '8px' }} />
-          {/* Base */}
-          <div style={{ background: 'linear-gradient(to bottom, #d4d4d4, #bbb)', height: '16px', borderRadius: '0 0 6px 6px', margin: '0 -16px', boxShadow: '0 4px 16px rgba(0,0,0,0.12)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <div style={{ width: '35%', height: '4px', background: '#aaa', borderRadius: '0 0 3px 3px' }} />
-          </div>
-        </div>
-
-        {/* Badges debajo del laptop */}
-        <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '0.75rem', marginTop: '0.5rem' }}>
+      {/* Right — mockup real multi-device */}
+      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1.25rem' }}>
+        <img
+          src={IMG_MOCKUP_HERO}
+          alt="Controla IA en todos tus dispositivos"
+          style={{ width: '100%', maxWidth: '520px', height: 'auto', display: 'block', filter: 'drop-shadow(0 24px 48px rgba(0,0,0,0.12))' }}
+        />
+        <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '0.75rem' }}>
           <div style={{ background: WHITE, border: `1px solid ${BORDER}`, borderRadius: '9999px', padding: '0.4rem 1rem', boxShadow: '0 4px 12px rgba(0,0,0,0.07)', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
             <div style={{ width: 7, height: 7, borderRadius: '50%', background: '#10b981', flexShrink: 0 }} />
             <p style={{ fontFamily: SANS, fontSize: '0.8rem', fontWeight: 700, color: DARK, margin: 0 }}>+2,400 usuarios activos</p>
@@ -229,6 +206,99 @@ const HowItWorks8: React.FC = () => (
 );
 
 // ─── 5. DEMO / MOCKUP ─────────────────────────────────────────────────────────
+
+// ─── FEATURES SHOWCASE (alternating text + screenshot) ───────────────────────
+
+const showcaseItems = [
+  {
+    tag: 'Dashboard',
+    title: 'Sistema de Finanzas Personales',
+    desc: 'Todo separado, todo bajo control. Tus cuentas, gastos e ingresos en tiempo real.',
+    points: ['Ingresos y gastos separados', 'Dashboard inteligente', 'Salud financiera en tiempo real', 'Reportes claros y automáticos'],
+    img: IMG_DASHBOARD,
+    reverse: false,
+  },
+  {
+    tag: 'Metas',
+    title: 'Sistema de Metas Financieras',
+    desc: 'Planificá, ahorrá y cumplí tus objetivos. Paso a paso, sin complicaciones.',
+    points: ['Creá tus objetivos', 'Seguimiento automático', 'Progreso visual claro', 'Motivación constante'],
+    img: IMG_METAS,
+    reverse: true,
+  },
+  {
+    tag: 'Vehículos',
+    title: 'Sistema de Mantenimiento de Vehículos',
+    desc: 'Controlá servicios, gastos y mantenimientos para que nunca te tome por sorpresa.',
+    points: ['Recordatorios automáticos', 'Historial por vehículo', 'Control de gastos', 'Todo en un solo lugar'],
+    img: IMG_VEHICULOS,
+    reverse: false,
+  },
+  {
+    tag: 'Mercado',
+    title: 'Lista de Supermercado Inteligente',
+    desc: 'Creá, compartí y gestioná tus compras sin complicaciones desde el celular.',
+    points: ['Creá listas desde el celular', 'Sin duplicados', 'Compartí o exportá', 'Compras más organizadas'],
+    img: IMG_MERCADO,
+    reverse: true,
+  },
+  {
+    tag: 'Inversiones',
+    title: 'Gestión de Inversiones',
+    desc: 'Seguí tu portafolio, cobros pendientes y rendimientos. Todo organizado y claro.',
+    points: ['Portafolio centralizado', 'Cobros y rendimientos', 'Historial completo', 'Alertas de vencimiento'],
+    img: IMG_INVERSIONES,
+    reverse: false,
+  },
+];
+
+const FeaturesShowcase8: React.FC = () => (
+  <section style={{ background: WHITE, padding: '4rem 1.5rem 2rem', borderTop: `1px solid ${BORDER}` }}>
+    <div style={{ maxWidth: '64rem', margin: '0 auto' }}>
+      <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
+        <Tag>Todo en uno</Tag>
+        <h2 style={{ fontFamily: SANS, fontSize: 'clamp(1.75rem, 4vw, 2.75rem)', fontWeight: 900, color: DARK, margin: '1rem 0 0.5rem', letterSpacing: '-0.02em', lineHeight: 1.2 }}>
+          Un sistema completo para tus finanzas
+        </h2>
+        <p style={{ fontFamily: SANS, fontSize: '1rem', color: MUTED }}>Cada módulo diseñado para resolver un problema real.</p>
+      </div>
+
+      {showcaseItems.map((item, i) => (
+        <div key={item.tag} style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+          gap: '3rem',
+          alignItems: 'center',
+          padding: '3.5rem 0',
+          borderTop: i > 0 ? `1px solid ${BORDER}` : 'none',
+          direction: item.reverse ? 'rtl' : 'ltr',
+        }}>
+          {/* Text */}
+          <div style={{ direction: 'ltr' }}>
+            <Tag>{item.tag}</Tag>
+            <h3 style={{ fontFamily: SANS, fontSize: 'clamp(1.5rem, 3vw, 2rem)', fontWeight: 900, color: DARK, margin: '0.75rem 0 0.75rem', letterSpacing: '-0.02em', lineHeight: 1.2 }}>
+              {item.title}
+            </h3>
+            <p style={{ fontFamily: SANS, fontSize: '1rem', color: MUTED, lineHeight: 1.65, margin: '0 0 1.5rem' }}>{item.desc}</p>
+            <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
+              {item.points.map((p) => (
+                <li key={p} style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', fontFamily: SANS, fontSize: '0.9375rem', fontWeight: 600, color: DARK }}>
+                  <span style={{ color: ORANGE, flexShrink: 0, fontSize: '1rem' }}>✓</span>{p}
+                </li>
+              ))}
+            </ul>
+          </div>
+          {/* Screenshot */}
+          <div style={{ direction: 'ltr' }}>
+            <div style={{ borderRadius: '1.25rem', overflow: 'hidden', border: `1px solid ${BORDER}`, boxShadow: '0 16px 48px rgba(0,0,0,0.08)' }}>
+              <img src={item.img} alt={item.title} style={{ width: '100%', display: 'block', objectFit: 'cover', objectPosition: 'top' }} />
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+);
 
 const DemoSection8: React.FC = () => (
   <section style={{ background: LIGHT, padding: '6rem 1.5rem', borderTop: `1px solid ${BORDER}` }}>
@@ -659,6 +729,7 @@ const Lp8Page: React.FC = () => (
       <Hero8 />
       <PainSection8 />
       <HowItWorks8 />
+      <FeaturesShowcase8 />
       <DemoSection8 />
       <FeaturesSection8 />
       <ComparisonSection8 />
