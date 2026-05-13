@@ -80,10 +80,10 @@ const Nav8: React.FC = () => (
 // ─── 2. HERO ──────────────────────────────────────────────────────────────────
 
 const Hero8: React.FC = () => (
-  <section style={{ background: WHITE, padding: '5rem 1.5rem 4rem' }}>
-    <div style={{ maxWidth: '72rem', margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '3rem', alignItems: 'center' }}>
+  <section style={{ background: WHITE, paddingTop: '4rem', paddingBottom: 0, overflow: 'hidden' }}>
+    <div className="grid grid-cols-1 lg:grid-cols-[5fr_7fr] items-end" style={{ maxWidth: '80rem', margin: '0 auto', gap: '0' }}>
       {/* Left */}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', padding: '0 1.5rem 3rem' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
           <Tag>Para asalariados en Latinoamérica</Tag>
         </div>
@@ -122,7 +122,7 @@ const Hero8: React.FC = () => (
         <img
           src={IMG_MOCKUP_HERO}
           alt="Controla IA en todos tus dispositivos"
-          style={{ width: '100%', maxWidth: '520px', height: 'auto', display: 'block', filter: 'drop-shadow(0 24px 48px rgba(0,0,0,0.12))' }}
+          style={{ width: '100%', height: 'auto', display: 'block', filter: 'drop-shadow(0 24px 48px rgba(0,0,0,0.12))' }}
         />
         <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '0.75rem' }}>
           <div style={{ background: WHITE, border: `1px solid ${BORDER}`, borderRadius: '9999px', padding: '0.4rem 1rem', boxShadow: '0 4px 12px rgba(0,0,0,0.07)', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>

@@ -26,7 +26,7 @@ const Hero6: React.FC = () => {
     <section
       id="hero"
       className="relative overflow-hidden text-white"
-      style={{ background: '#000', paddingTop: 'clamp(3.5rem, 11svh, 6rem)', paddingBottom: 'clamp(3.5rem, 11svh, 6rem)' }}
+      style={{ background: '#000', paddingTop: 'clamp(3rem, 8svh, 5rem)', paddingBottom: 0 }}
     >
       <video ref={videoRef} autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover" style={{ zIndex: 0 }}>
         <source src={VIDEO_URL} type="video/mp4" />
@@ -35,11 +35,11 @@ const Hero6: React.FC = () => {
       <div className="absolute inset-0 pointer-events-none" style={{ zIndex: 1, background: 'radial-gradient(ellipse 85% 65% at 50% 50%, rgba(11,18,32,0.60) 0%, transparent 100%)' }} />
 
       {/* Desktop: 2 columnas | Mobile: 1 columna */}
-      <div className="relative w-full max-w-7xl mx-auto px-4" style={{ zIndex: 2 }}>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+      <div className="relative w-full max-w-7xl mx-auto" style={{ zIndex: 2 }}>
+        <div className="grid grid-cols-1 lg:grid-cols-[5fr_7fr] gap-6 lg:gap-0 items-end">
 
           {/* Columna izquierda — texto */}
-          <div className="flex flex-col items-center text-center lg:items-start lg:text-left" style={{ gap: '1.25rem' }}>
+          <div className="flex flex-col items-center text-center lg:items-start lg:text-left px-4 lg:px-8 pb-8" style={{ gap: '1.25rem' }}>
             <div className="inline-flex items-center gap-2 bg-white/10 border border-white/15 px-4 py-1.5 rounded-full">
               <span className="material-symbols-outlined text-sm text-primary">savings</span>
               <span className="text-[11px] font-bold uppercase tracking-[0.12em] text-white/80">
@@ -80,13 +80,13 @@ const Hero6: React.FC = () => {
             </div>
           </div>
 
-          {/* Columna derecha — mockup (solo visible en desktop, en mobile va abajo) */}
+          {/* Columna derecha — mockup */}
           <div className="flex items-center justify-center">
             <img
               src="/lp8/sistema finanzas/version dar/dark-hero.png"
               alt="Controla IA - Plataforma"
-              className="w-full h-auto"
-              style={{ maxWidth: '580px', filter: 'drop-shadow(0 20px 40px rgba(0,0,0,0.5))' }}
+              className="w-full h-auto block"
+              style={{ filter: 'drop-shadow(0 20px 40px rgba(0,0,0,0.5))' }}
             />
           </div>
 
