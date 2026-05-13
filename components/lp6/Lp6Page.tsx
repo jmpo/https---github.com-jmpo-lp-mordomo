@@ -363,8 +363,8 @@ const showcaseItems6 = [
 // ─── SYSTEMS SHOWCASE DARK (para LP6) ────────────────────────────────────────
 
 const DarkSystemsShowcase6: React.FC = () => (
-  <section className="bg-[#0b1220] py-20 border-t border-white/5 text-white">
-    <div className="max-w-6xl mx-auto px-4 space-y-10">
+  <section className="bg-[#0b1220] border-t border-white/5 text-white" style={{ padding: 'clamp(3rem, 6vw, 5rem) clamp(0.5rem, 2vw, 1rem)' }}>
+    <div style={{ maxWidth: '78rem', margin: '0 auto' }} className="space-y-6">
       <div className="text-center space-y-3">
         <div className="inline-flex items-center gap-2 bg-white/5 border border-white/10 px-3 py-1 rounded-full">
           <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-primary">Módulos del sistema</span>
@@ -384,14 +384,14 @@ const DarkSystemsShowcase6: React.FC = () => (
       </div>
 
       {/* Grid 2x2 */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         {[
           { src: '/lp8/sistema finanzas/version dar/dark-metas.png', alt: 'Sistema de Metas Financieras' },
           { src: '/lp8/sistema finanzas/version dar/dark-vehiculos.png', alt: 'Sistema de Mantenimiento de Vehículos' },
           { src: '/lp8/sistema finanzas/version dar/dark-supermercado.png', alt: 'Lista de Supermercado Inteligente' },
           { src: '/lp8/sistema finanzas/version dar/dark-whatsapp.png', alt: 'Envío por WhatsApp Integrado' },
         ].map((item) => (
-          <div key={item.alt} className="rounded-2xl overflow-hidden border border-white/10 shadow-xl shadow-black/30">
+          <div key={item.alt} className="rounded-xl overflow-hidden border border-white/10 shadow-xl shadow-black/30">
             <img src={item.src} alt={item.alt} className="w-full block" />
           </div>
         ))}

@@ -266,6 +266,218 @@ const showcaseItems = [
 
 // ─── SECCIÓN PREMIUM DASHBOARD (estilo Stripe / Linear / Ramp) ───────────────
 
+// ─── HERO VARIANT (alternative header style) ─────────────────────────────────
+
+const HeroVariantStyles = `
+.hero-dark {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at top left, rgba(0,102,255,0.18), transparent 30%),
+    radial-gradient(circle at top right, rgba(255,136,0,0.15), transparent 30%),
+    #050816;
+  padding: 90px 20px 50px;
+}
+.hero-container {
+  max-width: 1250px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  align-items: center;
+  gap: 40px;
+}
+.hero-content { z-index: 2; }
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 18px;
+  border-radius: 999px;
+  background: rgba(0,102,255,0.08);
+  border: 1px solid rgba(0,102,255,0.2);
+  margin-bottom: 24px;
+}
+.hero-badge span {
+  color: #5DA8FF;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: .5px;
+  font-family: Manrope, sans-serif;
+}
+.hero-content h1 {
+  color: white;
+  font-size: clamp(2.5rem, 5vw, 4.25rem);
+  line-height: 1.05;
+  font-weight: 800;
+  margin-bottom: 24px;
+  letter-spacing: -2px;
+  font-family: Manrope, sans-serif;
+}
+.hero-content h1 span { color: #2F80FF; }
+.hero-content p {
+  color: #9CA3AF;
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  line-height: 1.7;
+  max-width: 580px;
+  margin-bottom: 34px;
+  font-family: Manrope, sans-serif;
+}
+.hv-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px 34px;
+  border-radius: 18px;
+  background: linear-gradient(135deg,#2F80FF,#0057FF);
+  color: white;
+  font-weight: 700;
+  font-size: 18px;
+  text-decoration: none;
+  box-shadow: 0 0 30px rgba(47,128,255,.35);
+  transition: .3s ease;
+  font-family: Manrope, sans-serif;
+}
+.hv-btn-primary:hover { transform: translateY(-2px); }
+.hero-secure {
+  margin-top: 24px;
+  color: #8A94A6;
+  font-size: 15px;
+  font-family: Manrope, sans-serif;
+}
+.hv-image {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.hv-dashboard-image {
+  width: 100%;
+  max-width: 720px;
+  position: relative;
+  z-index: 2;
+  filter: drop-shadow(0 30px 80px rgba(0,0,0,.6));
+}
+.hv-glow {
+  position: absolute;
+  border-radius: 999px;
+  filter: blur(120px);
+  z-index: 1;
+}
+.hv-glow-blue {
+  width: 350px; height: 350px;
+  background: rgba(0,102,255,.22);
+  left: 10%; top: 20%;
+}
+.hv-glow-orange {
+  width: 250px; height: 250px;
+  background: rgba(255,136,0,.18);
+  right: 5%; top: 5%;
+}
+.hv-features {
+  max-width: 1250px;
+  margin: 50px auto 0;
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 18px;
+}
+.hv-feature-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  backdrop-filter: blur(14px);
+  border-radius: 22px;
+  padding: 28px;
+  display: flex;
+  gap: 18px;
+  transition: .3s ease;
+}
+.hv-feature-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255,255,255,0.12);
+}
+.hv-feature-icon {
+  min-width: 58px; height: 58px;
+  border-radius: 16px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 24px;
+}
+.hv-feature-icon.blue  { background: rgba(0,102,255,0.15); }
+.hv-feature-icon.orange{ background: rgba(255,136,0,0.15); }
+.hv-feature-icon.green { background: rgba(0,255,136,0.12); }
+.hv-feature-icon.purple{ background: rgba(168,85,247,0.15); }
+.hv-feature-card h3 { color: white; font-size: 19px; margin-bottom: 10px; font-family: Manrope, sans-serif; }
+.hv-feature-card p  { color: #9CA3AF; line-height: 1.6; font-size: 15px; font-family: Manrope, sans-serif; }
+@media(max-width:980px){
+  .hero-container { grid-template-columns: 1fr; }
+  .hv-features { grid-template-columns: 1fr 1fr; }
+}
+@media(max-width:600px){
+  .hv-features { grid-template-columns: 1fr; }
+}
+`;
+
+const HeroVariant8: React.FC = () => (
+  <>
+    <style>{HeroVariantStyles}</style>
+    <section className="hero-dark">
+      <div className="hero-container">
+        {/* LEFT */}
+        <div className="hero-content">
+          <div className="hero-badge">
+            <span>👑 TU CENTRO FINANCIERO</span>
+          </div>
+          <h1>
+            El sistema completo<br />
+            para dominar tus<br />
+            <span>finanzas personales</span>
+          </h1>
+          <p>
+            No es solo un software, es un sistema integral para ordenar tu dinero,
+            ahorrar, invertir y alcanzar tu libertad financiera.
+          </p>
+          <div>
+            <a
+              href="#precios"
+              className="hv-btn-primary"
+              onClick={() => trackMetaEvent('Lead', { content_name: 'lp8_herovariant_cta' })}
+            >
+              Comenzar ahora →
+            </a>
+          </div>
+          <div className="hero-secure">🔒 100% seguro y privado</div>
+        </div>
+
+        {/* RIGHT */}
+        <div className="hv-image">
+          <div className="hv-glow hv-glow-blue" />
+          <div className="hv-glow hv-glow-orange" />
+          <img
+            src="/lp8/sistema finanzas/version dar/dark-hero.png"
+            alt="Controla IA Dashboard"
+            className="hv-dashboard-image"
+          />
+        </div>
+      </div>
+
+      {/* FEATURES */}
+      <div className="hv-features">
+        {[
+          { icon: '📈', color: 'blue',   title: 'Todo en un solo lugar',      desc: 'Tus cuentas, tarjetas, ingresos, gastos e inversiones en un único dashboard.' },
+          { icon: '🔒', color: 'orange', title: '100% seguro y privado',       desc: 'Tus datos protegidos con tecnología segura.' },
+          { icon: '🔄', color: 'green',  title: 'Actualizado en tiempo real', desc: 'Información financiera siempre actualizada.' },
+          { icon: '🧠', color: 'purple', title: 'IA que trabaja para vos',    desc: 'Insights automáticos y análisis inteligente.' },
+        ].map((f) => (
+          <div key={f.title} className="hv-feature-card">
+            <div className={`hv-feature-icon ${f.color}`}>{f.icon}</div>
+            <div>
+              <h3>{f.title}</h3>
+              <p>{f.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  </>
+);
+
 const PremiumDashboardSection8: React.FC = () => (
   <section style={{
     position: 'relative',
@@ -355,11 +567,11 @@ const PremiumDashboardSection8: React.FC = () => (
 // ─── SYSTEMS SHOWCASE ────────────────────────────────────────────────────────
 
 const SystemsShowcase8: React.FC = () => (
-  <section style={{ background: '#f9fafb', padding: '5rem 1.5rem', borderTop: `1px solid ${BORDER}` }}>
-    <div style={{ maxWidth: '72rem', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+  <section style={{ background: '#f9fafb', padding: 'clamp(3rem, 6vw, 5rem) clamp(0.75rem, 3vw, 1.5rem)', borderTop: `1px solid ${BORDER}` }}>
+    <div style={{ maxWidth: '76rem', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
 
       {/* Header */}
-      <div style={{ textAlign: 'center', marginBottom: '1rem' }}>
+      <div style={{ textAlign: 'center', marginBottom: '0.75rem' }}>
         <Tag>Módulos del sistema</Tag>
         <h2 style={{ fontFamily: SANS, fontSize: 'clamp(1.75rem, 4vw, 2.75rem)', fontWeight: 900, color: DARK, margin: '1rem 0 0.5rem', letterSpacing: '-0.02em', lineHeight: 1.2 }}>
           Todo lo que incluye Controla IA
@@ -370,12 +582,12 @@ const SystemsShowcase8: React.FC = () => (
       </div>
 
       {/* Dashboard — full width */}
-      <div style={{ borderRadius: '1.5rem', overflow: 'hidden', boxShadow: '0 4px 24px rgba(0,0,0,0.07)', border: `1px solid ${BORDER}` }}>
+      <div style={{ borderRadius: '1.25rem', overflow: 'hidden', boxShadow: '0 4px 24px rgba(0,0,0,0.07)', border: `1px solid ${BORDER}` }}>
         <img src="/lp8/sistema finanzas/sf-dashboard.png" alt="Sistema de Finanzas Personales" style={{ width: '100%', display: 'block' }} />
       </div>
 
-      {/* Grid 2x2: Metas, Vehículos, Supermercado, WhatsApp */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+      {/* Grid 2x2 */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         {[
           { src: '/lp8/sistema finanzas/sf-metas.png', alt: 'Sistema de Metas Financieras' },
           { src: '/lp8/sistema finanzas/sf-vehiculos.png', alt: 'Sistema de Mantenimiento de Vehículos' },
