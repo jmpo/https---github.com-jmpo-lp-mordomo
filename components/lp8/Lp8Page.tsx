@@ -1,5 +1,6 @@
 
 import React, { useState } from 'react';
+import StickyScarcityBar from '../StickyScarcityBar';
 import { trackMetaEvent } from '../../metaPixel';
 
 // ─── SCREENSHOTS REALES DE CONTROLA IA ───────────────────────────────────────
@@ -972,6 +973,28 @@ const plans8 = [
   },
 ];
 
+const CuposCountdown: React.FC = () => {
+  const [cd, setCd] = useState('11:59:59');
+  React.useEffect(() => {
+    const target = Date.now() + 12 * 60 * 60 * 1000;
+    const tick = () => {
+      const d = Math.max(target - Date.now(), 0);
+      const h = String(Math.floor(d / 3600000)).padStart(2, '0');
+      const m = String(Math.floor((d / 60000) % 60)).padStart(2, '0');
+      const s = String(Math.floor((d / 1000) % 60)).padStart(2, '0');
+      setCd(`${h}:${m}:${s}`);
+    };
+    tick();
+    const id = setInterval(tick, 1000);
+    return () => clearInterval(id);
+  }, []);
+  return (
+    <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', background: `${ORANGE}12`, border: `1px solid ${ORANGE}30`, fontFamily: SANS, fontSize: '0.8125rem', fontWeight: 700, color: DARK, padding: '0.45rem 1.1rem', borderRadius: '9999px' }}>
+      ⏳ Oferta termina en <span style={{ color: ORANGE, fontWeight: 900, fontVariantNumeric: 'tabular-nums' }}>{cd}</span>
+    </span>
+  );
+};
+
 const PricingSection8: React.FC = () => (
   <section id="precios" style={{ background: LIGHT, padding: '6rem 1.5rem', borderTop: `1px solid ${BORDER}` }}>
     <div style={{ maxWidth: '64rem', margin: '0 auto' }}>
@@ -1003,7 +1026,15 @@ const PricingSection8: React.FC = () => (
         <h2 style={{ fontFamily: SANS, fontSize: 'clamp(1.75rem, 4vw, 2.75rem)', fontWeight: 900, color: DARK, margin: '1rem 0 0.75rem', letterSpacing: '-0.02em', lineHeight: 1.2 }}>
           Menos que un café al mes.
         </h2>
-        <p style={{ fontFamily: SANS, fontSize: '1rem', color: MUTED }}>Un asesor financiero cobra $50 la hora. Controla te cuesta menos.</p>
+        <p style={{ fontFamily: SANS, fontSize: '1rem', color: MUTED, marginBottom: '1.25rem' }}>Un asesor financiero cobra $50 la hora. Controla te cuesta menos.</p>
+
+        {/* Cupos + countdown */}
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.75rem' }}>
+          <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', background: '#fef2f2', border: '1px solid #fca5a5', color: '#ef4444', fontFamily: SANS, fontSize: '0.8125rem', fontWeight: 800, padding: '0.45rem 1.1rem', borderRadius: '9999px' }}>
+            🔴 Solo quedan <span style={{ color: '#dc2626', margin: '0 0.2rem' }}>7 cupos</span> a este precio
+          </span>
+          <CuposCountdown />
+        </div>
       </div>
 
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '1.5rem', alignItems: 'start' }}>
@@ -1174,6 +1205,7 @@ const Lp8Page: React.FC = () => (
   <div style={{ background: WHITE, color: DARK, minHeight: '100vh' }}>
     <Nav8 />
     <main>
+      <StickyScarcityBar theme="light" ctaHref="#precios" />
       <Hero8 />
       <PainSection8 />
       <HowItWorks8 />

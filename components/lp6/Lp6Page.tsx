@@ -4,6 +4,7 @@ import Header from '../Header';
 import VideoSection from '../VideoSection';
 import PricingSection from '../PricingSection';
 import Footer from '../Footer';
+import StickyScarcityBar from '../StickyScarcityBar';
 import { trackMetaEvent } from '../../metaPixel';
 
 const VIDEO_URL =
@@ -701,17 +702,15 @@ const Lp6Page: React.FC = () => (
   <div className="flex flex-col min-h-screen bg-[#0b1220] text-white">
     <Header />
     <main>
+      <StickyScarcityBar theme="dark" />
       <Hero6 />
       <ProblemSection6 />
       <PainSection6 />
-      <CulpaSection6 />
       <SystemSection6 />
       <VideoSection />
       <DarkSystemsShowcase6 />
-      <TestimonialsSection6 />
       <ObjectionsSection6 />
-      <UrgencySection6 />
-      <ValueBridgeSection6 />
+      <TestimonialsSection6 />
       <PricingSection />
       <ClosingSection6 />
     </main>

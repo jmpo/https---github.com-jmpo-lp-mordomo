@@ -93,20 +93,21 @@ const proofMessages = [
 ];
 
 const PricingSection: React.FC = () => {
-  const [countdown, setCountdown] = React.useState('12:00:00');
+  const [countdown, setCountdown] = React.useState('10:00');
   const [toastIndex, setToastIndex] = React.useState(0);
   const [showProof, setShowProof] = React.useState(false);
   const sectionRef = React.useRef<HTMLDivElement | null>(null);
   const bestPlanHref = plans.find((p) => p.highlight === 'value')?.href ?? plans[0].href;
 
   React.useEffect(() => {
-    const target = Date.now() + 12 * 60 * 60 * 1000;
+    const target = Date.now() + 10 * 60 * 1000; // 10 minutos
     const tick = () => {
       const diff = Math.max(target - Date.now(), 0);
       const hrs = String(Math.floor(diff / (1000 * 60 * 60))).padStart(2, '0');
       const mins = String(Math.floor((diff / (1000 * 60)) % 60)).padStart(2, '0');
       const secs = String(Math.floor((diff / 1000) % 60)).padStart(2, '0');
-      setCountdown(`${hrs}:${mins}:${secs}`);
+      // Mostrar solo MM:SS cuando es menos de 1 hora
+      setCountdown(diff < 3600000 ? `${mins}:${secs}` : `${hrs}:${mins}:${secs}`);
     };
     tick();
     const id = setInterval(tick, 1000);
@@ -160,15 +161,22 @@ const PricingSection: React.FC = () => {
           ))}
         </div>
 
-        {/* Countdown */}
-        <div className="max-w-3xl mx-auto mb-12 md:mb-14">
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 bg-white/5 border border-white/15 shadow-lg shadow-black/20 px-6 py-4 rounded-3xl">
-            <span className="text-xs font-black uppercase tracking-[0.16em] text-primary">Prueba gratis activa</span>
-            <div className="flex items-center gap-2 text-sm font-bold text-white">
-              <span className="material-symbols-outlined text-primary text-lg">hourglass_top</span>
-              Termina en {countdown}
+        {/* Countdown + cupos */}
+        <div className="max-w-3xl mx-auto mb-12 md:mb-14 space-y-3">
+          {/* Cupos */}
+          <div className="flex items-center justify-center gap-2">
+            <span className="inline-flex items-center gap-1.5 bg-red-500/15 border border-red-500/30 text-red-300 text-xs font-black px-4 py-2 rounded-full">
+              🔴 Solo quedan <span className="text-white">7 cupos</span> a este precio
+            </span>
+          </div>
+          {/* Timer */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 bg-white/5 border border-primary/30 shadow-lg shadow-primary/10 px-6 py-4 rounded-3xl">
+            <span className="text-xs font-black uppercase tracking-[0.16em] text-primary animate-pulse">🔥 PRECIO ESPECIAL — HOY SOLO</span>
+            <div className="flex items-center gap-2">
+              <span className="material-symbols-outlined text-primary text-xl">hourglass_top</span>
+              <span className="font-black text-2xl text-primary" style={{ fontVariantNumeric: 'tabular-nums' }}>{countdown}</span>
             </div>
-            <span className="text-xs font-semibold text-white/70">Cancela cuando quieras.</span>
+            <span className="text-xs font-semibold text-white/60">Este precio desaparece al llegar a cero.</span>
           </div>
         </div>
 
@@ -316,8 +324,34 @@ const PricingSection: React.FC = () => {
           })}
         </div>
 
-        {/* Bonuses — imagen valor agregado */}
-        <div className="mt-14 space-y-5">
+        {/* CTA final — primero */}
+        <div className="flex flex-col items-center gap-3 mt-10">
+          <a
+            href={bestPlanHref}
+            onClick={() =>
+              trackMetaEvent('AddToCart', {
+                content_ids: ['plan_anual'],
+                content_name: 'Plan Anual - Controla IA',
+                content_type: 'product',
+                value: 39.99,
+                currency: 'USD',
+                num_items: 1,
+              })
+            }
+            className="inline-flex items-center gap-3 bg-primary text-secondary px-8 py-4 rounded-2xl font-black text-lg shadow-xl shadow-primary/30 hover:bg-primary-dark transition-all active:scale-95 cta-shine"
+          >
+            👉 QUIERO EL PLAN ANUAL POR USD 39.99
+          </a>
+          <p className="text-sm font-semibold text-white/70">Cancela cuando quieras. Pero te aseguro que no querrás.</p>
+          <p className="text-xs text-white/40 font-medium">🛡️ Garantía de devolución 7 días sin preguntas</p>
+        </div>
+
+        <p className="text-center mt-8 text-sm font-bold text-white/60">
+          ¿Tenés dudas? <a href="https://wa.link/wcvh0b" className="text-primary hover:underline">Escribinos y te ayudamos</a>
+        </p>
+
+        {/* Bonuses — debajo de los precios y CTA */}
+        <div className="mt-16 space-y-5">
           <div className="text-center space-y-2">
             <p className="text-xs font-black uppercase tracking-[0.16em] text-primary">
               🎁 Bonus exclusivos — incluidos gratis
@@ -346,32 +380,6 @@ const PricingSection: React.FC = () => {
             ))}
           </div>
         </div>
-
-        {/* CTA final */}
-        <div className="flex flex-col items-center gap-3 mt-10">
-          <a
-            href={bestPlanHref}
-            onClick={() =>
-              trackMetaEvent('AddToCart', {
-                content_ids: ['plan_anual'],
-                content_name: 'Plan Anual - Controla IA',
-                content_type: 'product',
-                value: 39.99,
-                currency: 'USD',
-                num_items: 1,
-              })
-            }
-            className="inline-flex items-center gap-3 bg-primary text-secondary px-8 py-4 rounded-2xl font-black text-lg shadow-xl shadow-primary/30 hover:bg-primary-dark transition-all active:scale-95 cta-shine"
-          >
-            👉 QUIERO EL PLAN ANUAL POR USD 39.99
-          </a>
-          <p className="text-sm font-semibold text-white/70">Cancela cuando quieras. Pero te aseguro que no querrás.</p>
-          <p className="text-xs text-white/40 font-medium">🛡️ Garantía de devolución 7 días sin preguntas</p>
-        </div>
-
-        <p className="text-center mt-16 text-sm font-bold text-white/60">
-          ¿Tenés dudas? <a href="https://wa.link/wcvh0b" className="text-primary hover:underline">Escribinos y te ayudamos</a>
-        </p>
       </div>
 
       {showProof && (
