@@ -4,11 +4,11 @@ import { trackMetaEvent } from '../../metaPixel';
 
 // ─── SCREENSHOTS REALES DE CONTROLA IA ───────────────────────────────────────
 const IMG_MOCKUP_HERO  = '/lp8/mockup-hero.png';
-const IMG_SOCIAL_PROOF = '/lp8/muestra%20plataforma.png';
+const IMG_SOCIAL_PROOF = '/lp8/muestra-plataforma.png';
 const IMG_DASHBOARD   = '/lp8/dashboard.jpg';
 const IMG_METAS       = '/lp8/metas.jpg';
-const IMG_MERCADO     = '/lp8/lista%20super.jpg';
-const IMG_VEHICULOS   = '/lp8/mantenimiento%20vehiculos.jpg';
+const IMG_MERCADO     = '/lp8/lista-super.jpg';
+const IMG_VEHICULOS   = '/lp8/mantenimiento-vehiculos.jpg';
 const IMG_INVERSIONES = '/lp8/inversiones.jpg';
 
 // ─── DESIGN TOKENS ────────────────────────────────────────────────────────────
@@ -88,12 +88,12 @@ const Hero8: React.FC = () => (
           <Tag>Para asalariados en Latinoamérica</Tag>
         </div>
         <h1 style={{ fontFamily: SANS, fontSize: 'clamp(2rem, 5vw, 3.5rem)', fontWeight: 900, lineHeight: 1.1, letterSpacing: '-0.02em', color: DARK, margin: 0 }}>
-          Controla tus finanzas<br />
-          fácilmente con{' '}
-          <span style={{ color: ORANGE }}>Inteligencia Artificial.</span>
+          💸 Dejá de preguntarte<br />
+          <span style={{ color: ORANGE }}>a dónde se va tu sueldo.</span>
         </h1>
         <p style={{ fontFamily: SANS, fontSize: '1.0625rem', color: MUTED, lineHeight: 1.65, fontWeight: 400, margin: 0, maxWidth: '32rem' }}>
-          Registrá tus gastos en segundos y ve todo detallado en tu dashboard — ingresos, ahorros, despensa y metas — de forma automática.
+          Controlá tus gastos, ahorros y metas con Inteligencia Artificial.<br />
+          Registrá movimientos en segundos y visualizá todo automáticamente en un solo dashboard.
         </p>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
@@ -211,91 +211,304 @@ const HowItWorks8: React.FC = () => (
 
 const showcaseItems = [
   {
-    tag: 'Dashboard',
+    tag: 'Dashboard', tagIcon: '📊',
     title: 'Sistema de Finanzas Personales',
     desc: 'Todo separado, todo bajo control. Tus cuentas, gastos e ingresos en tiempo real.',
-    points: ['Ingresos y gastos separados', 'Dashboard inteligente', 'Salud financiera en tiempo real', 'Reportes claros y automáticos'],
-    img: IMG_DASHBOARD,
+    features: [
+      { icon: '👛', title: 'Ingresos y gastos separados', desc: 'Visualizá claramente tus ingresos, gastos y saldo en tiempo real.' },
+      { icon: '📈', title: 'Dashboard inteligente', desc: 'Toda tu información financiera organizada en un solo lugar.' },
+      { icon: '❤️', title: 'Salud financiera en tiempo real', desc: 'Conocé tu situación financiera actual y tomá mejores decisiones.' },
+      { icon: '📋', title: 'Reportes claros y automáticos', desc: 'Generá reportes automáticos y entendé tu dinero sin complicaciones.' },
+    ],
+    img: '/lp8/mockup-dashboard-nobg.png',
     reverse: false,
   },
   {
-    tag: 'Metas',
+    tag: 'Metas', tagIcon: '🎯',
     title: 'Sistema de Metas Financieras',
     desc: 'Planificá, ahorrá y cumplí tus objetivos. Paso a paso, sin complicaciones.',
-    points: ['Creá tus objetivos', 'Seguimiento automático', 'Progreso visual claro', 'Motivación constante'],
+    features: [
+      { icon: '🏁', title: 'Creá tus objetivos', desc: 'Definí metas concretas: viaje, auto, fondo de emergencia.' },
+      { icon: '🔄', title: 'Seguimiento automático', desc: 'El sistema calcula cuánto guardar por día o por semana.' },
+      { icon: '📊', title: 'Progreso visual claro', desc: 'Ves la barra avanzar. Sabés exactamente dónde estás.' },
+      { icon: '💪', title: 'Motivación constante', desc: 'Alertas y ajustes si te atrasás, para que no pierdas el ritmo.' },
+    ],
     img: IMG_METAS,
     reverse: true,
   },
   {
-    tag: 'Vehículos',
-    title: 'Sistema de Mantenimiento de Vehículos',
-    desc: 'Controlá servicios, gastos y mantenimientos para que nunca te tome por sorpresa.',
-    points: ['Recordatorios automáticos', 'Historial por vehículo', 'Control de gastos', 'Todo en un solo lugar'],
+    tag: 'Vehículos', tagIcon: '🚗',
+    title: 'Mantenimiento de Vehículos',
+    desc: 'Controlá servicios y gastos. Nunca más una sorpresa de $500 porque no cambiaste el aceite.',
+    features: [
+      { icon: '🔔', title: 'Recordatorios automáticos', desc: 'Alertas antes de que venza cualquier mantenimiento.' },
+      { icon: '📁', title: 'Historial por vehículo', desc: 'Todos los mantenimientos registrados y consultables.' },
+      { icon: '💵', title: 'Control de gastos', desc: 'Cuánto gastaste en cada vehículo, mes a mes.' },
+      { icon: '🗂️', title: 'Todo en un solo lugar', desc: 'Uno o varios vehículos, todo organizado.' },
+    ],
     img: IMG_VEHICULOS,
     reverse: false,
   },
   {
-    tag: 'Mercado',
+    tag: 'Mercado', tagIcon: '🛒',
     title: 'Lista de Supermercado Inteligente',
-    desc: 'Creá, compartí y gestioná tus compras sin complicaciones desde el celular.',
-    points: ['Creá listas desde el celular', 'Sin duplicados', 'Compartí o exportá', 'Compras más organizadas'],
+    desc: 'Creá, compartí y gestioná tus compras sin duplicados ni gastos innecesarios.',
+    features: [
+      { icon: '📱', title: 'Creá listas desde el celular', desc: 'Rápido, simple, siempre disponible cuando vas al super.' },
+      { icon: '🚫', title: 'Sin duplicados', desc: 'El sistema detecta lo que ya tenés para que no compres doble.' },
+      { icon: '🔗', title: 'Compartí o exportá', desc: 'Compartí la lista con tu pareja o familia al instante.' },
+      { icon: '✅', title: 'Compras más organizadas', desc: 'Por categoría, por precio, por lo que falta. Todo claro.' },
+    ],
     img: IMG_MERCADO,
     reverse: true,
   },
-  {
-    tag: 'Inversiones',
-    title: 'Gestión de Inversiones',
-    desc: 'Seguí tu portafolio, cobros pendientes y rendimientos. Todo organizado y claro.',
-    points: ['Portafolio centralizado', 'Cobros y rendimientos', 'Historial completo', 'Alertas de vencimiento'],
-    img: IMG_INVERSIONES,
-    reverse: false,
-  },
 ];
 
+// ─── SECCIÓN PREMIUM DASHBOARD (estilo Stripe / Linear / Ramp) ───────────────
+
+const PremiumDashboardSection8: React.FC = () => (
+  <section style={{
+    position: 'relative',
+    overflow: 'hidden',
+    background: 'linear-gradient(160deg, #fafafa 0%, #ffffff 60%, #fff7f0 100%)',
+    padding: '7rem 1.5rem',
+    borderTop: '1px solid rgba(0,0,0,0.06)',
+  }}>
+    {/* Glow de fondo */}
+    <div style={{ position: 'absolute', top: '-10%', right: '-5%', width: '50%', height: '70%', background: 'radial-gradient(ellipse, rgba(244,140,37,0.08) 0%, transparent 70%)', pointerEvents: 'none' }} />
+    <div style={{ position: 'absolute', bottom: '-10%', left: '10%', width: '40%', height: '50%', background: 'radial-gradient(ellipse, rgba(59,130,246,0.05) 0%, transparent 70%)', pointerEvents: 'none' }} />
+
+    <div style={{ maxWidth: '72rem', margin: '0 auto', position: 'relative', zIndex: 1 }}>
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+
+        {/* ── IZQUIERDA: texto ── */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+
+          {/* Badge */}
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', border: '1px solid rgba(244,140,37,0.35)', borderRadius: '9999px', padding: '0.3rem 1rem', width: 'fit-content', background: 'rgba(244,140,37,0.05)' }}>
+            <span style={{ fontSize: '0.75rem' }}>📊</span>
+            <span style={{ fontFamily: SANS, fontSize: '0.65rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.16em', color: ORANGE }}>Dashboard</span>
+          </div>
+
+          {/* Título premium */}
+          <div>
+            <h2 style={{ fontFamily: SANS, fontSize: 'clamp(2rem, 5vw, 3.5rem)', fontWeight: 900, lineHeight: 1.1, letterSpacing: '-0.03em', color: '#0a0a0a', margin: 0 }}>
+              Sistema de{' '}
+              <span style={{ background: 'linear-gradient(135deg, #1e40af 0%, #3b82f6 60%, #60a5fa 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
+                Finanzas
+              </span>
+              <br />
+              <span style={{ color: '#0a0a0a' }}>Personales y Negocio</span>
+            </h2>
+          </div>
+
+          {/* Subtítulo */}
+          <p style={{ fontFamily: SANS, fontSize: '1.0625rem', color: '#6b7280', lineHeight: 1.7, margin: 0, maxWidth: '28rem' }}>
+            Todo separado, todo bajo control.<br />
+            Tus cuentas, gastos e ingresos en tiempo real.
+          </p>
+
+          {/* Beneficios — estilo Linear */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '0' }}>
+            {[
+              { icon: '👛', label: 'Ingresos y gastos separados', color: '#f59e0b' },
+              { icon: '📈', label: 'Dashboard inteligente', color: '#3b82f6' },
+              { icon: '❤️', label: 'Salud financiera en tiempo real', color: '#ef4444' },
+              { icon: '📋', label: 'Reportes claros y automáticos', color: '#10b981' },
+            ].map((b, i, arr) => (
+              <div key={b.label} style={{ display: 'flex', alignItems: 'center', gap: '1rem', padding: '1rem 0', borderBottom: i < arr.length - 1 ? '1px solid rgba(0,0,0,0.06)' : 'none' }}>
+                <div style={{ width: 36, height: 36, borderRadius: '0.625rem', background: `${b.color}15`, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, fontSize: '1rem' }}>
+                  {b.icon}
+                </div>
+                <span style={{ fontFamily: SANS, fontSize: '0.9375rem', fontWeight: 600, color: '#111827' }}>{b.label}</span>
+                <svg style={{ marginLeft: 'auto', flexShrink: 0, opacity: 0.3 }} width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <path d="M6 12L10 8L6 4" stroke="#111827" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </div>
+            ))}
+          </div>
+
+          {/* Trust */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', paddingTop: '0.5rem' }}>
+            {['🔒 100% seguro', '⚡ Tiempo real', '🏦 Multi-cuenta'].map((t) => (
+              <span key={t} style={{ fontFamily: SANS, fontSize: '0.8125rem', color: '#9ca3af', fontWeight: 500 }}>{t}</span>
+            ))}
+          </div>
+        </div>
+
+        {/* ── DERECHA: mockup premium ── */}
+        <div style={{ position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '420px' }}>
+          {/* Glow detrás del mockup */}
+          <div style={{ position: 'absolute', inset: '10%', background: 'radial-gradient(ellipse, rgba(244,140,37,0.12) 0%, transparent 70%)', filter: 'blur(32px)', borderRadius: '50%', zIndex: 0 }} />
+          {/* Imagen */}
+          <img
+            src="/lp8/mockup-dashboard-nobg.png"
+            alt="Dashboard Controla IA"
+            style={{ position: 'relative', zIndex: 1, width: '115%', maxWidth: '620px', display: 'block', filter: 'drop-shadow(0 32px 64px rgba(0,0,0,0.14)) drop-shadow(0 8px 16px rgba(244,140,37,0.08))' }}
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+);
+
+// ─── SYSTEMS SHOWCASE ────────────────────────────────────────────────────────
+
+const SystemsShowcase8: React.FC = () => (
+  <section style={{ background: '#f9fafb', padding: '5rem 1.5rem', borderTop: `1px solid ${BORDER}` }}>
+    <div style={{ maxWidth: '72rem', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+
+      {/* Header */}
+      <div style={{ textAlign: 'center', marginBottom: '1rem' }}>
+        <Tag>Módulos del sistema</Tag>
+        <h2 style={{ fontFamily: SANS, fontSize: 'clamp(1.75rem, 4vw, 2.75rem)', fontWeight: 900, color: DARK, margin: '1rem 0 0.5rem', letterSpacing: '-0.02em', lineHeight: 1.2 }}>
+          Todo lo que incluye Controla IA
+        </h2>
+        <p style={{ fontFamily: SANS, fontSize: '1rem', color: MUTED, maxWidth: '32rem', margin: '0 auto' }}>
+          Cada módulo diseñado para resolver un problema real de tu vida financiera.
+        </p>
+      </div>
+
+      {/* Dashboard — full width */}
+      <div style={{ borderRadius: '1.5rem', overflow: 'hidden', boxShadow: '0 4px 24px rgba(0,0,0,0.07)', border: `1px solid ${BORDER}` }}>
+        <img src="/lp8/sistema finanzas/sf-dashboard.png" alt="Sistema de Finanzas Personales" style={{ width: '100%', display: 'block' }} />
+      </div>
+
+      {/* Grid 2x2: Metas, Vehículos, Supermercado, WhatsApp */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+        {[
+          { src: '/lp8/sistema finanzas/sf-metas.png', alt: 'Sistema de Metas Financieras' },
+          { src: '/lp8/sistema finanzas/sf-vehiculos.png', alt: 'Sistema de Mantenimiento de Vehículos' },
+          { src: '/lp8/sistema finanzas/sf-supermercado.png', alt: 'Lista de Supermercado Inteligente' },
+          { src: '/lp8/sistema finanzas/sf-whatsapp.png', alt: 'Envío por WhatsApp Integrado' },
+        ].map((item) => (
+          <div key={item.alt} style={{ borderRadius: '1.25rem', overflow: 'hidden', boxShadow: '0 4px 20px rgba(0,0,0,0.06)', border: `1px solid ${BORDER}`, background: WHITE }}>
+            <img src={item.src} alt={item.alt} style={{ width: '100%', display: 'block' }} />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+);
+
 const FeaturesShowcase8: React.FC = () => (
-  <section style={{ background: WHITE, padding: '4rem 1.5rem 2rem', borderTop: `1px solid ${BORDER}` }}>
-    <div style={{ maxWidth: '64rem', margin: '0 auto' }}>
+  <section style={{ background: WHITE, padding: '5rem 1.5rem', borderTop: `1px solid ${BORDER}` }}>
+    <div style={{ maxWidth: '72rem', margin: '0 auto' }}>
       <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
         <Tag>Todo en uno</Tag>
         <h2 style={{ fontFamily: SANS, fontSize: 'clamp(1.75rem, 4vw, 2.75rem)', fontWeight: 900, color: DARK, margin: '1rem 0 0.5rem', letterSpacing: '-0.02em', lineHeight: 1.2 }}>
           Un sistema completo para tus finanzas
         </h2>
-        <p style={{ fontFamily: SANS, fontSize: '1rem', color: MUTED }}>Cada módulo diseñado para resolver un problema real.</p>
+        <p style={{ fontFamily: SANS, fontSize: '1rem', color: MUTED }}>Cada módulo diseñado para resolver un problema real de tu vida financiera.</p>
       </div>
 
-      {showcaseItems.map((item, i) => (
-        <div key={item.tag} style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-          gap: '3rem',
-          alignItems: 'center',
-          padding: '3.5rem 0',
-          borderTop: i > 0 ? `1px solid ${BORDER}` : 'none',
-          direction: item.reverse ? 'rtl' : 'ltr',
-        }}>
-          {/* Text */}
-          <div style={{ direction: 'ltr' }}>
-            <Tag>{item.tag}</Tag>
-            <h3 style={{ fontFamily: SANS, fontSize: 'clamp(1.5rem, 3vw, 2rem)', fontWeight: 900, color: DARK, margin: '0.75rem 0 0.75rem', letterSpacing: '-0.02em', lineHeight: 1.2 }}>
+      {showcaseItems.map((item, i) => {
+        const isDashboard = item.tag === 'Dashboard';
+
+        const TextCol = (
+          <div style={{ display: 'flex', flexDirection: 'column', gap: isDashboard ? '1.25rem' : '1.5rem' }}>
+            {/* Tag */}
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', background: `${ORANGE}15`, border: `1px solid ${ORANGE}30`, borderRadius: '9999px', padding: '0.3rem 0.9rem', width: 'fit-content' }}>
+              <span style={{ fontSize: '0.85rem' }}>{item.tagIcon}</span>
+              <span style={{ fontFamily: SANS, fontSize: '0.65rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.14em', color: ORANGE }}>{item.tag}</span>
+            </div>
+            {/* Título */}
+            <h3 style={{ fontFamily: SANS, fontSize: 'clamp(1.1rem, 4vw, 2.5rem)', fontWeight: 900, color: DARK, margin: 0, letterSpacing: '-0.02em', lineHeight: 1.15 }}>
               {item.title}
             </h3>
-            <p style={{ fontFamily: SANS, fontSize: '1rem', color: MUTED, lineHeight: 1.65, margin: '0 0 1.5rem' }}>{item.desc}</p>
-            <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
-              {item.points.map((p) => (
-                <li key={p} style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', fontFamily: SANS, fontSize: '0.9375rem', fontWeight: 600, color: DARK }}>
-                  <span style={{ color: ORANGE, flexShrink: 0, fontSize: '1rem' }}>✓</span>{p}
-                </li>
+            <p style={{ fontFamily: SANS, fontSize: 'clamp(0.8rem, 1.8vw, 1rem)', color: MUTED, lineHeight: 1.6, margin: 0 }}>{item.desc}</p>
+            {/* Features compactas */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.875rem' }}>
+              {item.features.map((f) => (
+                <div key={f.title} style={{ display: 'flex', gap: '0.875rem', alignItems: 'flex-start' }}>
+                  <div style={{ width: 'clamp(32px, 5.5vw, 40px)', height: 'clamp(32px, 5.5vw, 40px)', borderRadius: '0.625rem', background: `${ORANGE}12`, border: `1px solid ${ORANGE}25`, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, fontSize: 'clamp(0.85rem, 2.2vw, 1.1rem)' }}>
+                    {f.icon}
+                  </div>
+                  <div>
+                    <p style={{ fontFamily: SANS, fontSize: 'clamp(0.8rem, 2vw, 0.9375rem)', fontWeight: 800, color: DARK, margin: '0 0 0.2rem' }}>{f.title}</p>
+                    <p style={{ fontFamily: SANS, fontSize: 'clamp(0.7rem, 1.6vw, 0.8125rem)', color: MUTED, margin: 0, lineHeight: 1.5 }}>{f.desc}</p>
+                  </div>
+                </div>
               ))}
-            </ul>
+            </div>
+            {/* Trust bar solo en Dashboard */}
+            {isDashboard && (
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', padding: '0.875rem 1.25rem', background: WHITE, border: `1px solid ${BORDER}`, borderRadius: '0.75rem', marginTop: '0.5rem' }}>
+                <span style={{ fontSize: '1.25rem' }}>🛡️</span>
+                <div>
+                  <p style={{ fontFamily: SANS, fontSize: '0.8125rem', fontWeight: 800, color: DARK, margin: 0 }}>100% seguro</p>
+                  <p style={{ fontFamily: SANS, fontSize: '0.7rem', color: MUTED, margin: 0 }}>Tus datos siempre protegidos</p>
+                </div>
+                <div style={{ marginLeft: 'auto', display: 'flex', gap: '0.75rem' }}>
+                  {['🏦', '🔒', '☁️'].map((ic) => (
+                    <span key={ic} style={{ width: 32, height: 32, borderRadius: '0.5rem', background: `${ORANGE}10`, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.9rem' }}>{ic}</span>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
-          {/* Screenshot */}
-          <div style={{ direction: 'ltr' }}>
-            <div style={{ borderRadius: '1.25rem', overflow: 'hidden', border: `1px solid ${BORDER}`, boxShadow: '0 16px 48px rgba(0,0,0,0.08)' }}>
-              <img src={item.img} alt={item.title} style={{ width: '100%', display: 'block', objectFit: 'cover', objectPosition: 'top' }} />
+        );
+
+        // Dashboard: imagen absolutamente posicionada como fondo del lado derecho
+        if (isDashboard) {
+          return (
+            <div key={item.tag} style={{
+              borderRadius: '1.5rem',
+              overflow: 'hidden',
+              position: 'relative',
+              background: `radial-gradient(ellipse 100% 100% at 100% 0%, rgba(244,140,37,0.12) 0%, transparent 55%), #ffffff`,
+              padding: 'clamp(1.5rem, 4vw, 3rem) clamp(1rem, 3vw, 2.5rem)',
+              marginBottom: '1rem',
+              minHeight: 'clamp(400px, 60vw, 600px)',
+            }}>
+              {/* Texto izquierda */}
+              <div style={{ position: 'relative', zIndex: 2, maxWidth: '48%' }}>
+                {TextCol}
+              </div>
+              {/* Imagen fondo lado derecho */}
+              <img
+                src={item.img}
+                alt={item.title}
+                style={{
+                  position: 'absolute',
+                  right: '-2%',
+                  top: '50%',
+                  transform: 'translateY(-50%)',
+                  width: '58%',
+                  display: 'block',
+                  filter: 'drop-shadow(0 24px 48px rgba(0,0,0,0.14))',
+                }}
+              />
+            </div>
+          );
+        }
+
+        // Otras secciones: grid normal
+        const ImgCol = (
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <img
+              src={item.img}
+              alt={item.title}
+              style={{ width: '100%', display: 'block', filter: 'drop-shadow(0 20px 40px rgba(0,0,0,0.10))' }}
+            />
+          </div>
+        );
+
+        return (
+          <div key={item.tag} style={{
+            borderRadius: '1.5rem',
+            background: i % 2 === 0
+              ? `radial-gradient(ellipse 90% 70% at 100% 10%, rgba(244,140,37,0.10) 0%, transparent 55%), #ffffff`
+              : `radial-gradient(ellipse 90% 70% at 0% 10%, rgba(244,140,37,0.10) 0%, transparent 55%), #f9fafb`,
+            padding: 'clamp(1.25rem, 4vw, 3rem) clamp(1rem, 3vw, 2.5rem)',
+            marginBottom: '1rem',
+          }}>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+              {item.reverse ? <>{ImgCol}{TextCol}</> : <>{TextCol}{ImgCol}</>}
             </div>
           </div>
-        </div>
-      ))}
+        );
+      })}
     </div>
   </section>
 );
@@ -729,9 +942,7 @@ const Lp8Page: React.FC = () => (
       <Hero8 />
       <PainSection8 />
       <HowItWorks8 />
-      <FeaturesShowcase8 />
-      <DemoSection8 />
-      <FeaturesSection8 />
+      <SystemsShowcase8 />
       <ComparisonSection8 />
       <SocialProofBanner8 />
       <TestimonialsSection8 />

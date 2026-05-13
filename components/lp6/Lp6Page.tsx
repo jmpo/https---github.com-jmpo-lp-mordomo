@@ -83,10 +83,10 @@ const Hero6: React.FC = () => {
           {/* Columna derecha — mockup (solo visible en desktop, en mobile va abajo) */}
           <div className="flex items-center justify-center">
             <img
-              src="/lp8/mockup-hero.png"
+              src="/lp8/sistema finanzas/version dar/dark-hero.png"
               alt="Controla IA - Plataforma"
               className="w-full h-auto"
-              style={{ maxWidth: '580px', filter: 'drop-shadow(0 20px 40px rgba(0,0,0,0.4))' }}
+              style={{ maxWidth: '580px', filter: 'drop-shadow(0 20px 40px rgba(0,0,0,0.5))' }}
             />
           </div>
 
@@ -340,10 +340,10 @@ const MockupSection6: React.FC = () => (
       </div>
       <div className="flex justify-center">
         <img
-          src="/lp8/mockup-hero.png"
+          src="/lp8/sistema finanzas/version dar/dark-hero.png"
           alt="Controla IA en todos tus dispositivos"
           className="w-full max-w-3xl h-auto"
-          style={{ filter: 'drop-shadow(0 24px 48px rgba(244,140,37,0.15))', mixBlendMode: 'screen' }}
+          style={{ filter: 'drop-shadow(0 24px 48px rgba(244,140,37,0.2))' }}
         />
       </div>
     </div>
@@ -355,10 +355,50 @@ const MockupSection6: React.FC = () => (
 const showcaseItems6 = [
   { tag: 'Dashboard', title: 'Sistema de Finanzas Personales', desc: 'Todo separado, todo bajo control. Tus cuentas, gastos e ingresos en tiempo real.', points: ['Ingresos y gastos separados', 'Dashboard inteligente', 'Salud financiera en tiempo real', 'Reportes claros y automáticos'], img: '/lp8/dashboard.jpg', reverse: false },
   { tag: 'Metas', title: 'Sistema de Metas Financieras', desc: 'Planificá, ahorrá y cumplí tus objetivos. Paso a paso, sin complicaciones.', points: ['Creá tus objetivos', 'Seguimiento automático', 'Progreso visual claro', 'Motivación constante'], img: '/lp8/metas.jpg', reverse: true },
-  { tag: 'Vehículos', title: 'Mantenimiento de Vehículos', desc: 'Controlá servicios y mantenimientos para que nunca te tomen por sorpresa.', points: ['Recordatorios automáticos', 'Historial por vehículo', 'Control de gastos', 'Todo en un solo lugar'], img: '/lp8/mantenimiento%20vehiculos.jpg', reverse: false },
-  { tag: 'Mercado', title: 'Lista de Supermercado Inteligente', desc: 'Creá, compartí y gestioná tus compras sin complicaciones desde el celular.', points: ['Creá listas desde el celular', 'Sin duplicados', 'Compartí o exportá', 'Compras más organizadas'], img: '/lp8/lista%20super.jpg', reverse: true },
+  { tag: 'Vehículos', title: 'Mantenimiento de Vehículos', desc: 'Controlá servicios y mantenimientos para que nunca te tomen por sorpresa.', points: ['Recordatorios automáticos', 'Historial por vehículo', 'Control de gastos', 'Todo en un solo lugar'], img: '/lp8/mantenimiento-vehiculos.jpg', reverse: false },
+  { tag: 'Mercado', title: 'Lista de Supermercado Inteligente', desc: 'Creá, compartí y gestioná tus compras sin complicaciones desde el celular.', points: ['Creá listas desde el celular', 'Sin duplicados', 'Compartí o exportá', 'Compras más organizadas'], img: '/lp8/lista-super.jpg', reverse: true },
   { tag: 'Inversiones', title: 'Gestión de Inversiones', desc: 'Seguí tu portafolio, cobros pendientes y rendimientos. Todo organizado.', points: ['Portafolio centralizado', 'Cobros y rendimientos', 'Historial completo', 'Alertas de vencimiento'], img: '/lp8/inversiones.jpg', reverse: false },
 ];
+
+// ─── SYSTEMS SHOWCASE DARK (para LP6) ────────────────────────────────────────
+
+const DarkSystemsShowcase6: React.FC = () => (
+  <section className="bg-[#0b1220] py-20 border-t border-white/5 text-white">
+    <div className="max-w-6xl mx-auto px-4 space-y-10">
+      <div className="text-center space-y-3">
+        <div className="inline-flex items-center gap-2 bg-white/5 border border-white/10 px-3 py-1 rounded-full">
+          <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-primary">Módulos del sistema</span>
+        </div>
+        <h2 className="text-3xl lg:text-4xl font-extrabold leading-tight">
+          Todo lo que incluye{' '}
+          <span style={gOrange}>Controla IA</span>
+        </h2>
+        <p className="text-white/60 max-w-xl mx-auto font-medium">
+          Cada módulo diseñado para resolver un problema real de tu vida financiera.
+        </p>
+      </div>
+
+      {/* Dashboard — full width */}
+      <div className="rounded-2xl overflow-hidden border border-white/10 shadow-2xl shadow-black/40">
+        <img src="/lp8/sistema finanzas/version dar/dark-dashboard.png" alt="Sistema de Finanzas Personales" className="w-full block" />
+      </div>
+
+      {/* Grid 2x2 */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+        {[
+          { src: '/lp8/sistema finanzas/version dar/dark-metas.png', alt: 'Sistema de Metas Financieras' },
+          { src: '/lp8/sistema finanzas/version dar/dark-vehiculos.png', alt: 'Sistema de Mantenimiento de Vehículos' },
+          { src: '/lp8/sistema finanzas/version dar/dark-supermercado.png', alt: 'Lista de Supermercado Inteligente' },
+          { src: '/lp8/sistema finanzas/version dar/dark-whatsapp.png', alt: 'Envío por WhatsApp Integrado' },
+        ].map((item) => (
+          <div key={item.alt} className="rounded-2xl overflow-hidden border border-white/10 shadow-xl shadow-black/30">
+            <img src={item.src} alt={item.alt} className="w-full block" />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+);
 
 const FeaturesShowcase6: React.FC = () => (
   <section className="bg-[#0b1220] text-white py-20 border-t border-white/5">
@@ -666,9 +706,8 @@ const Lp6Page: React.FC = () => (
       <PainSection6 />
       <CulpaSection6 />
       <SystemSection6 />
-      <MockupSection6 />
-      <FeaturesShowcase6 />
       <VideoSection />
+      <DarkSystemsShowcase6 />
       <TestimonialsSection6 />
       <ObjectionsSection6 />
       <UrgencySection6 />
