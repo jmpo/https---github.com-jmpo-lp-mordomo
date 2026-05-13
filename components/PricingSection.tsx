@@ -317,7 +317,7 @@ const PricingSection: React.FC = () => {
         </div>
 
         {/* Bonuses — imagen valor agregado */}
-        <div className="max-w-4xl mx-auto mt-14 space-y-5">
+        <div className="mt-14 space-y-5">
           <div className="text-center space-y-2">
             <p className="text-xs font-black uppercase tracking-[0.16em] text-primary">
               🎁 Bonus exclusivos — incluidos gratis
@@ -333,12 +333,12 @@ const PricingSection: React.FC = () => {
               🔓 Se desbloquean al completar los 7 días de garantía
             </p>
           </div>
-          <div className="flex justify-center">
+          <div className="w-full">
             <img
               src="/lp8/sistema finanzas/version dar/dark-bonuses.png"
               alt="Bonus incluidos — Guías y Ebooks Controla IA"
-              className="w-full max-w-2xl h-auto"
-              style={{ filter: 'drop-shadow(0 24px 48px rgba(244,140,37,0.15))' }}
+              className="w-full h-auto block"
+              style={{ filter: 'drop-shadow(0 24px 48px rgba(244,140,37,0.18))' }}
             />
           </div>
           <div className="flex flex-wrap justify-center gap-5 pt-1">

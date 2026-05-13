@@ -976,7 +976,7 @@ const PricingSection8: React.FC = () => (
   <section id="precios" style={{ background: LIGHT, padding: '6rem 1.5rem', borderTop: `1px solid ${BORDER}` }}>
     <div style={{ maxWidth: '64rem', margin: '0 auto' }}>
       {/* Bonus value-stack — ANTES del precio para anclar valor */}
-      <div style={{ textAlign: 'center', marginBottom: '3rem', padding: '2.5rem', background: WHITE, borderRadius: '1.5rem', border: `1px solid ${BORDER}`, boxShadow: '0 4px 24px rgba(0,0,0,0.05)' }}>
+      <div style={{ textAlign: 'center', marginBottom: '3rem', padding: '2.5rem clamp(0.5rem, 2vw, 2.5rem)', background: WHITE, borderRadius: '1.5rem', border: `1px solid ${BORDER}`, boxShadow: '0 4px 24px rgba(0,0,0,0.05)' }}>
         <span style={{ fontFamily: SANS, fontSize: '0.7rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.16em', color: ORANGE }}>
           🎁 Bonus exclusivos — incluidos gratis
         </span>
@@ -992,7 +992,7 @@ const PricingSection8: React.FC = () => (
         <img
           src="/lp8/sistema finanzas/light-bonuses.png"
           alt="Bonus incluidos — Guías y Ebooks Controla IA"
-          style={{ width: '100%', maxWidth: '520px', height: 'auto', display: 'block', margin: '0 auto', filter: `drop-shadow(0 16px 32px rgba(0,0,0,0.10))` }}
+          style={{ width: '100%', height: 'auto', display: 'block', filter: `drop-shadow(0 16px 32px rgba(0,0,0,0.10))` }}
         />
       </div>
 
