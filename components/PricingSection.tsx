@@ -316,24 +316,32 @@ const PricingSection: React.FC = () => {
           })}
         </div>
 
-        {/* Bonuses */}
-        <div className="max-w-4xl mx-auto mt-14 bg-white/5 border border-white/10 rounded-[32px] p-8 lg:p-10 shadow-xl shadow-black/30 space-y-8">
+        {/* Bonuses — imagen valor agregado */}
+        <div className="max-w-4xl mx-auto mt-14 space-y-5">
           <div className="text-center space-y-2">
             <p className="text-xs font-black uppercase tracking-[0.16em] text-primary">
-              ✓ Todo lo que recibís desde el día 1
+              🎁 Bonus exclusivos — incluidos gratis
             </p>
-            <h3 className="text-2xl lg:text-3xl font-black text-white">Sin letra chica.</h3>
+            <h3 className="text-2xl lg:text-3xl font-black text-white">
+              5 recursos para dominar tus finanzas,{' '}
+              <span className="text-primary">sin costo adicional.</span>
+            </h3>
+            <p className="text-white/60 text-sm font-medium max-w-xl mx-auto">
+              Guías, ebooks y checklists de finanzas personales.
+            </p>
+            <p className="text-primary text-sm font-bold">
+              🔓 Se desbloquean al completar los 7 días de garantía
+            </p>
           </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {bonuses.map((item) => (
-              <div key={item.title} className="bg-white/5 border border-white/10 rounded-2xl p-5 flex flex-col gap-3 shadow-lg shadow-black/20 hover:border-primary/30 transition-colors">
-                <span className="text-3xl">{item.emoji}</span>
-                <p className="font-bold text-white text-sm leading-snug">{item.title}</p>
-                <p className="text-xs text-white/60 leading-relaxed font-medium">{item.desc}</p>
-              </div>
-            ))}
+          <div className="flex justify-center">
+            <img
+              src="/lp8/sistema finanzas/version dar/dark-bonuses.png"
+              alt="Bonus incluidos — Guías y Ebooks Controla IA"
+              className="w-full max-w-2xl h-auto"
+              style={{ filter: 'drop-shadow(0 24px 48px rgba(244,140,37,0.15))' }}
+            />
           </div>
-          <div className="flex flex-wrap justify-center gap-5 pt-2">
+          <div className="flex flex-wrap justify-center gap-5 pt-1">
             {['✔ Acceso inmediato', '✔ Sin complicaciones', '✔ Funciona desde el primer día'].map((t) => (
               <span key={t} className="text-sm font-semibold text-white/55">{t}</span>
             ))}
