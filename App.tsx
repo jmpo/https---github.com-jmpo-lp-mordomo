@@ -15,6 +15,7 @@ import NegociosPage from './components/negocios/NegociosPage';
 import Lp6Page from './components/lp6/Lp6Page';
 import Lp7Page from './components/lp7/Lp7Page';
 import Lp8Page from './components/lp8/Lp8Page';
+import Lp9Page from './components/lp9/Lp9Page';
 
 const App: React.FC = () => {
   const pathname = typeof window !== 'undefined' ? window.location.pathname.toLowerCase() : '';
@@ -25,6 +26,7 @@ const App: React.FC = () => {
   const isLp6 = pathname.includes('/lp6');
   const isLp7 = pathname.includes('/lp7');
   const isLp8 = pathname.includes('/lp8');
+  const isLp9 = pathname.includes('/lp9');
 
   useEffect(() => {
     initMetaPixel();
@@ -35,6 +37,9 @@ const App: React.FC = () => {
       window.location.href = '/lp5/index.html';
     }
     return null;
+  }
+  if (isLp9) {
+    return <Lp9Page />;
   }
   if (isLp8) {
     return <Lp8Page />;

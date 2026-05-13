@@ -333,12 +333,11 @@ const PricingSection: React.FC = () => {
               🔓 Se desbloquean al completar los 7 días de garantía
             </p>
           </div>
-          <div className="w-full">
+          <div style={{ position: 'relative', left: '50%', transform: 'translateX(-50%)', width: '100vw' }}>
             <img
               src="/lp8/sistema finanzas/version dar/dark-bonuses.png"
               alt="Bonus incluidos — Guías y Ebooks Controla IA"
-              className="w-full h-auto block"
-              style={{ filter: 'drop-shadow(0 24px 48px rgba(244,140,37,0.18))' }}
+              style={{ width: '100%', display: 'block', filter: 'drop-shadow(0 24px 48px rgba(244,140,37,0.18))' }}
             />
           </div>
           <div className="flex flex-wrap justify-center gap-5 pt-1">

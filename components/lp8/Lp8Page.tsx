@@ -989,11 +989,13 @@ const PricingSection8: React.FC = () => (
         <p style={{ fontFamily: SANS, fontSize: '0.8125rem', color: ORANGE, fontWeight: 700, margin: '0 0 1.5rem', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.4rem' }}>
           🔓 Se desbloquean al completar los 7 días de garantía
         </p>
-        <img
-          src="/lp8/sistema finanzas/light-bonuses.png"
-          alt="Bonus incluidos — Guías y Ebooks Controla IA"
-          style={{ width: '100%', height: 'auto', display: 'block', filter: `drop-shadow(0 16px 32px rgba(0,0,0,0.10))` }}
-        />
+        <div style={{ position: 'relative', left: '50%', transform: 'translateX(-50%)', width: '100vw' }}>
+          <img
+            src="/lp8/sistema finanzas/light-bonuses.png"
+            alt="Bonus incluidos — Guías y Ebooks Controla IA"
+            style={{ width: '100%', display: 'block', filter: `drop-shadow(0 16px 32px rgba(0,0,0,0.08))` }}
+          />
+        </div>
       </div>
 
       <div style={{ textAlign: 'center', marginBottom: '3.5rem' }}>
