@@ -855,9 +855,9 @@ const ComparisonSection8: React.FC = () => (
 // ─── 8. TESTIMONIOS ───────────────────────────────────────────────────────────
 
 const testimonials8 = [
-  { name: 'María García', location: 'México', photo: 'https://randomuser.me/api/portraits/women/44.jpg', text: 'En el primer mes entendí por qué nunca me alcanzaba. Ahora ya tengo mi primer ahorro real. No lo puedo creer.' },
-  { name: 'José Rodríguez', location: 'Colombia', photo: 'https://randomuser.me/api/portraits/men/32.jpg', text: 'Pensé que era un tema de ganar más. No era eso. Era que no veía en qué gastaba. Vale cada centavo.' },
-  { name: 'Ana Martínez', location: 'Argentina', photo: 'https://randomuser.me/api/portraits/women/17.jpg', text: 'Lo de la despensa me cambió la vida. En 2 meses ahorré $80 solo evitando compras que ya tenía.' },
+  { name: 'Juan Cáceres', age: '32 años', location: 'Asunción, Paraguay', since: 'Marzo 2026', photo: 'https://randomuser.me/api/portraits/men/34.jpg', text: '💰 Ahorré USD 280 en 2 meses sin cambiar de estilo de vida. Solo viendo a dónde se iba mi plata.' },
+  { name: 'María García', age: '28 años', location: 'Ciudad de México, México', since: 'Febrero 2026', photo: 'https://randomuser.me/api/portraits/women/44.jpg', text: '💰 Tenía miedo de ver mis gastos. Cuando los vi, entendí todo. En 6 semanas pagué mi deuda de tarjeta y todavía me sobró.' },
+  { name: 'José Rodríguez', age: '41 años', location: 'Bogotá, Colombia', since: 'Enero 2026', photo: 'https://randomuser.me/api/portraits/men/32.jpg', text: '💰 Pensé que el problema era mi sueldo. Era que gastaba USD 180 al mes en cosas que ni usaba. Ya no.' },
 ];
 
 // ─── PRUEBA SOCIAL BANNER ─────────────────────────────────────────────────────
@@ -933,8 +933,9 @@ const TestimonialsSection8: React.FC = () => (
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', paddingTop: '0.5rem', borderTop: `1px solid ${BORDER}` }}>
               <img src={t.photo} alt={t.name} style={{ width: 40, height: 40, borderRadius: '50%', objectFit: 'cover' }} />
               <div>
-                <p style={{ fontFamily: SANS, fontSize: '0.875rem', fontWeight: 700, color: DARK, margin: 0 }}>{t.name}</p>
-                <p style={{ fontFamily: SANS, fontSize: '0.75rem', color: MUTED, margin: 0 }}>📍 {t.location}</p>
+                <p style={{ fontFamily: SANS, fontSize: '0.875rem', fontWeight: 700, color: DARK, margin: 0 }}>{t.name} — {t.age}</p>
+                <p style={{ fontFamily: SANS, fontSize: '0.75rem', color: MUTED, margin: '0 0 2px' }}>📍 {t.location}</p>
+                <p style={{ fontFamily: SANS, fontSize: '0.7rem', color: ORANGE, fontWeight: 600, margin: 0 }}>★★★★★ Usuario desde {t.since}</p>
               </div>
             </div>
           </div>
@@ -1068,7 +1069,8 @@ const PricingSection8: React.FC = () => (
             >
               {p.cta}
             </a>
-            <p style={{ fontFamily: SANS, fontSize: '0.7rem', color: '#9ca3af', textAlign: 'center', margin: '0.75rem 0 0' }}>🛡️ Garantía 7 días sin preguntas</p>
+            <p style={{ fontFamily: SANS, fontSize: '0.7rem', color: '#9ca3af', textAlign: 'center', margin: '0.75rem 0 0' }}>🛡️ Garantía 7 días — Si no te ayuda a controlar tu plata, te devolvemos el 100%, sin preguntas.</p>
+            <p style={{ fontFamily: SANS, fontSize: '0.65rem', color: '#d1d5db', textAlign: 'center', margin: '0.35rem 0 0' }}>🔒 Pago seguro vía Hotmart · Visa · Mastercard · MercadoPago</p>
           </div>
         ))}
       </div>
@@ -1078,14 +1080,17 @@ const PricingSection8: React.FC = () => (
         <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
           <span style={{ fontSize: '2.5rem' }}>🛡️</span>
           <div>
-            <p style={{ fontFamily: SANS, fontSize: '1rem', fontWeight: 800, color: DARK, margin: '0 0 0.25rem' }}>GARANTÍA OFICIAL 7 DÍAS</p>
-            <p style={{ fontFamily: SANS, fontSize: '0.875rem', color: MUTED, margin: 0 }}>Si no ves resultados, te devolvemos el dinero sin preguntas. Sin riesgo.</p>
+            <p style={{ fontFamily: SANS, fontSize: '1rem', fontWeight: 800, color: DARK, margin: '0 0 0.25rem' }}>🛡️ Garantía 7 días</p>
+            <p style={{ fontFamily: SANS, fontSize: '0.875rem', color: MUTED, margin: 0 }}>Si no te ayuda a controlar tu plata, te devolvemos el 100%, sin preguntas.</p>
           </div>
         </div>
-        <div style={{ display: 'flex', gap: '1.5rem' }}>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem' }}>
           {['🔒 Pago seguro', '⚡ Acceso inmediato', '🚫 Cancela cuando quieras'].map((t) => (
             <span key={t} style={{ fontFamily: SANS, fontSize: '0.8rem', color: MUTED, fontWeight: 500 }}>{t}</span>
           ))}
+          <span style={{ fontFamily: SANS, fontSize: '0.75rem', color: '#9ca3af', fontWeight: 500 }}>
+            Hotmart · Visa · Mastercard · MercadoPago
+          </span>
         </div>
       </div>
 

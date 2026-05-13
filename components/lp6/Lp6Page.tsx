@@ -447,46 +447,58 @@ const FeaturesShowcase6: React.FC = () => (
 
 const testimonials = [
   {
+    name: 'Juan Cáceres',
+    age: '32 años',
+    location: 'Asunción, Paraguay',
+    since: 'Marzo 2026',
+    photo: 'https://randomuser.me/api/portraits/men/34.jpg',
+    stars: 5,
+    text: '💰 Ahorré USD 280 en 2 meses sin cambiar de estilo de vida. Solo viendo a dónde se iba mi plata.',
+  },
+  {
     name: 'María García',
-    location: 'México',
+    age: '28 años',
+    location: 'Ciudad de México, México',
+    since: 'Febrero 2026',
     photo: 'https://randomuser.me/api/portraits/women/44.jpg',
     stars: 5,
-    text: 'Llevaba 3 años prometiéndome que iba a organizarme. En el primer mes con Controla entendí por qué nunca me alcanzaba. Ahora ya tengo mi primer ahorro real. No lo puedo creer.',
+    text: '💰 Tenía miedo de ver mis gastos. Cuando los vi, entendí todo. En 6 semanas pagué mi deuda de tarjeta y todavía me sobró.',
   },
   {
     name: 'José Rodríguez',
-    location: 'Colombia',
+    age: '41 años',
+    location: 'Bogotá, Colombia',
+    since: 'Enero 2026',
     photo: 'https://randomuser.me/api/portraits/men/32.jpg',
     stars: 5,
-    text: 'Pensé que era un tema de ganar más. No era eso. Era que no veía en qué gastaba. Controla me abrió los ojos en literalmente 5 minutos. Vale cada centavo.',
+    text: '💰 Pensé que el problema era mi sueldo. Era que gastaba USD 180 al mes en cosas que ni usaba. Ya no.',
   },
   {
     name: 'Ana Martínez',
-    location: 'Argentina',
+    age: '35 años',
+    location: 'Buenos Aires, Argentina',
+    since: 'Marzo 2026',
     photo: 'https://randomuser.me/api/portraits/women/17.jpg',
     stars: 5,
-    text: 'Lo que más me gustó es que no me pide ser disciplinada. El sistema me avisa antes de que se me vaya el dinero. Eso fue un cambio enorme en mi vida.',
+    text: '💰 La función de despensa me ahorró USD 120 el primer mes. Dejé de comprar lo que ya tenía en casa.',
   },
   {
     name: 'Carlos López',
-    location: 'Perú',
+    age: '29 años',
+    location: 'Lima, Perú',
+    since: 'Febrero 2026',
     photo: 'https://randomuser.me/api/portraits/men/55.jpg',
     stars: 5,
-    text: 'Dudé mucho antes de comprarlo. Pensé que era igual a todo. Pero en el segundo mes ya había ahorrado lo que pagué por un año entero. Vale mil veces lo que cuesta.',
+    text: '💰 Dudé 3 semanas antes de comprarlo. Al segundo mes ya había ahorrado más de lo que pagué por el año entero.',
   },
   {
     name: 'Laura Sánchez',
-    location: 'Chile',
+    age: '38 años',
+    location: 'Santiago, Chile',
+    since: 'Enero 2026',
     photo: 'https://randomuser.me/api/portraits/women/63.jpg',
     stars: 5,
-    text: 'Lo de la despensa me cambió la vida. Dejé de comprar cosas que ya tenía. En 2 meses ahorré casi $80 solo con eso. Y eso que yo era la más desorganizada.',
-  },
-  {
-    name: 'Miguel Torres',
-    location: 'Venezuela',
-    photo: 'https://randomuser.me/api/portraits/men/41.jpg',
-    stars: 5,
-    text: 'Siempre creí que el problema era mi sueldo. Controla me mostró que era mi falta de control. Ahora duermo tranquilo sabiendo que el mes va a cerrar bien.',
+    text: '💰 Mi pareja y yo peleábamos por la plata. Ahora los dos vemos el mismo panel. Ese cambio no tiene precio.',
   },
 ];
 
@@ -524,8 +536,9 @@ const TestimonialsSection6: React.FC = () => (
                 loading="lazy"
               />
               <div>
-                <p className="text-sm font-bold text-white">{t.name}</p>
+                <p className="text-sm font-bold text-white">{t.name} — {t.age}</p>
                 <p className="text-xs text-white/50 font-medium">📍 {t.location}</p>
+                <p className="text-xs text-primary/70 font-medium">★★★★★ Usuario desde {t.since}</p>
               </div>
             </div>
           </div>

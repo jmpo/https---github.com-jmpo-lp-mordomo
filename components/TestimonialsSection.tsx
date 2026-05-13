@@ -4,22 +4,28 @@ import React from 'react';
 const TestimonialsSection: React.FC = () => {
   const testimonials = [
     {
-      name: "Andrés Gutiérrez",
-      role: "Empleado administrativo",
-      content: "“Pensé que ganaba poco, pero el problema era el desorden.”",
-      image: "https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg?auto=compress&cs=tinysrgb&w=150"
+      name: “Juan Cáceres”,
+      age: “32 años”,
+      location: “Asunción, Paraguay”,
+      since: “Marzo 2026”,
+      content: “💰 Ahorré USD 280 en 2 meses sin cambiar de estilo de vida. Solo viendo a dónde se iba mi plata.”,
+      image: “https://randomuser.me/api/portraits/men/34.jpg”
     },
     {
-      name: "Laura Martínez",
-      role: "Freelance",
-      content: "“Ahora sé cuánto puedo gastar sin culpa.”",
-      image: "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=150"
+      name: “María García”,
+      age: “28 años”,
+      location: “Ciudad de México, México”,
+      since: “Febrero 2026”,
+      content: “💰 Tenía miedo de ver mis gastos. Cuando los vi, entendí todo. En 6 semanas pagué mi deuda de tarjeta y todavía me sobró.”,
+      image: “https://randomuser.me/api/portraits/women/44.jpg”
     },
     {
-      name: "Ricardo Sosa",
-      role: "Papá de 2",
-      content: "“Por primera vez siento control.”",
-      image: "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=150"
+      name: “José Rodríguez”,
+      age: “41 años”,
+      location: “Bogotá, Colombia”,
+      since: “Enero 2026”,
+      content: “💰 Pensé que el problema era mi sueldo. Era que gastaba USD 180 al mes en cosas que ni usaba. Ya no.”,
+      image: “https://randomuser.me/api/portraits/men/32.jpg”
     }
   ];
 
@@ -44,19 +50,20 @@ const TestimonialsSection: React.FC = () => {
                     <span key={s} className="material-symbols-outlined text-sm fill-primary" style={{ fontVariationSettings: "'FILL' 1" }}>star</span>
                   ))}
                 </div>
-                <p className="text-gray-600 italic leading-relaxed mb-6">
+                <p className="text-gray-700 leading-relaxed mb-6 font-medium">
                   "{t.content}"
                 </p>
               </div>
               <div className="flex items-center gap-4 border-t border-gray-200 pt-6">
-                <img 
-                  src={t.image} 
-                  alt={t.name} 
+                <img
+                  src={t.image}
+                  alt={t.name}
                   className="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm"
                 />
                 <div>
-                  <h4 className="text-sm font-bold text-secondary">{t.name}</h4>
-                  <p className="text-xs text-gray-400">{t.role}</p>
+                  <h4 className="text-sm font-bold text-secondary">{t.name} — {t.age}</h4>
+                  <p className="text-xs text-gray-400">📍 {t.location}</p>
+                  <p className="text-xs text-primary font-semibold">★★★★★ Usuario desde {t.since}</p>
                 </div>
               </div>
             </div>

@@ -308,9 +308,12 @@ const PricingSection: React.FC = () => {
                   {p.cta}
                 </a>
 
-                {/* Garantía debajo del botón */}
+                {/* Garantía + métodos de pago debajo del botón */}
                 <p className="text-center text-[11px] text-white/45 font-medium mt-3">
-                  🛡️ Garantía 7 días — si no funciona, te devolvemos el dinero.
+                  🛡️ Garantía 7 días — Si no te ayuda a controlar tu plata, te devolvemos el 100%, sin preguntas.
+                </p>
+                <p className="text-center text-[10px] text-white/30 font-medium mt-1">
+                  🔒 Pago seguro vía Hotmart · Visa · Mastercard · MercadoPago
                 </p>
 
                 {/* Prueba social bajo el CTA del plan popular */}
@@ -343,7 +346,8 @@ const PricingSection: React.FC = () => {
             👉 QUIERO EL PLAN ANUAL POR USD 39.99
           </a>
           <p className="text-sm font-semibold text-white/70">Cancela cuando quieras. Pero te aseguro que no querrás.</p>
-          <p className="text-xs text-white/40 font-medium">🛡️ Garantía de devolución 7 días sin preguntas</p>
+          <p className="text-xs text-white/40 font-medium">🛡️ Garantía 7 días — Si no te ayuda a controlar tu plata, te devolvemos el 100%, sin preguntas.</p>
+          <p className="text-xs text-white/30 font-medium">🔒 Pago seguro vía Hotmart · Visa · Mastercard · MercadoPago</p>
         </div>
 
         <p className="text-center mt-8 text-sm font-bold text-white/60">
