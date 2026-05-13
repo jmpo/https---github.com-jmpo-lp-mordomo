@@ -998,29 +998,6 @@ const CuposCountdown: React.FC = () => {
 const PricingSection8: React.FC = () => (
   <section id="precios" style={{ background: LIGHT, padding: '6rem 1.5rem', borderTop: `1px solid ${BORDER}` }}>
     <div style={{ maxWidth: '64rem', margin: '0 auto' }}>
-      {/* Bonus value-stack — ANTES del precio para anclar valor */}
-      <div style={{ textAlign: 'center', marginBottom: '3rem', padding: '2.5rem clamp(0.5rem, 2vw, 2.5rem)', background: WHITE, borderRadius: '1.5rem', border: `1px solid ${BORDER}`, boxShadow: '0 4px 24px rgba(0,0,0,0.05)' }}>
-        <span style={{ fontFamily: SANS, fontSize: '0.7rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.16em', color: ORANGE }}>
-          🎁 Bonus exclusivos — incluidos gratis
-        </span>
-        <h3 style={{ fontFamily: SANS, fontSize: 'clamp(1.5rem, 3vw, 2rem)', fontWeight: 900, color: DARK, margin: '0.75rem 0 0.5rem', letterSpacing: '-0.02em', lineHeight: 1.2 }}>
-          5 recursos para dominar tus finanzas.
-        </h3>
-        <p style={{ fontFamily: SANS, fontSize: '0.9375rem', color: MUTED, margin: '0 0 0.5rem', maxWidth: '32rem', marginLeft: 'auto', marginRight: 'auto' }}>
-          Guías, ebooks y checklists. Sin costo adicional.
-        </p>
-        <p style={{ fontFamily: SANS, fontSize: '0.8125rem', color: ORANGE, fontWeight: 700, margin: '0 0 1.5rem', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.4rem' }}>
-          🔓 Se desbloquean al completar los 7 días de garantía
-        </p>
-        <div style={{ position: 'relative', left: '50%', transform: 'translateX(-50%)', width: '100vw' }}>
-          <img
-            src="/lp8/sistema finanzas/light-bonuses.png"
-            alt="Bonus incluidos — Guías y Ebooks Controla IA"
-            style={{ width: '100%', display: 'block', filter: `drop-shadow(0 16px 32px rgba(0,0,0,0.08))` }}
-          />
-        </div>
-      </div>
-
       <div style={{ textAlign: 'center', marginBottom: '3.5rem' }}>
         <Tag>Precios</Tag>
         <h2 style={{ fontFamily: SANS, fontSize: 'clamp(1.75rem, 4vw, 2.75rem)', fontWeight: 900, color: DARK, margin: '1rem 0 0.75rem', letterSpacing: '-0.02em', lineHeight: 1.2 }}>
@@ -1109,6 +1086,29 @@ const PricingSection8: React.FC = () => (
           {['🔒 Pago seguro', '⚡ Acceso inmediato', '🚫 Cancela cuando quieras'].map((t) => (
             <span key={t} style={{ fontFamily: SANS, fontSize: '0.8rem', color: MUTED, fontWeight: 500 }}>{t}</span>
           ))}
+        </div>
+      </div>
+
+      {/* Bonus value-stack — DESPUÉS de los precios */}
+      <div style={{ textAlign: 'center', marginTop: '4rem', padding: '2.5rem clamp(0.5rem, 2vw, 2.5rem)', background: WHITE, borderRadius: '1.5rem', border: `1px solid ${BORDER}`, boxShadow: '0 4px 24px rgba(0,0,0,0.05)' }}>
+        <span style={{ fontFamily: SANS, fontSize: '0.7rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.16em', color: ORANGE }}>
+          🎁 Bonus exclusivos — incluidos gratis
+        </span>
+        <h3 style={{ fontFamily: SANS, fontSize: 'clamp(1.5rem, 3vw, 2rem)', fontWeight: 900, color: DARK, margin: '0.75rem 0 0.5rem', letterSpacing: '-0.02em', lineHeight: 1.2 }}>
+          5 recursos para dominar tus finanzas.
+        </h3>
+        <p style={{ fontFamily: SANS, fontSize: '0.9375rem', color: MUTED, margin: '0 0 0.5rem', maxWidth: '32rem', marginLeft: 'auto', marginRight: 'auto' }}>
+          Guías, ebooks y checklists. Sin costo adicional.
+        </p>
+        <p style={{ fontFamily: SANS, fontSize: '0.8125rem', color: ORANGE, fontWeight: 700, margin: '0 0 1.5rem', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.4rem' }}>
+          🔓 Se desbloquean al completar los 7 días de garantía
+        </p>
+        <div style={{ position: 'relative', left: '50%', transform: 'translateX(-50%)', width: '100vw' }}>
+          <img
+            src="/lp8/sistema finanzas/light-bonuses.png"
+            alt="Bonus incluidos — Guías y Ebooks Controla IA"
+            style={{ width: '100%', display: 'block', filter: `drop-shadow(0 16px 32px rgba(0,0,0,0.08))` }}
+          />
         </div>
       </div>
     </div>
