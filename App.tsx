@@ -16,6 +16,7 @@ import Lp6Page from './components/lp6/Lp6Page';
 import Lp7Page from './components/lp7/Lp7Page';
 import Lp8Page from './components/lp8/Lp8Page';
 import Lp9Page from './components/lp9/Lp9Page';
+import StickyScarcityBar from './components/StickyScarcityBar';
 
 const App: React.FC = () => {
   const pathname = typeof window !== 'undefined' ? window.location.pathname.toLowerCase() : '';
@@ -42,13 +43,23 @@ const App: React.FC = () => {
     return <Lp9Page />;
   }
   if (isLp8) {
-    return <Lp8Page />;
+    return (
+      <>
+        <StickyScarcityBar theme="light" ctaHref="#precios" />
+        <Lp8Page />
+      </>
+    );
   }
   if (isLp7) {
     return <Lp7Page />;
   }
   if (isLp6) {
-    return <Lp6Page />;
+    return (
+      <>
+        <StickyScarcityBar theme="dark" ctaHref="#oferta" />
+        <Lp6Page />
+      </>
+    );
   }
   if (isNegocios) {
     return <NegociosPage />;
@@ -60,8 +71,13 @@ const App: React.FC = () => {
     return <Lp2Page />;
   }
 
-  // LP6 es ahora la landing principal
-  return <Lp6Page />;
+  // LP6 es la landing principal
+  return (
+    <>
+      <StickyScarcityBar theme="dark" ctaHref="#oferta" />
+      <Lp6Page />
+    </>
+  );
 };
 
 export default App;

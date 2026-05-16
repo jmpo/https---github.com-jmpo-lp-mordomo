@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { trackMetaEvent } from '../metaPixel';
+import { getCountdownTarget } from '../countdownTarget';
 
 type Plan = {
   name: string;
@@ -100,14 +101,12 @@ const PricingSection: React.FC = () => {
   const bestPlanHref = plans.find((p) => p.highlight === 'value')?.href ?? plans[0].href;
 
   React.useEffect(() => {
-    const target = Date.now() + 10 * 60 * 1000; // 10 minutos
+    const target = getCountdownTarget();
     const tick = () => {
       const diff = Math.max(target - Date.now(), 0);
-      const hrs = String(Math.floor(diff / (1000 * 60 * 60))).padStart(2, '0');
-      const mins = String(Math.floor((diff / (1000 * 60)) % 60)).padStart(2, '0');
+      const mins = String(Math.floor((diff / 60000) % 60)).padStart(2, '0');
       const secs = String(Math.floor((diff / 1000) % 60)).padStart(2, '0');
-      // Mostrar solo MM:SS cuando es menos de 1 hora
-      setCountdown(diff < 3600000 ? `${mins}:${secs}` : `${hrs}:${mins}:${secs}`);
+      setCountdown(`${mins}:${secs}`);
     };
     tick();
     const id = setInterval(tick, 1000);
@@ -299,10 +298,10 @@ const PricingSection: React.FC = () => {
                       num_items: 1,
                     })
                   }
-                  className={`mt-auto block w-full py-5 rounded-2xl font-black text-lg transition-all active:scale-95 text-center shadow-xl ${
+                  className={`mt-auto block w-full py-5 rounded-2xl font-black text-lg transition-all active:scale-95 text-center cta-shine ${
                     p.popular
-                      ? 'bg-primary text-secondary hover:bg-primary-dark shadow-primary/30'
-                      : 'bg-white/10 text-white hover:bg-white/18 border border-white/25'
+                      ? 'bg-primary text-secondary hover:bg-primary-dark btn-glow-orange'
+                      : 'bg-[#2563eb] text-white hover:bg-[#1d4ed8] btn-glow-blue btn-bounce'
                   }`}
                 >
                   {p.cta}
@@ -341,7 +340,7 @@ const PricingSection: React.FC = () => {
                 num_items: 1,
               })
             }
-            className="inline-flex items-center gap-3 bg-primary text-secondary px-8 py-4 rounded-2xl font-black text-lg shadow-xl shadow-primary/30 hover:bg-primary-dark transition-all active:scale-95 cta-shine"
+            className="inline-flex items-center gap-3 bg-primary text-secondary px-8 py-4 rounded-2xl font-black text-lg hover:bg-primary-dark transition-all active:scale-95 cta-shine btn-glow-orange"
           >
             👉 QUIERO EL PLAN ANUAL POR USD 39.99
           </a>

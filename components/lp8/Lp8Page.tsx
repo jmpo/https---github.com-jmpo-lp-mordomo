@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import StickyScarcityBar from '../StickyScarcityBar';
+import { getCountdownTarget } from '../../countdownTarget';
 import { trackMetaEvent } from '../../metaPixel';
 
 // ─── SCREENSHOTS REALES DE CONTROLA IA ───────────────────────────────────────
@@ -35,16 +35,17 @@ const PrimaryBtn: React.FC<{ label: string; event: string; href?: string; large?
   <a
     href={href}
     onClick={() => trackMetaEvent('Lead', { content_name: event })}
+    className="cta-shine btn-glow-orange"
     style={{
       display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem',
       background: ORANGE, color: WHITE, fontFamily: SANS, fontWeight: 800,
       fontSize: large ? '1.125rem' : '1rem',
       padding: large ? '1rem 2.5rem' : '0.875rem 2rem',
       borderRadius: '0.75rem', textDecoration: 'none', cursor: 'pointer',
-      transition: 'all 250ms', boxShadow: `0 4px 24px ${ORANGE}40`,
+      transition: 'all 250ms',
       border: 'none',
     }}
-    onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.background = ORANGE2; (e.currentTarget as HTMLAnchorElement).style.transform = 'translateY(-1px)'; }}
+    onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.background = ORANGE2; (e.currentTarget as HTMLAnchorElement).style.transform = 'translateY(-2px)'; }}
     onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.background = ORANGE; (e.currentTarget as HTMLAnchorElement).style.transform = 'translateY(0)'; }}
   >
     {label}
@@ -54,7 +55,7 @@ const PrimaryBtn: React.FC<{ label: string; event: string; href?: string; large?
 // ─── 1. NAV ───────────────────────────────────────────────────────────────────
 
 const Nav8: React.FC = () => (
-  <nav style={{ position: 'sticky', top: 0, zIndex: 50, background: WHITE, borderBottom: `1px solid ${BORDER}`, boxShadow: '0 1px 12px rgba(0,0,0,0.06)' }}>
+  <nav className="lp8-sticky-nav" style={{ position: 'sticky', top: 0, zIndex: 50, background: WHITE, borderBottom: `1px solid ${BORDER}`, boxShadow: '0 1px 12px rgba(0,0,0,0.06)' }}>
     <div style={{ maxWidth: '72rem', margin: '0 auto', padding: '0 1.5rem', height: '64px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
         <div style={{ width: 36, height: 36, background: ORANGE, borderRadius: '0.6rem', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -975,15 +976,14 @@ const plans8 = [
 ];
 
 const CuposCountdown: React.FC = () => {
-  const [cd, setCd] = useState('11:59:59');
+  const [cd, setCd] = useState('09:59');
   React.useEffect(() => {
-    const target = Date.now() + 12 * 60 * 60 * 1000;
+    const target = getCountdownTarget();
     const tick = () => {
       const d = Math.max(target - Date.now(), 0);
-      const h = String(Math.floor(d / 3600000)).padStart(2, '0');
       const m = String(Math.floor((d / 60000) % 60)).padStart(2, '0');
       const s = String(Math.floor((d / 1000) % 60)).padStart(2, '0');
-      setCd(`${h}:${m}:${s}`);
+      setCd(`${m}:${s}`);
     };
     tick();
     const id = setInterval(tick, 1000);
@@ -1015,7 +1015,11 @@ const PricingSection8: React.FC = () => (
         </div>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '1.5rem', alignItems: 'start' }}>
+      <style>{`
+        @media(max-width:767px){ .lp8-plans{ grid-template-columns:1fr !important; } }
+        @media(min-width:768px){ .lp8-plans{ grid-template-columns:repeat(3,1fr) !important; } }
+      `}</style>
+      <div className="lp8-plans" style={{ display: 'grid', gap: '1.5rem', alignItems: 'start' }}>
         {plans8.map((p) => (
           <div key={p.slug} style={{ background: WHITE, border: `2px solid ${p.popular ? ORANGE : BORDER}`, borderRadius: '1.25rem', padding: '2rem', position: 'relative', boxShadow: p.popular ? `0 8px 32px ${ORANGE}20` : '0 2px 8px rgba(0,0,0,0.04)' }}>
             {p.popular && (
@@ -1063,9 +1067,22 @@ const PricingSection8: React.FC = () => (
             <a
               href={p.href}
               onClick={() => trackMetaEvent('AddToCart', { content_ids: [p.slug], content_name: `${p.name} - Controla IA`, content_type: 'product', value: p.charge, currency: 'USD', num_items: 1 })}
-              style={{ display: 'block', width: '100%', padding: '0.875rem', borderRadius: '0.75rem', background: p.popular ? ORANGE : 'transparent', border: `2px solid ${p.popular ? ORANGE : BORDER}`, color: p.popular ? WHITE : DARK, fontFamily: SANS, fontWeight: 800, fontSize: '0.9375rem', textAlign: 'center', textDecoration: 'none', cursor: 'pointer', transition: 'all 250ms', boxSizing: 'border-box' }}
-              onMouseEnter={e => { const el = e.currentTarget as HTMLAnchorElement; el.style.background = p.popular ? ORANGE2 : LIGHT; }}
-              onMouseLeave={e => { const el = e.currentTarget as HTMLAnchorElement; el.style.background = p.popular ? ORANGE : 'transparent'; }}
+              className={
+                p.popular ? 'cta-shine btn-glow-orange' :
+                p.bestValue ? 'cta-shine btn-glow-green' :
+                'cta-shine btn-glow-blue btn-bounce'
+              }
+              style={{
+                display: 'block', width: '100%', padding: '1rem', borderRadius: '0.75rem',
+                background: p.popular ? ORANGE : p.bestValue ? '#10b981' : '#2563eb',
+                border: `2px solid ${p.popular ? ORANGE : p.bestValue ? '#10b981' : '#2563eb'}`,
+                color: WHITE,
+                fontFamily: SANS, fontWeight: 800, fontSize: '1rem',
+                textAlign: 'center', textDecoration: 'none', cursor: 'pointer',
+                transition: 'background 250ms', boxSizing: 'border-box',
+              }}
+              onMouseEnter={e => { const el = e.currentTarget as HTMLAnchorElement; el.style.background = p.popular ? ORANGE2 : p.bestValue ? '#059669' : '#1d4ed8'; }}
+              onMouseLeave={e => { const el = e.currentTarget as HTMLAnchorElement; el.style.background = p.popular ? ORANGE : p.bestValue ? '#10b981' : '#2563eb'; }}
             >
               {p.cta}
             </a>
@@ -1210,7 +1227,6 @@ const Lp8Page: React.FC = () => (
   <div style={{ background: WHITE, color: DARK, minHeight: '100vh' }}>
     <Nav8 />
     <main>
-      <StickyScarcityBar theme="light" ctaHref="#precios" />
       <Hero8 />
       <PainSection8 />
       <HowItWorks8 />
