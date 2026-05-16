@@ -87,15 +87,14 @@ const Hero8: React.FC = () => (
       {/* Left */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', padding: '0 1.5rem 3rem' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-          <Tag>Para asalariados en Latinoamérica</Tag>
+          <Tag>Tu economía organizada con IA</Tag>
         </div>
-        <h1 style={{ fontFamily: SANS, fontSize: 'clamp(2rem, 5vw, 3.5rem)', fontWeight: 900, lineHeight: 1.1, letterSpacing: '-0.02em', color: DARK, margin: 0 }}>
-          💸 Dejá de preguntarte<br />
-          <span style={{ color: ORANGE }}>a dónde se va tu sueldo.</span>
+        <h1 style={{ fontFamily: SANS, fontSize: 'clamp(2rem, 5vw, 3.5rem)', fontWeight: 900, lineHeight: 1.12, letterSpacing: '-0.02em', color: DARK, margin: 0 }}>
+          💸 El problema no es cuánto ganás.<br />
+          <span style={{ color: ORANGE }}>Es no saber exactamente a dónde se va tu dinero.</span>
         </h1>
         <p style={{ fontFamily: SANS, fontSize: '1.0625rem', color: MUTED, lineHeight: 1.65, fontWeight: 400, margin: 0, maxWidth: '32rem' }}>
-          Controlá tus gastos, ahorros y metas con Inteligencia Artificial.<br />
-          Registrá movimientos en segundos y visualizá todo automáticamente en un solo dashboard.
+          Controla IA usa Inteligencia Artificial para organizar, analizar y mejorar tus finanzas automáticamente.
         </p>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
