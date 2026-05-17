@@ -1,5 +1,5 @@
 
-import React, { useEffect } from 'react';
+import React from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import VideoSection from './components/VideoSection';
@@ -7,7 +7,6 @@ import ProblemSection from './components/ProblemSection';
 import SolutionSection from './components/SolutionSection';
 import PricingSection from './components/PricingSection';
 import Footer from './components/Footer';
-import { initMetaPixel } from './metaPixel';
 import Lp2Page from './components/lp2/Lp2Page';
 import TransformationSection from './components/TransformationSection';
 import Lp3Page from './components/lp3/Lp3Page';
@@ -35,9 +34,6 @@ const App: React.FC = () => {
   const isLp11 = pathname.includes('/lp11');
   const isLp12 = pathname.includes('/lp12');
 
-  useEffect(() => {
-    initMetaPixel();
-  }, []);
 
   if (isLp5) {
     if (typeof window !== 'undefined' && !pathname.includes('/lp5/index.html')) {
