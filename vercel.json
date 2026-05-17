@@ -13,6 +13,10 @@
     { "source": "/lp7", "destination": "/index.html" },
     { "source": "/lp7/(.*)", "destination": "/index.html" },
     { "source": "/lp8", "destination": "/index.html" },
-    { "source": "/lp8/(.*)", "destination": "/index.html" }
+    { "source": "/lp8/(.*)", "destination": "/index.html" },
+    { "source": "/lp9", "destination": "/index.html" },
+    { "source": "/lp9/(.*)", "destination": "/index.html" },
+    { "source": "/lp10", "destination": "/index.html" },
+    { "source": "/lp10/(.*)", "destination": "/index.html" }
   ]
 }
