@@ -18,6 +18,7 @@ import Lp8Page from './components/lp8/Lp8Page';
 import Lp9Page from './components/lp9/Lp9Page';
 import Lp10Page from './components/lp10/Lp10Page';
 import Lp11Page from './components/lp11/Lp11Page';
+import Lp12Page from './components/lp12/Lp12Page';
 import StickyScarcityBar from './components/StickyScarcityBar';
 
 const App: React.FC = () => {
@@ -32,6 +33,7 @@ const App: React.FC = () => {
   const isLp9  = pathname.includes('/lp9');
   const isLp10 = pathname.includes('/lp10');
   const isLp11 = pathname.includes('/lp11');
+  const isLp12 = pathname.includes('/lp12');
 
   useEffect(() => {
     initMetaPixel();
@@ -42,6 +44,9 @@ const App: React.FC = () => {
       window.location.href = '/lp5/index.html';
     }
     return null;
+  }
+  if (isLp12) {
+    return <Lp12Page />;
   }
   if (isLp11) {
     return <Lp11Page />;

@@ -19,6 +19,8 @@
     { "source": "/lp10", "destination": "/index.html" },
     { "source": "/lp10/(.*)", "destination": "/index.html" },
     { "source": "/lp11", "destination": "/index.html" },
-    { "source": "/lp11/(.*)", "destination": "/index.html" }
+    { "source": "/lp11/(.*)", "destination": "/index.html" },
+    { "source": "/lp12", "destination": "/index.html" },
+    { "source": "/lp12/(.*)", "destination": "/index.html" }
   ]
 }
