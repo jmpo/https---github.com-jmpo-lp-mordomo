@@ -121,7 +121,21 @@ export const initMetaPixel = () => {
     s?.parentNode?.insertBefore(t, s);
   })(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
 
-  window.fbq?.('init', PIXEL_ID);
+  // Coincidencias avanzadas — pasamos lo que tenemos sin requerir formulario
+  const externalId = getOrCreateExternalId();
+  const fbp        = readCookie('_fbp') ?? undefined;
+  const fbc        = (() => {
+    const existing = readCookie('_fbc');
+    if (existing) return existing;
+    const fbclid = new URL(window.location.href).searchParams.get('fbclid');
+    return fbclid ? `fb.1.${Date.now()}.${fbclid}` : undefined;
+  })();
+
+  window.fbq?.('init', PIXEL_ID, {
+    ...(externalId ? { external_id: externalId } : {}),
+    ...(fbp        ? { fbp }                      : {}),
+    ...(fbc        ? { fbc }                      : {}),
+  });
   window.fbq?.('track', 'PageView');
   window.fbqInitialized = true;
 
