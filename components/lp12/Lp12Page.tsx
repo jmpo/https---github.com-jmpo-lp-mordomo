@@ -39,8 +39,8 @@ const plans = [
 
 // ─── VIDEO SECTION ────────────────────────────────────────────────────────────
 
-const VSL_CTA_AT   = 105; // botón aparece a 1:45
-const VSL_DURATION = 117; // "completado" a 1:57
+const VSL_CTA_AT   = 105; // 1:45 del video
+const VSL_DURATION = 117; // 1:57 del video
 const SESSION_KEY  = 'vsl_entry_ts'; // clave en sessionStorage
 
 // Retorna segundos ya transcurridos en esta sesión del navegador
@@ -61,43 +61,62 @@ function getElapsedSeconds(): number {
 const BUNNY_SRC = 'https://player.mediadelivery.net/embed/364591/84ad3b37-1d70-4e88-abad-43515572ccdc?autoplay=true&loop=false&muted=false&preload=true&responsive=true';
 
 const VideoBlock: React.FC<{ onCtaReveal: () => void }> = ({ onCtaReveal }) => {
+  const iframeRef                   = useRef<HTMLIFrameElement>(null);
   const [ctaVisible, setCtaVisible] = useState(false);
   const [completed, setCompleted]   = useState(false);
 
-  // Timer con persistencia en sessionStorage
+  // Timer basado en tiempo en página — arranca cuando el iframe termina de cargar
   useEffect(() => {
     trackMetaEvent('Lead', { content_name: 'vsl_started' });
 
-    const elapsed = getElapsedSeconds();
-    const ctaRemaining = Math.max(VSL_CTA_AT - elapsed, 0);
-    const endRemaining = Math.max(VSL_DURATION - elapsed, 0);
+    let ctaTimer: ReturnType<typeof setTimeout> | null = null;
+    let endTimer: ReturnType<typeof setTimeout> | null = null;
 
-    // Si ya pasó el tiempo del CTA → mostrar directo sin animación de espera
-    if (ctaRemaining === 0) {
-      setCtaVisible(true);
-      onCtaReveal();
+    const startTimers = () => {
+      // Al arrancar timers, actualizamos sessionStorage con el momento real de inicio
+      // (no cuando entró a la página, sino cuando el video cargó)
+      const elapsed = getElapsedSeconds();
+      const ctaRemaining = Math.max(VSL_CTA_AT - elapsed, 0);
+      const endRemaining = Math.max(VSL_DURATION - elapsed, 0);
+
+      if (ctaRemaining === 0) { setCtaVisible(true); onCtaReveal(); }
+      if (endRemaining === 0) { setCompleted(true); }
+
+      if (ctaRemaining > 0) {
+        ctaTimer = setTimeout(() => {
+          setCtaVisible(true);
+          onCtaReveal();
+          trackMetaEvent('Lead', { content_name: 'vsl_cta_revealed' });
+          setTimeout(() => {
+            document.getElementById('vsl-cta-btn')?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          }, 200);
+        }, ctaRemaining * 1000);
+      }
+
+      if (endRemaining > 0) {
+        endTimer = setTimeout(() => {
+          setCompleted(true);
+          trackMetaEvent('Lead', { content_name: 'vsl_completed' });
+        }, endRemaining * 1000);
+      }
+    };
+
+    // Bunny.net no expone postMessage — solo usa fallbacks
+    const handleMsg = (_e: MessageEvent) => {};
+    window.addEventListener('message', handleMsg);
+
+    // Fallback: si no llegan postMessages, arrancar cuando el iframe cargue
+    if (iframeRef.current) {
+      iframeRef.current.onload = () => startTimers();
     }
-    if (endRemaining === 0) {
-      setCompleted(true);
-    }
-
-    const ctaTimer = ctaRemaining > 0 ? setTimeout(() => {
-      setCtaVisible(true);
-      onCtaReveal();
-      trackMetaEvent('Lead', { content_name: 'vsl_cta_revealed' });
-      setTimeout(() => {
-        document.getElementById('vsl-cta-btn')?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-      }, 200);
-    }, ctaRemaining * 1000) : null;
-
-    const endTimer = endRemaining > 0 ? setTimeout(() => {
-      setCompleted(true);
-      trackMetaEvent('Lead', { content_name: 'vsl_completed' });
-    }, endRemaining * 1000) : null;
+    // Fallback final: arrancar a los 3s si nada disparó antes
+    const fallback = setTimeout(startTimers, 3000);
 
     return () => {
+      window.removeEventListener('message', handleMsg);
       if (ctaTimer) clearTimeout(ctaTimer);
       if (endTimer)  clearTimeout(endTimer);
+      clearTimeout(fallback);
     };
   }, []);
 
@@ -113,6 +132,7 @@ const VideoBlock: React.FC<{ onCtaReveal: () => void }> = ({ onCtaReveal }) => {
         margin: '0 auto',
       }}>
         <iframe
+          ref={iframeRef}
           src={BUNNY_SRC}
           loading="lazy"
           style={{ border: 0, position: 'absolute', top: 0, left: 0, height: '100%', width: '100%' }}
