@@ -241,6 +241,12 @@ const CSS = `
     line-height: 1.4;
   }
 
+  /* Image entrance */
+  @keyframes lp10-img-in {
+    from { opacity: 0; transform: scale(1.04); }
+    to   { opacity: 1; transform: scale(1); }
+  }
+
   /* Slide transition */
   @keyframes lp10-slide-in {
     from { opacity: 0; transform: translateX(40px); }
@@ -768,14 +774,35 @@ const Lp10Page: React.FC = () => {
       </div>
 
       {/* Question */}
-      <div style={{ maxWidth: '640px', margin: '0 auto', padding: 'clamp(2rem, 5vw, 3.5rem) 1.25rem' }}>
+      <div style={{ maxWidth: '640px', margin: '0 auto', padding: '1.5rem 1.25rem clamp(2rem,5vw,3.5rem)' }}>
         <div className={animating ? 'lp10-slide-out' : 'lp10-slide-in'}>
 
-          <p style={{ fontSize: '0.75rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.14em', color: '#f48c25', margin: '0 0 1rem' }}>
+          {/* Imagen contextual de la pregunta */}
+          <div style={{
+            borderRadius: '1.25rem',
+            overflow: 'hidden',
+            marginBottom: '1.75rem',
+            boxShadow: '0 12px 40px rgba(0,0,0,0.4)',
+            border: '1px solid rgba(255,255,255,0.08)',
+          }}>
+            <img
+              key={current}
+              src={`/lp10/imagenes/quizz_correcto_${current + 1}.jpg`}
+              alt={`Pregunta ${current + 1}`}
+              style={{
+                width: '100%',
+                height: 'auto',
+                display: 'block',
+                animation: 'lp10-img-in 500ms cubic-bezier(0.22,1,0.36,1) both',
+              }}
+            />
+          </div>
+
+          <p style={{ fontSize: '0.75rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.14em', color: '#f48c25', margin: '0 0 0.75rem' }}>
             {q.category}
           </p>
 
-          <h2 style={{ fontSize: 'clamp(1.375rem, 4vw, 2rem)', fontWeight: 900, lineHeight: 1.2, letterSpacing: '-0.02em', margin: '0 0 2rem' }}>
+          <h2 style={{ fontSize: 'clamp(1.25rem, 4vw, 1.875rem)', fontWeight: 900, lineHeight: 1.2, letterSpacing: '-0.02em', margin: '0 0 1.5rem' }}>
             {q.question}
           </h2>
 
