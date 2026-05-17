@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { trackMetaEvent } from '../../metaPixel';
 import { getCountdownTarget } from '../../countdownTarget';
 
@@ -39,124 +39,80 @@ const plans = [
 
 // ─── VIDEO SECTION ────────────────────────────────────────────────────────────
 
-// Video dura 1:57 (117s). Botón aparece a 1:45 (105s), mensaje "completado" a 1:57 (117s)
-const VSL_CTA_AT      = 105; // 1:45
-const VSL_DURATION    = 117; // 1:57
+const VSL_CTA_AT   = 105; // botón aparece a 1:45
+const VSL_DURATION = 117; // "completado" a 1:57
+const SESSION_KEY  = 'vsl_entry_ts'; // clave en sessionStorage
 
-// Sin autoplay — el cliente apreta play y ahí arranca el timer
-const BUNNY_SRC = 'https://player.mediadelivery.net/embed/364591/84ad3b37-1d70-4e88-abad-43515572ccdc?autoplay=false&loop=false&muted=false&preload=true&responsive=true';
+// Retorna segundos ya transcurridos en esta sesión del navegador
+// Si el cliente refresca, calcula cuánto tiempo lleva desde que entró
+// sessionStorage se limpia al cerrar el tab — cada tab nuevo empieza desde 0
+function getElapsedSeconds(): number {
+  try {
+    const stored = sessionStorage.getItem(SESSION_KEY);
+    if (stored) {
+      const elapsed = Math.floor((Date.now() - parseInt(stored, 10)) / 1000);
+      return Math.max(0, elapsed);
+    }
+    sessionStorage.setItem(SESSION_KEY, String(Date.now()));
+  } catch {}
+  return 0;
+}
+
+const BUNNY_SRC = 'https://player.mediadelivery.net/embed/364591/84ad3b37-1d70-4e88-abad-43515572ccdc?autoplay=true&loop=false&muted=false&preload=true&responsive=true';
 
 const VideoBlock: React.FC<{ onCtaReveal: () => void }> = ({ onCtaReveal }) => {
-  const iframeRef                   = useRef<HTMLIFrameElement>(null);
   const [ctaVisible, setCtaVisible] = useState(false);
   const [completed, setCompleted]   = useState(false);
 
-  // ── Timer pausable ──────────────────────────────────────────
-  const elapsed     = useRef(0);       // segundos acumulados mientras el video corre
-  const tickRef     = useRef<ReturnType<typeof setInterval> | null>(null);
-  const isRunning   = useRef(false);
-  const ctaShown    = useRef(false);
-  const endShown    = useRef(false);
-  const hasStarted  = useRef(false);
+  // Timer con persistencia en sessionStorage
+  useEffect(() => {
+    trackMetaEvent('Lead', { content_name: 'vsl_started' });
 
-  const showCta = () => {
-    if (ctaShown.current) return;
-    ctaShown.current = true;
-    setCtaVisible(true);
-    onCtaReveal();
-    trackMetaEvent('Lead', { content_name: 'vsl_cta_revealed' });
-    setTimeout(() => {
-      document.getElementById('vsl-cta-btn')?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    }, 200);
-  };
+    const elapsed = getElapsedSeconds();
+    const ctaRemaining = Math.max(VSL_CTA_AT - elapsed, 0);
+    const endRemaining = Math.max(VSL_DURATION - elapsed, 0);
 
-  const resumeTimer = () => {
-    if (isRunning.current) return;
-    isRunning.current = true;
-    tickRef.current = setInterval(() => {
-      elapsed.current += 0.25;
-      if (!ctaShown.current && elapsed.current >= VSL_CTA_AT) showCta();
-      if (!endShown.current && elapsed.current >= VSL_DURATION) {
-        endShown.current = true;
-        setCompleted(true);
-        trackMetaEvent('Lead', { content_name: 'vsl_completed' });
-      }
-    }, 250); // tick cada 250ms = precisión de ±0.25s
-  };
-
-  const pauseTimer = () => {
-    if (!isRunning.current) return;
-    isRunning.current = false;
-    if (tickRef.current) clearInterval(tickRef.current);
-  };
-
-  const onPlay = () => {
-    if (!hasStarted.current) {
-      hasStarted.current = true;
-      trackMetaEvent('Lead', { content_name: 'vsl_started' });
+    // Si ya pasó el tiempo del CTA → mostrar directo sin animación de espera
+    if (ctaRemaining === 0) {
+      setCtaVisible(true);
+      onCtaReveal();
     }
-    resumeTimer();
-  };
+    if (endRemaining === 0) {
+      setCompleted(true);
+    }
 
-  // Limpiar al desmontar
-  useEffect(() => {
-    return () => { if (tickRef.current) clearInterval(tickRef.current); };
-  }, []);
+    const ctaTimer = ctaRemaining > 0 ? setTimeout(() => {
+      setCtaVisible(true);
+      onCtaReveal();
+      trackMetaEvent('Lead', { content_name: 'vsl_cta_revealed' });
+      setTimeout(() => {
+        document.getElementById('vsl-cta-btn')?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }, 200);
+    }, ctaRemaining * 1000) : null;
 
-  // ── Plan A: postMessage de Bunny.net ─────────────────────────
-  useEffect(() => {
-    const handleMsg = (e: MessageEvent) => {
-      if (!String(e.origin).includes('mediadelivery.net')) return;
-      try {
-        const d = typeof e.data === 'string' ? JSON.parse(e.data) : e.data;
-        const ev = d?.event || d?.type || d?.action || '';
+    const endTimer = endRemaining > 0 ? setTimeout(() => {
+      setCompleted(true);
+      trackMetaEvent('Lead', { content_name: 'vsl_completed' });
+    }, endRemaining * 1000) : null;
 
-        // Timeupdate = el método más exacto: currentTime real del video
-        if (ev === 'timeupdate' && typeof d?.currentTime === 'number') {
-          elapsed.current = d.currentTime;
-          if (!ctaShown.current && d.currentTime >= VSL_CTA_AT) showCta();
-          if (!endShown.current && d.currentTime >= VSL_DURATION) {
-            endShown.current = true;
-            setCompleted(true);
-          }
-          return;
-        }
-        if (ev === 'play' || ev === 'playing')   onPlay();
-        if (ev === 'pause' || ev === 'paused')   pauseTimer();
-        if (ev === 'ended')                      { pauseTimer(); setCompleted(true); }
-      } catch {}
+    return () => {
+      if (ctaTimer) clearTimeout(ctaTimer);
+      if (endTimer)  clearTimeout(endTimer);
     };
-    window.addEventListener('message', handleMsg);
-    return () => window.removeEventListener('message', handleMsg);
-  }, []);
-
-  // ── Plan B: window.blur (click en iframe = play) ─────────────
-  useEffect(() => {
-    const handleBlur = () => {
-      if (document.activeElement === iframeRef.current) {
-        setTimeout(onPlay, 600);
-      }
-    };
-    window.addEventListener('blur', handleBlur);
-    return () => window.removeEventListener('blur', handleBlur);
   }, []);
 
   return (
     <div style={{ position: 'relative', width: '100%' }}>
-      {/* Bunny.net iframe — video vertical 9:16 */}
+      {/* Iframe limpio — sin frames ni overlays */}
       <div style={{
         position: 'relative',
         paddingTop: 'min(177.78%, 58vh)',
         borderRadius: 'clamp(0.875rem,3vw,1.5rem)',
         overflow: 'hidden',
-        background: '#000',
-        boxShadow: '0 20px 50px rgba(0,0,0,0.6)',
-        border: '1px solid rgba(255,255,255,0.08)',
         maxWidth: '380px',
         margin: '0 auto',
       }}>
         <iframe
-          ref={iframeRef}
           src={BUNNY_SRC}
           loading="lazy"
           style={{ border: 0, position: 'absolute', top: 0, left: 0, height: '100%', width: '100%' }}
@@ -223,7 +179,6 @@ const Lp12Page: React.FC = () => {
   const [countdown, setCountdown]   = useState('09:59');
   const [ctaRevealed, setCtaRevealed] = useState(false);
   const [faqOpen, setFaqOpen]       = useState<number | null>(null);
-  const pricingRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     trackMetaEvent('ViewContent', { content_name: 'lp12_vsl_view' });
@@ -282,7 +237,7 @@ const Lp12Page: React.FC = () => {
       </section>
 
       {/* ── PLANES ───────────────────────────────────────────── */}
-      <section id="planes" ref={pricingRef} style={{ maxWidth: '480px', margin: '0 auto', padding: ctaRevealed ? 'clamp(2rem,5vw,3.5rem) 1rem' : 0, maxHeight: ctaRevealed ? '9999px' : 0, overflow: 'hidden', opacity: ctaRevealed ? 1 : 0, transform: ctaRevealed ? 'translateY(0)' : 'translateY(24px)', transition: 'opacity 800ms ease 400ms, transform 800ms ease 400ms, max-height 1s ease 400ms, padding 800ms ease 400ms', pointerEvents: ctaRevealed ? 'auto' : 'none' }}>
+      <section id="planes" style={{ maxWidth: '480px', margin: '0 auto', padding: ctaRevealed ? 'clamp(2rem,5vw,3.5rem) 1rem' : 0, maxHeight: ctaRevealed ? '9999px' : 0, overflow: 'hidden', opacity: ctaRevealed ? 1 : 0, transform: ctaRevealed ? 'translateY(0)' : 'translateY(24px)', transition: 'opacity 800ms ease 400ms, transform 800ms ease 400ms, max-height 1s ease 400ms, padding 800ms ease 400ms', pointerEvents: ctaRevealed ? 'auto' : 'none' }}>
 
         {/* Urgencia */}
         <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '0.75rem', marginBottom: '2rem' }}>
