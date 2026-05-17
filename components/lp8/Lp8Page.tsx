@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { getCountdownTarget } from '../../countdownTarget';
 import { trackMetaEvent } from '../../metaPixel';
+import VideoSection from '../VideoSection';
 
 // ─── SCREENSHOTS REALES DE CONTROLA IA ───────────────────────────────────────
 const IMG_MOCKUP_HERO  = '/lp8/mockup-hero.png';
@@ -1230,6 +1231,7 @@ const Lp8Page: React.FC = () => (
       <PainSection8 />
       <HowItWorks8 />
       <SystemsShowcase8 />
+      <VideoSection ctaHref="#precios" />
       <ComparisonSection8 />
       <SocialProofBanner8 />
       <TestimonialsSection8 />

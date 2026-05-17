@@ -1,7 +1,7 @@
 import React from 'react';
 import { trackMetaEvent } from '../metaPixel';
 
-const VideoSection: React.FC = () => {
+const VideoSection: React.FC<{ ctaHref?: string }> = ({ ctaHref = '#oferta' }) => {
   return (
     <section id="video" className="py-20 bg-[#0b1220] border-y border-white/10 text-white">
       <div className="max-w-6xl mx-auto px-4 space-y-10">
@@ -55,7 +55,7 @@ const VideoSection: React.FC = () => {
           </p>
           <div className="flex flex-col items-center gap-3 pt-2">
             <a
-              href="#oferta"
+              href={ctaHref}
               onClick={() => trackMetaEvent('Lead', { content_name: 'video_empezar_control' })}
               className="bg-primary hover:bg-primary-dark text-secondary px-8 py-4 rounded-xl font-bold text-lg transition-all shadow-xl shadow-primary/30 active:scale-95"
             >
