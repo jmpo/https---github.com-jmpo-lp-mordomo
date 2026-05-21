@@ -49,7 +49,7 @@ const plans: Plan[] = [
     months: 1,
     cta: '🚀 Empezar por USD 5',
     popular: false,
-    href: 'https://pay.hotmart.com/E103337720H?off=datt7ri2&checkoutMode=6',
+    href: 'https://pay.hotmart.com/E103337720H?off=datt7ri2&checkoutMode=10',
   },
   {
     name: 'Semestral',
@@ -62,7 +62,7 @@ const plans: Plan[] = [
     popular: true,
     highlight: 'popular',
     socialProof: '👥 127 personas eligieron este plan esta semana',
-    href: 'https://pay.hotmart.com/E103337720H?off=2kzn4n3n&checkoutMode=6',
+    href: 'https://pay.hotmart.com/E103337720H?off=2kzn4n3n&checkoutMode=10',
   },
   {
     name: 'Anual',
@@ -75,7 +75,7 @@ const plans: Plan[] = [
     popular: true,
     highlight: 'value',
     relativeCopy: '☕ Menos que un café al día',
-    href: 'https://pay.hotmart.com/E103337720H?off=9011oxf5&checkoutMode=6',
+    href: 'https://pay.hotmart.com/E103337720H?off=9011oxf5&checkoutMode=10',
   },
 ];
 

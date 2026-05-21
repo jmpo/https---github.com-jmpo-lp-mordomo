@@ -953,7 +953,7 @@ const plans8 = [
     name: 'Mensual', slug: 'plan_mensual', charge: 5, monthlyDisplay: 5, months: 1,
     label: 'Sin compromiso', desc: 'Probá el sistema y empezá a entender tu dinero desde ya.',
     features: ['Acceso completo al sistema', 'Panel de gastos con IA', 'Inventario de despensa', 'Empezás en minutos'],
-    cta: 'Empezar por USD 5', href: 'https://pay.hotmart.com/E103337720H?off=datt7ri2&checkoutMode=6',
+    cta: 'Empezar por USD 5', href: 'https://pay.hotmart.com/E103337720H?off=datt7ri2&checkoutMode=10',
     popular: false,
   },
   {
@@ -961,7 +961,7 @@ const plans8 = [
     compareAt: 30, saving: 5, discount: 17,
     label: 'La mayoría empieza aquí', desc: 'Tiempo suficiente para generar hábitos financieros reales.',
     features: ['Todo del plan mensual', 'Hábitos financieros reales', 'Mejor seguimiento mensual', 'Más claridad mes a mes'],
-    cta: 'Elegir Semestral', href: 'https://pay.hotmart.com/E103337720H?off=2kzn4n3n&checkoutMode=6',
+    cta: 'Elegir Semestral', href: 'https://pay.hotmart.com/E103337720H?off=2kzn4n3n&checkoutMode=10',
     popular: true,
   },
   {
@@ -969,7 +969,7 @@ const plans8 = [
     compareAt: 60, saving: 20, discount: 33,
     label: 'Mejor decisión', desc: 'Control total durante todo el año. Menor costo, mayor beneficio.',
     features: ['Todo lo anterior', 'Control total 12 meses', 'Resultados sostenibles', '☕ Menos que un café al día'],
-    cta: 'Elegir Anual', href: 'https://pay.hotmart.com/E103337720H?off=9011oxf5&checkoutMode=6',
+    cta: 'Elegir Anual', href: 'https://pay.hotmart.com/E103337720H?off=9011oxf5&checkoutMode=10',
     popular: false,
     bestValue: true,
   },

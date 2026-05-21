@@ -284,7 +284,7 @@ const plans = [
     desc: 'Perfecto si quieres probar el sistema y empezar a entender tu dinero desde ya.',
     features: ['Acceso completo al sistema', 'Organización clara de ingresos y gastos', 'Visualización simple de tu dinero', 'Empiezas en minutos'],
     cta: 'Quiero empezar hoy',
-    href: 'https://pay.hotmart.com/E103337720H?off=datt7ri2&checkoutMode=6',
+    href: 'https://pay.hotmart.com/E103337720H?off=datt7ri2&checkoutMode=10',
     highlight: null as null | 'popular' | 'value',
   },
   {
@@ -300,7 +300,7 @@ const plans = [
     desc: 'Empieza a ver cambios reales en tu forma de manejar el dinero.',
     features: ['Todo lo del plan mensual', 'Más tiempo para generar hábitos reales', 'Mejor seguimiento de tus finanzas', 'Más claridad mes a mes'],
     cta: 'Quiero mejorar mis finanzas',
-    href: 'https://pay.hotmart.com/E103337720H?off=2kzn4n3n&checkoutMode=6',
+    href: 'https://pay.hotmart.com/E103337720H?off=2kzn4n3n&checkoutMode=10',
     highlight: 'popular' as 'popular',
   },
   {
@@ -316,7 +316,7 @@ const plans = [
     desc: 'Si quieres dejar de vivir al día, necesitas tiempo… y consistencia.',
     features: ['Todo lo anterior', 'Control total durante todo el año', 'Resultados reales y sostenibles', 'Menor costo, mayor beneficio'],
     cta: 'Quiero tomar control total',
-    href: 'https://pay.hotmart.com/E103337720H?off=9011oxf5&checkoutMode=6',
+    href: 'https://pay.hotmart.com/E103337720H?off=9011oxf5&checkoutMode=10',
     highlight: 'value' as 'value',
   },
 ];
@@ -527,7 +527,7 @@ const PricingSection7: React.FC = () => {
 
         {/* Final CTA */}
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
-          <CtaBtn label="👉 Quiero tomar control total" eventName="lp7_pricing_final_cta" size="lg" href="https://pay.hotmart.com/E103337720H?off=9011oxf5&checkoutMode=6" />
+          <CtaBtn label="👉 Quiero tomar control total" eventName="lp7_pricing_final_cta" size="lg" href="https://pay.hotmart.com/E103337720H?off=9011oxf5&checkoutMode=10" />
           <p style={{ fontFamily: SANS, fontSize: '0.8rem', color: MUTED }}>Cancela cuando quieras. Sin compromiso.</p>
           <p style={{ fontFamily: SANS, fontSize: '0.7rem', color: 'rgba(255,255,255,0.25)' }}>
             ¿Tenés dudas? <a href="https://wa.link/wcvh0b" style={{ color: GREEN, textDecoration: 'none' }}>Escribinos por WhatsApp</a>

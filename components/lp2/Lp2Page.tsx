@@ -1,7 +1,7 @@
 import React from 'react';
 import { trackMetaEvent } from '../../metaPixel';
 
-const payLink = 'https://pay.hotmart.com/E103337720H?off=2kzn4n3n&checkoutMode=6';
+const payLink = 'https://pay.hotmart.com/E103337720H?off=2kzn4n3n&checkoutMode=10';
 const demoLink = 'https://demo.controla.site/';
 const videoSrc = 'https://player.mediadelivery.net/embed/364591/d1270fc1-fda6-4383-9a7b-36d9c9cde7ad?autoplay=false&loop=false&muted=false&preload=true&responsive=true';
 
@@ -80,7 +80,7 @@ const plans = [
     price: 5,
     total: 5,
     months: 1,
-    href: 'https://pay.hotmart.com/E103337720H?off=datt7ri2&checkoutMode=6',
+    href: 'https://pay.hotmart.com/E103337720H?off=datt7ri2&checkoutMode=10',
     badge: null as string | null,
     highlight: false,
   },
@@ -89,7 +89,7 @@ const plans = [
     price: 4.17,
     total: 24.99,
     months: 6,
-    href: 'https://pay.hotmart.com/E103337720H?off=2kzn4n3n&checkoutMode=6',
+    href: 'https://pay.hotmart.com/E103337720H?off=2kzn4n3n&checkoutMode=10',
     badge: 'Más popular',
     highlight: true,
   },
@@ -98,7 +98,7 @@ const plans = [
     price: 3.33,
     total: 39.99,
     months: 12,
-    href: 'https://pay.hotmart.com/E103337720H?off=9011oxf5&checkoutMode=6',
+    href: 'https://pay.hotmart.com/E103337720H?off=9011oxf5&checkoutMode=10',
     badge: 'Mejor valor',
     highlight: true,
   },
