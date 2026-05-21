@@ -720,12 +720,19 @@ const Lp11Page: React.FC = () => {
 
           {/* WhatsApp feature */}
           <Reveal delay={100}>
-            <div style={{ margin: '1.5rem 0 0', background: 'rgba(16,185,129,0.08)', border: '1px solid rgba(16,185,129,0.25)', borderRadius: '1.25rem', padding: '1.5rem', display: 'flex', gap: '1rem', alignItems: 'flex-start' }}>
-              <div style={{ width: 48, height: 48, background: '#dcfce7', borderRadius: '0.875rem', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.5rem', flexShrink: 0 }}>💬</div>
-              <div>
-                <p style={{ fontFamily: SANS, fontSize: '1rem', fontWeight: 800, color: WHITE, margin: '0 0 0.4rem' }}>Registrá por WhatsApp en segundos</p>
-                <p style={{ fontFamily: SANS, fontSize: '0.875rem', color: 'rgba(255,255,255,0.6)', margin: 0, lineHeight: 1.65 }}>Mandá un mensaje como "gasté $50 en taxi" y Controla IA lo registra, categoriza y analiza automáticamente. Sin abrir apps extra.</p>
+            <div style={{ margin: '1.5rem 0 0', background: 'rgba(16,185,129,0.08)', border: '1px solid rgba(16,185,129,0.25)', borderRadius: '1.25rem', overflow: 'hidden' }}>
+              <div style={{ padding: '1.5rem', display: 'flex', gap: '1rem', alignItems: 'flex-start' }}>
+                <div style={{ width: 48, height: 48, background: '#dcfce7', borderRadius: '0.875rem', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.5rem', flexShrink: 0 }}>💬</div>
+                <div>
+                  <p style={{ fontFamily: SANS, fontSize: '1rem', fontWeight: 800, color: WHITE, margin: '0 0 0.4rem' }}>Registrá por WhatsApp en segundos</p>
+                  <p style={{ fontFamily: SANS, fontSize: '0.875rem', color: 'rgba(255,255,255,0.6)', margin: 0, lineHeight: 1.65 }}>Mandá un mensaje como "gasté $50 en taxi" y Controla IA lo registra, categoriza y analiza automáticamente. Sin abrir apps extra.</p>
+                </div>
               </div>
+              <img
+                src="/lp8/sistema finanzas/sf-whatsapp.png"
+                alt="Registro por WhatsApp — Controla IA"
+                style={{ width: '100%', display: 'block' }}
+              />
             </div>
           </Reveal>
         </div>
