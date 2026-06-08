@@ -18,6 +18,7 @@ import Lp9Page from './components/lp9/Lp9Page';
 import Lp10Page from './components/lp10/Lp10Page';
 import Lp11Page from './components/lp11/Lp11Page';
 import Lp12Page from './components/lp12/Lp12Page';
+import GraciasPage from './components/gracias/GraciasPage';
 import StickyScarcityBar from './components/StickyScarcityBar';
 
 const App: React.FC = () => {
@@ -33,8 +34,12 @@ const App: React.FC = () => {
   const isLp10 = pathname.includes('/lp10');
   const isLp11 = pathname.includes('/lp11');
   const isLp12 = pathname.includes('/lp12');
+  const isGracias = pathname.includes('/gracias');
 
 
+  if (isGracias) {
+    return <GraciasPage />;
+  }
   if (isLp5) {
     if (typeof window !== 'undefined' && !pathname.includes('/lp5/index.html')) {
       window.location.href = '/lp5/index.html';
